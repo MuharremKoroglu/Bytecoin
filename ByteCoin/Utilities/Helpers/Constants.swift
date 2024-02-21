@@ -1,0 +1,14 @@
+//
+//  Constants.swift
+//  ByteCoin
+//
+//  Created by Muharrem Köroğlu on 21.02.2024.
+//
+
+import Foundation
+
+struct Constants {
+    
+    static let rootApiURL = "https://api.coingecko.com/api/v3/"
+
+}

@@ -11,6 +11,13 @@
 		3B1C10FA2B86255500C0100F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C10F92B86255500C0100F /* ContentView.swift */; };
 		3B1C10FC2B86255700C0100F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1C10FB2B86255700C0100F /* Assets.xcassets */; };
 		3B1C10FF2B86255700C0100F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1C10FE2B86255700C0100F /* Preview Assets.xcassets */; };
+		3B1C11072B86257C00C0100F /* CryptoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C11062B86257C00C0100F /* CryptoModel.swift */; };
+		3B1C11092B86259D00C0100F /* AllCoinsDataRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C11082B86259D00C0100F /* AllCoinsDataRequestModel.swift */; };
+		3B1C110D2B8625E900C0100F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C110C2B8625E900C0100F /* NetworkService.swift */; };
+		3B1C110F2B86260400C0100F /* APIRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C110E2B86260400C0100F /* APIRequestService.swift */; };
+		3B1C11122B86262800C0100F /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C11112B86262800C0100F /* HomeScreenViewModel.swift */; };
+		3B1C11162B86267300C0100F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1C11152B86267300C0100F /* Alamofire */; };
+		3B1C111A2B8626EA00C0100F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C11192B8626EA00C0100F /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +26,12 @@
 		3B1C10F92B86255500C0100F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3B1C10FB2B86255700C0100F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B1C10FE2B86255700C0100F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3B1C11062B86257C00C0100F /* CryptoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoModel.swift; sourceTree = "<group>"; };
+		3B1C11082B86259D00C0100F /* AllCoinsDataRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCoinsDataRequestModel.swift; sourceTree = "<group>"; };
+		3B1C110C2B8625E900C0100F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		3B1C110E2B86260400C0100F /* APIRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestService.swift; sourceTree = "<group>"; };
+		3B1C11112B86262800C0100F /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
+		3B1C11192B8626EA00C0100F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B1C11162B86267300C0100F /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,8 +65,12 @@
 		3B1C10F62B86255500C0100F /* ByteCoin */ = {
 			isa = PBXGroup;
 			children = (
+				3B1C110A2B8625AE00C0100F /* Views */,
+				3B1C11102B86261900C0100F /* ViewModels */,
+				3B1C110B2B8625D800C0100F /* Services */,
+				3B1C11052B86256A00C0100F /* Models */,
+				3B1C11172B8626D200C0100F /* Utilities */,
 				3B1C10F72B86255500C0100F /* ByteCoinApp.swift */,
-				3B1C10F92B86255500C0100F /* ContentView.swift */,
 				3B1C10FB2B86255700C0100F /* Assets.xcassets */,
 				3B1C10FD2B86255700C0100F /* Preview Content */,
 			);
@@ -65,6 +83,56 @@
 				3B1C10FE2B86255700C0100F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3B1C11052B86256A00C0100F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3B1C11062B86257C00C0100F /* CryptoModel.swift */,
+				3B1C11082B86259D00C0100F /* AllCoinsDataRequestModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3B1C110A2B8625AE00C0100F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3B1C10F92B86255500C0100F /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3B1C110B2B8625D800C0100F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3B1C110C2B8625E900C0100F /* NetworkService.swift */,
+				3B1C110E2B86260400C0100F /* APIRequestService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3B1C11102B86261900C0100F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3B1C11112B86262800C0100F /* HomeScreenViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3B1C11172B8626D200C0100F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3B1C11182B8626DB00C0100F /* Helpers */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		3B1C11182B8626DB00C0100F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3B1C11192B8626EA00C0100F /* Constants.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +151,9 @@
 			dependencies = (
 			);
 			name = ByteCoin;
+			packageProductDependencies = (
+				3B1C11152B86267300C0100F /* Alamofire */,
+			);
 			productName = ByteCoin;
 			productReference = 3B1C10F42B86255500C0100F /* ByteCoin.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +182,9 @@
 				Base,
 			);
 			mainGroup = 3B1C10EB2B86255500C0100F;
+			packageReferences = (
+				3B1C11142B86267300C0100F /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 3B1C10F52B86255500C0100F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +211,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B1C110D2B8625E900C0100F /* NetworkService.swift in Sources */,
+				3B1C11072B86257C00C0100F /* CryptoModel.swift in Sources */,
+				3B1C11122B86262800C0100F /* HomeScreenViewModel.swift in Sources */,
+				3B1C110F2B86260400C0100F /* APIRequestService.swift in Sources */,
 				3B1C10FA2B86255500C0100F /* ContentView.swift in Sources */,
+				3B1C11092B86259D00C0100F /* AllCoinsDataRequestModel.swift in Sources */,
 				3B1C10F82B86255500C0100F /* ByteCoinApp.swift in Sources */,
+				3B1C111A2B8626EA00C0100F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +424,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3B1C11142B86267300C0100F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3B1C11152B86267300C0100F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B1C11142B86267300C0100F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3B1C10EC2B86255500C0100F /* Project object */;
 }
