@@ -16,7 +16,7 @@ struct CryptoModel: Identifiable, Codable {
     let image : String?
     let currentPrice : Double?
     let marketCap : Double?
-    let marketCapRank : Double?
+    let marketCapRank : Int?
     let fullyDilutedValuation : Double?
     let totalVolume : Double?
     let high24H : Double?

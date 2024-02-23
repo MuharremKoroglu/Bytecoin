@@ -9,6 +9,7 @@ import Foundation
 
 struct Constants {
     
-    static let rootApiURL = "https://api.coingecko.com/api/v3/"
-
+    static let coinRootApiURL = "https://api.coingecko.com/api/v3/"
+    static let userRootApiURL = "https://randomuser.me/api/"
+    
 }

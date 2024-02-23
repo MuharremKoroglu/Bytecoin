@@ -6,24 +6,41 @@
 //
 
 import Foundation
+import Alamofire
 
 enum APIRequestService {
     case allCoinCurrencies
+    case allUsers
     
     private var baseURL: URL {
-        return URL(string: Constants.rootApiURL)!
+        switch self {
+        case .allCoinCurrencies:
+            return URL(string: Constants.coinRootApiURL)!
+        case .allUsers:
+            return URL(string: Constants.userRootApiURL)!
+        }
+        
     }
     
     private var path : String {
         switch self {
         case .allCoinCurrencies:
             return "coins/markets"
+        case .allUsers:
+            return ""
         }
     }
     
     var url : String {
-        let url = baseURL.appendingPathComponent(path)
-        return url.absoluteString
+        switch self {
+        case .allCoinCurrencies:
+            let url = baseURL.appendingPathComponent(path)
+            return url.absoluteString
+        case .allUsers:
+            let url = baseURL.appendingPathComponent(path)
+            return url.absoluteString
+        }
+        
     }
     
     var parameters : Encodable {
@@ -41,6 +58,22 @@ enum APIRequestService {
                 localization: "en",
                 precision: nil
             )
+        case .allUsers:
+            return AllUserDataRequestModel(
+                results: 5,
+                include: "name,picture",
+                nationality: "us",
+                noinfo: "noinfo"
+            )
+        }
+    }
+    
+    var requestMethod : HTTPMethod {
+        switch self {
+        case .allCoinCurrencies:
+            return .get
+        case .allUsers:
+            return .get
         }
     }
     

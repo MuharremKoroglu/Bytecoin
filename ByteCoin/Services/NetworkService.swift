@@ -10,11 +10,12 @@ import Alamofire
 
 class NetworkService {
     
-    func networkService <T : Codable > (request : APIRequestService, data : T.Type) async throws -> Result<T, Error>{
+    func networkService <T : Codable> (request : APIRequestService, data : T.Type) async throws -> Result<T, Error>{
+        
         do {
             let response = try await AF.request(
                 request.url,
-                method: .get,
+                method: request.requestMethod,
                 parameters: request.parameters,
                 encoder: URLEncodedFormParameterEncoder.default,
                 requestModifier: {$0.timeoutInterval = 60}
