@@ -9,26 +9,21 @@ import SwiftUI
 
 struct AccountBalance: View {
     var body: some View {
-        VStack (alignment : .leading) {
-            VStack (alignment: .leading,spacing: 5){
-                Text("Balance")
-                    .font(.title2)
-                    .fontWeight(.medium)
-                    .foregroundStyle(.white)
-                Text("$152,463")
+        VStack (alignment : .leading,spacing: 25) {
+            VStack (alignment: .leading){
+                Text("Wallet")
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundStyle(.white)
+
             }
-           
             HStack(alignment: .bottom) {
-                VStack(alignment: .leading,spacing: 5){
-                    Text("Profit")
-                        .font(.title2)
-                        .fontWeight(.medium)
+                VStack(alignment: .leading,spacing: 5) {
+                    Text("Your Current Balance")
+                        .font(.title3)
                         .foregroundStyle(.white)
-                    Text("$2,463")
-                        .font(.title)
+                    Text("$152,463")
+                        .font(.title2)
                         .fontWeight(.bold)
                         .foregroundStyle(.white)
                 }
@@ -47,8 +42,8 @@ struct AccountBalance: View {
                 }
                 
             }
-        }.padding(.horizontal, 15)
-            .padding(.vertical, 15)
+        }.padding(.horizontal,15)
+        .padding(.vertical, 15)
         .background(
             RoundedRectangle(cornerRadius: 20)
                 .fill(.appMain)

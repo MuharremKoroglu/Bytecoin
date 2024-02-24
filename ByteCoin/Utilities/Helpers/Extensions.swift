@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Double {
     
@@ -14,8 +15,8 @@ extension Double {
         formatter.usesGroupingSeparator = true
         formatter.numberStyle = .currency
         formatter.currencySymbol = "$"
-        formatter.minimumFractionDigits = 3
-        formatter.maximumFractionDigits = 3
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
         return formatter
     }
     
@@ -37,4 +38,11 @@ extension Double {
     }
     
 
+}
+
+extension UIApplication {
+    
+    func endEditing () {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }

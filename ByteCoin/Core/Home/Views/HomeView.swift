@@ -14,13 +14,14 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ScrollView(.vertical,showsIndicators: false) {
-                VStack(spacing: 2) {
+                VStack(spacing: 10) {
                     WelcomeView(viewModel: viewModel)
-                    RecommendedToBuyView(viewModel: viewModel)
+                    TopGainersView(viewModel: viewModel)
+                    TopLoserView(viewModel: viewModel)
                     RecentTransactionsView(viewModel: viewModel)
                 }.onAppear{
                     viewModel.getAllUser()
-                    viewModel.getRecommendedCryptoCurrencies()
+                    viewModel.getAllCurrencies()
                 }
             }
         }

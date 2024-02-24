@@ -31,6 +31,15 @@ enum APIRequestService {
         }
     }
     
+    var header: HTTPHeaders? {
+        switch self {
+        case .allCoinCurrencies:
+            return HTTPHeaders(["x-cg-demo-api-key" : Constants.coinApiKey])
+        case .allUsers:
+            return HTTPHeaders()
+        }
+    }
+    
     var url : String {
         switch self {
         case .allCoinCurrencies:

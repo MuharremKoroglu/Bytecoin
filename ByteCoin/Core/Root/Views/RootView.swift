@@ -26,7 +26,7 @@ struct RootView: View {
                 
             }
             CustomTabBar(selectedTab: $selectedTab)
-        }
+        }.ignoresSafeArea(.keyboard)
         
         
     }

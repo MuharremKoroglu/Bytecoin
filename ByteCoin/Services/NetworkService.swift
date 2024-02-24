@@ -17,7 +17,8 @@ class NetworkService {
                 request.url,
                 method: request.requestMethod,
                 parameters: request.parameters,
-                encoder: URLEncodedFormParameterEncoder.default,
+                encoder: URLEncodedFormParameterEncoder.default, 
+                headers: request.header,
                 requestModifier: {$0.timeoutInterval = 60}
             ).serializingDecodable(data.self).value
             return .success(response)

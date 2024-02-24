@@ -11,7 +11,7 @@ struct RecentTransactionsView: View {
     @StateObject var viewModel : HomeViewViewModel
     
     var body: some View {
-        VStack(alignment : .leading) {
+        VStack(alignment : .leading,spacing: 10) {
             Text("Recent Transactions")
                 .font(.headline)
                 .fontWeight(.bold)
@@ -23,7 +23,6 @@ struct RecentTransactionsView: View {
                     }
                 }
             }
-        }.padding(.vertical, 15)
-            .padding(.horizontal, 15)
+        }.padding(.horizontal, 15)
     }
 }

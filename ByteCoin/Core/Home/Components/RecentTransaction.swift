@@ -12,43 +12,39 @@ struct RecentTransaction: View {
     let user : UserResult
     
     var body: some View {
-        VStack(spacing : 10) {
+        VStack(alignment : .center,spacing: 10){
             AsyncImage(url: URL(string: user.picture?.large ?? "")) { image in
                 image
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 60,height: 60)
                     .clipShape(Circle())
             } placeholder: {
                 Circle()
                     .fill(.placeholder)
-                    .frame(width: 55,height: 55)
-                    
-            }
-            VStack(spacing : 0) {
+            }.frame(width: 40, height: 40)
+            
+            VStack(alignment : .center,spacing: 3) {
                 Text(user.name?.first ?? "")
-                    .font(.body)
+                    .font(.callout)
                     .fontWeight(.bold)
                     .lineLimit(1)
-                    .multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.5)
+                    .foregroundStyle(.primary)
                 Text(user.name?.last ?? "")
                     .font(.caption)
-                    .fontWeight(.medium)
                     .lineLimit(1)
-                    .multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.5)
+                    .foregroundStyle(.primary)
             }
-
-                
-        }.frame(width: 100, height: 120)
-            .padding(.vertical, 5)
-            .padding(.horizontal, 10)
-        .background(
-            RoundedRectangle(cornerRadius: 15)
-                .fill(.regularMaterial)
-        )
+            
+        }.frame(width: 90, height: 110)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(.regularMaterial)
+            )
     }
 }
 
 #Preview {
-    RecentTransaction(user: UserResult(name: UserName(title: "test", first: "test", last: "test"), picture: UserPicture(large: "", medium: "", thumbnail: "")))
+    RecentTransaction(user: UserResult(name: UserName(title: "test", first: "Antonio", last: "Martinez"), picture: UserPicture(large: "", medium: "", thumbnail: "")))
 }

@@ -11,5 +11,6 @@ struct Constants {
     
     static let coinRootApiURL = "https://api.coingecko.com/api/v3/"
     static let userRootApiURL = "https://randomuser.me/api/"
+    static let coinApiKey = "CG-xWSemcJmjJXmVqmYKeCfVsom"
     
 }

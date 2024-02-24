@@ -9,12 +9,13 @@ import Foundation
 
 class HomeViewViewModel : ObservableObject {
     
-    @Published var recommendedCoins : [CryptoModel] = []
+    @Published var topGainerCoins : [CryptoModel] = []
+    @Published var topLoserCoins : [CryptoModel] = []
     @Published var allUsers : [UserResult] = []
     
     private var networkService = NetworkService()
     
-    func getRecommendedCryptoCurrencies () {
+    func getAllCurrencies () {
                 
         Task {
             let response = try await networkService.networkService(request: APIRequestService.allCoinCurrencies, data: [CryptoModel].self)
@@ -22,7 +23,8 @@ class HomeViewViewModel : ObservableObject {
             switch response {
             case .success(let allCryptos):
                 await MainActor.run {
-                    self.recommendedCoinsList(coins:allCryptos)
+                    self.topGainerCoinList(coins:allCryptos)
+                    self.topLoserCoinList(coins: allCryptos)
                 }
             case .failure(let failure):
                 print("COİN VERİLERİ GETİRİLEMEDİ : \(failure)")
@@ -48,9 +50,14 @@ class HomeViewViewModel : ObservableObject {
         }
     }
     
-    private func recommendedCoinsList (coins : [CryptoModel]) {
+    private func topGainerCoinList (coins : [CryptoModel]) {
         let sortedCoins = coins.sorted(by: {$0.priceChangePercentage24H ?? 1.0 > $1.priceChangePercentage24H ?? 0.0})
-        self.recommendedCoins = Array(sortedCoins.prefix(5))
+        self.topGainerCoins = Array(sortedCoins.prefix(5))
+    }
+    
+    private func topLoserCoinList (coins : [CryptoModel]) {
+        let sortedCoins = coins.sorted(by: {$0.priceChangePercentage24H ?? 1.0 < $1.priceChangePercentage24H ?? 0.0})
+        self.topLoserCoins = Array(sortedCoins.prefix(5))
     }
     
 }

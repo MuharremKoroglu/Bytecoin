@@ -10,13 +10,12 @@ import SwiftUI
 struct MarketView: View {
     
     @StateObject private var viewModel = MarketViewViewModel()
-    
-    @State var searchedText : String = ""
+
     
     var body: some View {
         NavigationStack {
             VStack {
-                SearchBarView(searchedText: $searchedText)
+                SearchBarView(viewModel: viewModel)
                 AllCoinView(viewModel: viewModel)
             }.navigationTitle("Coin Market")
                 .onAppear{

@@ -20,12 +20,10 @@ struct CoinRow: View {
                 image
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 32, height: 32)
             } placeholder: {
                 Circle()
                     .fill(.placeholder)
-                    .frame(width: 32, height: 32)
-            }
+            }.frame(width: 32, height: 32)
             VStack(alignment : .leading, spacing: 3){
                 Text(coin.name ?? "")
                     .font(.subheadline)

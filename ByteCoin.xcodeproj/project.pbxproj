@@ -18,9 +18,10 @@
 		3B1C11122B86262800C0100F /* HomeViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C11112B86262800C0100F /* HomeViewViewModel.swift */; };
 		3B1C11162B86267300C0100F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1C11152B86267300C0100F /* Alamofire */; };
 		3B1C111A2B8626EA00C0100F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C11192B8626EA00C0100F /* Constants.swift */; };
+		3BBDDD242B89CADE00B202ED /* TopLoserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBDDD232B89CADE00B202ED /* TopLoserView.swift */; };
 		3BBEE2F92B87512100E0F19F /* UserWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE2F82B87512100E0F19F /* UserWelcome.swift */; };
 		3BBEE2FB2B8755C800E0F19F /* AccountBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE2FA2B8755C800E0F19F /* AccountBalance.swift */; };
-		3BBEE2FD2B87643E00E0F19F /* RecommendedToBuy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE2FC2B87643E00E0F19F /* RecommendedToBuy.swift */; };
+		3BBEE2FD2B87643E00E0F19F /* TopGainerAndLoserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE2FC2B87643E00E0F19F /* TopGainerAndLoserItem.swift */; };
 		3BBEE2FF2B876BEF00E0F19F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE2FE2B876BEF00E0F19F /* UserModel.swift */; };
 		3BBEE3012B876C2100E0F19F /* AllUserDataRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE3002B876C2100E0F19F /* AllUserDataRequestModel.swift */; };
 		3BBEE3032B8778E900E0F19F /* RecentTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE3022B8778E900E0F19F /* RecentTransaction.swift */; };
@@ -33,7 +34,7 @@
 		3BE2DADD2B88CCB9003E3D18 /* CoinRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2DADC2B88CCB9003E3D18 /* CoinRow.swift */; };
 		3BE2DADF2B88CF1B003E3D18 /* AllCoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2DADE2B88CF1B003E3D18 /* AllCoinView.swift */; };
 		3BE2DAE12B891B70003E3D18 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2DAE02B891B70003E3D18 /* SearchBarView.swift */; };
-		3BF90A0B2B87AC95007B1BED /* RecommendedToBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF90A0A2B87AC95007B1BED /* RecommendedToBuyView.swift */; };
+		3BF90A0B2B87AC95007B1BED /* TopGainersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF90A0A2B87AC95007B1BED /* TopGainersView.swift */; };
 		3BF90A0D2B87AE7D007B1BED /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF90A0C2B87AE7D007B1BED /* WelcomeView.swift */; };
 		3BF90A112B87C841007B1BED /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF90A102B87C841007B1BED /* RootView.swift */; };
 		3BF90A142B87C864007B1BED /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF90A132B87C864007B1BED /* CustomTabBar.swift */; };
@@ -51,9 +52,10 @@
 		3B1C110E2B86260400C0100F /* APIRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestService.swift; sourceTree = "<group>"; };
 		3B1C11112B86262800C0100F /* HomeViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewViewModel.swift; sourceTree = "<group>"; };
 		3B1C11192B8626EA00C0100F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3BBDDD232B89CADE00B202ED /* TopLoserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopLoserView.swift; sourceTree = "<group>"; };
 		3BBEE2F82B87512100E0F19F /* UserWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWelcome.swift; sourceTree = "<group>"; };
 		3BBEE2FA2B8755C800E0F19F /* AccountBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountBalance.swift; sourceTree = "<group>"; };
-		3BBEE2FC2B87643E00E0F19F /* RecommendedToBuy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedToBuy.swift; sourceTree = "<group>"; };
+		3BBEE2FC2B87643E00E0F19F /* TopGainerAndLoserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGainerAndLoserItem.swift; sourceTree = "<group>"; };
 		3BBEE2FE2B876BEF00E0F19F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		3BBEE3002B876C2100E0F19F /* AllUserDataRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserDataRequestModel.swift; sourceTree = "<group>"; };
 		3BBEE3022B8778E900E0F19F /* RecentTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTransaction.swift; sourceTree = "<group>"; };
@@ -66,7 +68,7 @@
 		3BE2DADC2B88CCB9003E3D18 /* CoinRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRow.swift; sourceTree = "<group>"; };
 		3BE2DADE2B88CF1B003E3D18 /* AllCoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCoinView.swift; sourceTree = "<group>"; };
 		3BE2DAE02B891B70003E3D18 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
-		3BF90A0A2B87AC95007B1BED /* RecommendedToBuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedToBuyView.swift; sourceTree = "<group>"; };
+		3BF90A0A2B87AC95007B1BED /* TopGainersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGainersView.swift; sourceTree = "<group>"; };
 		3BF90A0C2B87AE7D007B1BED /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		3BF90A102B87C841007B1BED /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		3BF90A132B87C864007B1BED /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -139,7 +141,8 @@
 			children = (
 				3B1C10F92B86255500C0100F /* HomeView.swift */,
 				3BF90A0C2B87AE7D007B1BED /* WelcomeView.swift */,
-				3BF90A0A2B87AC95007B1BED /* RecommendedToBuyView.swift */,
+				3BF90A0A2B87AC95007B1BED /* TopGainersView.swift */,
+				3BBDDD232B89CADE00B202ED /* TopLoserView.swift */,
 				3BBEE3042B87A88900E0F19F /* RecentTransactionsView.swift */,
 			);
 			path = Views;
@@ -204,7 +207,7 @@
 			children = (
 				3BBEE2F82B87512100E0F19F /* UserWelcome.swift */,
 				3BBEE2FA2B8755C800E0F19F /* AccountBalance.swift */,
-				3BBEE2FC2B87643E00E0F19F /* RecommendedToBuy.swift */,
+				3BBEE2FC2B87643E00E0F19F /* TopGainerAndLoserItem.swift */,
 				3BBEE3022B8778E900E0F19F /* RecentTransaction.swift */,
 			);
 			path = Components;
@@ -361,7 +364,7 @@
 				3BF90A0D2B87AE7D007B1BED /* WelcomeView.swift in Sources */,
 				3BE2DADF2B88CF1B003E3D18 /* AllCoinView.swift in Sources */,
 				3BBEE2F92B87512100E0F19F /* UserWelcome.swift in Sources */,
-				3BF90A0B2B87AC95007B1BED /* RecommendedToBuyView.swift in Sources */,
+				3BF90A0B2B87AC95007B1BED /* TopGainersView.swift in Sources */,
 				3B1C10FA2B86255500C0100F /* HomeView.swift in Sources */,
 				3BBEE3032B8778E900E0F19F /* RecentTransaction.swift in Sources */,
 				3B1C11092B86259D00C0100F /* AllCoinsDataRequestModel.swift in Sources */,
@@ -369,9 +372,10 @@
 				3BBEE3012B876C2100E0F19F /* AllUserDataRequestModel.swift in Sources */,
 				3BE2DAE12B891B70003E3D18 /* SearchBarView.swift in Sources */,
 				3BE2DADD2B88CCB9003E3D18 /* CoinRow.swift in Sources */,
-				3BBEE2FD2B87643E00E0F19F /* RecommendedToBuy.swift in Sources */,
+				3BBEE2FD2B87643E00E0F19F /* TopGainerAndLoserItem.swift in Sources */,
 				3B1C10F82B86255500C0100F /* ByteCoinApp.swift in Sources */,
 				3BF90A112B87C841007B1BED /* RootView.swift in Sources */,
+				3BBDDD242B89CADE00B202ED /* TopLoserView.swift in Sources */,
 				3BBEE2FF2B876BEF00E0F19F /* UserModel.swift in Sources */,
 				3B1C111A2B8626EA00C0100F /* Constants.swift in Sources */,
 				3BBEE3052B87A88900E0F19F /* RecentTransactionsView.swift in Sources */,

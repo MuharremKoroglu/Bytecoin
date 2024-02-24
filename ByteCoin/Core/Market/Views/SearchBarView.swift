@@ -8,16 +8,13 @@
 import SwiftUI
 
 struct SearchBarView: View {
-    @Binding var searchedText : String
+    @StateObject var viewModel : MarketViewViewModel
     var body: some View {
         VStack {
             
-            SearchBar(searchText: $searchedText)
+            SearchBar(searchText: $viewModel.searchedText)
+                
             
         }
     }
-}
-
-#Preview {
-    SearchBarView(searchedText: .constant(""))
 }

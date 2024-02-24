@@ -17,8 +17,9 @@ struct SearchBar: View {
                 .foregroundColor(.appMain)
                 .font(.system(size: 20,weight: .bold))
             
-            TextField("Search a coin", text: $searchText)
+            TextField("Search by name or symbol", text: $searchText)
                 .tint(.primary)
+                .autocorrectionDisabled(true)
                 .overlay (
                     Image(systemName: "xmark.circle.fill")
                         .font(.system(size: 20,weight: .bold))
@@ -26,6 +27,7 @@ struct SearchBar: View {
                         .padding()
                         .opacity(searchText.isEmpty ? 0.0 : 1.0)
                         .onTapGesture {
+                            UIApplication.shared.endEditing()
                             searchText = ""
                         }
                     
@@ -40,9 +42,6 @@ struct SearchBar: View {
             }
             .padding(.horizontal,10)
             .padding(.bottom,5)
-//            .onChange(of: searchText) { newValue in
-//                productVM.filterProducts(with: searchText)
-//            }
     }
 }
 

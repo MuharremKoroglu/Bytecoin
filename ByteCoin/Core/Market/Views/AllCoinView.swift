@@ -22,7 +22,7 @@ struct AllCoinView: View {
                 .padding(.horizontal,15)
             ScrollView(.vertical, showsIndicators : false) {
                 VStack {
-                    ForEach(viewModel.allCoins, id: \.id) { coin in
+                    ForEach(viewModel.filteredCoins, id: \.id) { coin in
                         CoinRow(coin: coin)
                     }
                 }

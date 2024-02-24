@@ -7,24 +7,23 @@
 
 import SwiftUI
 
-struct RecommendedToBuyView: View {
+struct TopGainersView: View {
     @StateObject var viewModel : HomeViewViewModel
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Recommended to Buy")
+        VStack(alignment: .leading,spacing: 10) {
+            Text("Top Gainers")
                 .font(.headline)
                 .fontWeight(.bold)
             
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack {
-                    ForEach(viewModel.recommendedCoins,id: \.id) { coin in
-                        RecommendedToBuy(coin: coin)
+                    ForEach(viewModel.topGainerCoins,id: \.id) { coin in
+                        TopGainerAndLoserItem(coin: coin)
                     }
                 }
             }
             
             
-        }.padding(.vertical, 15)
-            .padding(.horizontal, 15)
+        }.padding(.horizontal, 15)
     }
 }
