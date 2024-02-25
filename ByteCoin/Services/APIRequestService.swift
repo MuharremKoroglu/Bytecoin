@@ -11,13 +11,15 @@ import Alamofire
 enum APIRequestService {
     case allCoinCurrencies
     case allUsers
+    case getSingleCurrency(id : String)
     
     private var baseURL: URL {
         switch self {
-        case .allCoinCurrencies:
+        case .allCoinCurrencies,.getSingleCurrency(id: _):
             return URL(string: Constants.coinRootApiURL)!
         case .allUsers:
             return URL(string: Constants.userRootApiURL)!
+            
         }
         
     }
@@ -28,12 +30,14 @@ enum APIRequestService {
             return "coins/markets"
         case .allUsers:
             return ""
+        case .getSingleCurrency(id: let id):
+            return "coins/\(id)"
         }
     }
     
     var header: HTTPHeaders? {
         switch self {
-        case .allCoinCurrencies:
+        case .allCoinCurrencies,.getSingleCurrency(id: _):
             return HTTPHeaders(["x-cg-demo-api-key" : Constants.coinApiKey])
         case .allUsers:
             return HTTPHeaders()
@@ -46,6 +50,9 @@ enum APIRequestService {
             let url = baseURL.appendingPathComponent(path)
             return url.absoluteString
         case .allUsers:
+            let url = baseURL.appendingPathComponent(path)
+            return url.absoluteString
+        case .getSingleCurrency(id: _):
             let url = baseURL.appendingPathComponent(path)
             return url.absoluteString
         }
@@ -74,12 +81,21 @@ enum APIRequestService {
                 nationality: "us",
                 noinfo: "noinfo"
             )
+        case .getSingleCurrency(id: _):
+            return CoinDetailDataRequestModel(
+                localization: "false",
+                tickers: false,
+                marketData: false,
+                communityData: false,
+                developerData: false,
+                sparkLine: false
+            )
         }
     }
     
     var requestMethod : HTTPMethod {
         switch self {
-        case .allCoinCurrencies:
+        case .allCoinCurrencies,.getSingleCurrency(id: _):
             return .get
         case .allUsers:
             return .get

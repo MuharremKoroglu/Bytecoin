@@ -9,10 +9,10 @@ import Foundation
 
 class MarketViewViewModel : ObservableObject {
     
-    @Published var allCoins : [CryptoModel] = []
+    @Published var allCoins : [AllCoinsDataResponseModel] = []
     @Published var searchedText : String = ""
     
-    var filteredCoins: [CryptoModel] {
+    var filteredCoins: [AllCoinsDataResponseModel] {
         return self.filterCoins()
     }
     
@@ -21,13 +21,12 @@ class MarketViewViewModel : ObservableObject {
     func getAllCryptos () {
         
         Task {
-            let response = try await networkService.networkService(request: .allCoinCurrencies, data: [CryptoModel].self)
+            let response = try await networkService.networkService(request: .allCoinCurrencies, data: [AllCoinsDataResponseModel].self)
             
             switch response {
             case .success(let allCurrencies):
                 await MainActor.run {
                     self.allCoins = allCurrencies
-                    print(allCoins)
                 }
             case .failure(let failure):
                 print("MARKET COİN VERİLERİ GETİRİLEMEDİ : \(failure)")
@@ -36,7 +35,7 @@ class MarketViewViewModel : ObservableObject {
         
     }
     
-    private func filterCoins () -> [CryptoModel] {
+    private func filterCoins () -> [AllCoinsDataResponseModel] {
         if searchedText.isEmpty {
             return allCoins
         } else {

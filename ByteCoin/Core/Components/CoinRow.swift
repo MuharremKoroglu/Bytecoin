@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CoinRow: View {
     
-    let coin: CryptoModel
+    let coin: AllCoinsDataResponseModel
     
     var body: some View {
         HStack {
@@ -28,15 +28,18 @@ struct CoinRow: View {
                 Text(coin.name ?? "")
                     .font(.subheadline)
                     .fontWeight(.bold)
+                    .foregroundStyle(.primary)
                     .padding(.leading, 4)
                 Text(coin.symbol?.uppercased() ?? "")
                     .font(.caption)
+                    .foregroundStyle(.primary)
                     .padding(.leading, 4)
             }
             Spacer()
             VStack(alignment : .trailing, spacing: 3){
                 Text(coin.currentPrice?.convertCurrency() ?? "0.0")
                     .font(.subheadline)
+                    .foregroundStyle(.black)
                     .fontWeight(.semibold)
                 Text(coin.priceChangePercentage24H?.convertPrecentages() ?? "-1.0")
                     .font(.caption)

@@ -19,7 +19,11 @@ struct TopLoserView: View {
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack {
                     ForEach(viewModel.topLoserCoins,id: \.id) { coin in
-                        TopGainerAndLoserItem(coin: coin)
+                        NavigationLink {
+                            CoinDetailView(coin: coin)
+                        } label: {
+                            TopGainerAndLoserItem(coin: coin)
+                        }.buttonStyle(PlainButtonStyle())
                     }
                 }
             }

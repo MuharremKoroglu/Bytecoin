@@ -8,7 +8,7 @@
 import Foundation
 
 //MARK: - CryptoModel
-struct CryptoModel: Identifiable, Codable {
+struct AllCoinsDataResponseModel: Identifiable, Codable {
     
     let id : String?
     let symbol : String?

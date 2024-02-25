@@ -23,7 +23,12 @@ struct AllCoinView: View {
             ScrollView(.vertical, showsIndicators : false) {
                 VStack {
                     ForEach(viewModel.filteredCoins, id: \.id) { coin in
-                        CoinRow(coin: coin)
+                        NavigationLink {
+                            CoinDetailView(coin: coin)
+                        } label: {
+                            CoinRow(coin: coin)
+                        }.buttonStyle(PlainButtonStyle()) 
+
                     }
                 }
             }
