@@ -13,15 +13,8 @@ struct RecentTransaction: View {
     
     var body: some View {
         VStack(alignment : .center,spacing: 10){
-            AsyncImage(url: URL(string: user.picture?.large ?? "")) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .clipShape(Circle())
-            } placeholder: {
-                Circle()
-                    .fill(.placeholder)
-            }.frame(width: 40, height: 40)
+            
+            DownloadImageAsync(url: user.picture?.large ?? "",width: 40,height: 40)
             
             VStack(alignment : .center,spacing: 3) {
                 Text(user.name?.first ?? "")

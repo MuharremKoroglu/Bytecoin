@@ -36,7 +36,7 @@ class HomeViewViewModel : ObservableObject {
     func getAllUser () {
         
         Task {
-            let response = try await networkService.networkService(request: APIRequestService.allUsers, data: UserModel.self)
+            let response = try await networkService.networkService(request: APIRequestService.allUsers, data: AllUserDataResponseModel.self)
             
             switch response {
             case .success(let allUsers):

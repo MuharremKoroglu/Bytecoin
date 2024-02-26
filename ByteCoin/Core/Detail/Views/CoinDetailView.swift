@@ -16,35 +16,37 @@ struct CoinDetailView: View {
     var body: some View {
         ScrollView(.vertical,showsIndicators: false) {
             VStack {
-                
-                
-                
-                
-                
-                
-                
-                
+                CoinOverViewView(coinComesFromMarketView: coin, coinComesFromViewModel: viewModel.coin ?? SingleCoinDataResponseModel(id: "", symbol: "", name: "", hashingAlgorithm: "", description: Description(en: ""), links: ImportantLinks(homepage: [""], whitepaper: "")))
+                CoinAdditionalDetailsView(coinComesFromMarketView: coin, coinComesFromViewModel: viewModel.coin ?? SingleCoinDataResponseModel(id: "", symbol: "", name: "", hashingAlgorithm: "", description: Description(en: ""), links: ImportantLinks(homepage: [""], whitepaper: "")))
             }
         }.onAppear {
             viewModel.getSingleCoin(id: coin.id ?? "bitcoin")
         }
-        .navigationTitle(coin.name ?? "")
+        .navigationTitle(coin.name ?? "Bitcoin")
         .navigationBarBackButtonHidden()
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading){
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .imageScale(.large)
-                            .foregroundStyle(.appMain)
-                            .padding(.all, 10)
-                            .bold()
-                        
-                    }
+        .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading){
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .imageScale(.large)
+                        .foregroundStyle(.appMain)
+                        .padding(.all, 10)
+                        .bold()
+                    
                 }
             }
-        
+            ToolbarItem(placement: .topBarTrailing){
+                HStack {
+                    Text(coin.symbol?.uppercased() ?? "")
+                        .font(.callout)
+                        .foregroundStyle(.gray)
+                    DownloadImageAsync(url: coin.image ?? "")
+                }
+            }
+        }
     }
 }
 

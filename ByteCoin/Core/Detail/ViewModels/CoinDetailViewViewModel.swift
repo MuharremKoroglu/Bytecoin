@@ -21,6 +21,7 @@ class CoinDetailViewViewModel : ObservableObject {
             case .success(let coinData):
                 await MainActor.run {
                     self.coin = coinData
+                    
                 }
             case .failure(let failure):
                 print("TEK COİN VERİSİ GETİRİLEMEDİ = \(failure)")
@@ -28,7 +29,5 @@ class CoinDetailViewViewModel : ObservableObject {
         }
         
     }
-    
-    
-    
+
 }

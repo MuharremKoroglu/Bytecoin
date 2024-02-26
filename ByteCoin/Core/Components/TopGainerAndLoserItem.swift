@@ -14,17 +14,7 @@ struct TopGainerAndLoserItem: View {
     var body: some View {
         VStack (alignment: .leading,spacing: 8){
             HStack(spacing : 10) {
-                AsyncImage(url: URL(string: coin.image ?? "")) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 35,height: 35)
-                        .clipShape(Circle())
-                } placeholder: {
-                    Circle()
-                        .fill(.placeholder)
-                        .frame(width: 35,height: 35)
-                }
+                DownloadImageAsync(url: coin.image ?? "",width: 35,height: 35)
                 Text(coin.symbol?.uppercased() ?? "Test")
                     .font(.title3)
                     .fontWeight(.bold)

@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - UserModel
-struct UserModel: Codable, Identifiable {
+struct AllUserDataResponseModel: Codable, Identifiable {
     let id = UUID()
     let results: [UserResult]?
 }

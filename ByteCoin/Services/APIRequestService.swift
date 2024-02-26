@@ -82,7 +82,7 @@ enum APIRequestService {
                 noinfo: "noinfo"
             )
         case .getSingleCurrency(id: _):
-            return CoinDetailDataRequestModel(
+            return SingleCoinDetailDataRequestModel(
                 localization: "false",
                 tickers: false,
                 marketData: false,

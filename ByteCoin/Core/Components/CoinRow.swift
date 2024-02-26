@@ -16,14 +16,7 @@ struct CoinRow: View {
             Text(String(coin.marketCapRank ?? 1))
                 .font(.caption)
                 .foregroundStyle(.gray)
-            AsyncImage(url: URL(string: coin.image ?? "")) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-            } placeholder: {
-                Circle()
-                    .fill(.placeholder)
-            }.frame(width: 32, height: 32)
+            DownloadImageAsync(url: coin.image ?? "",width: 32,height: 32)
             VStack(alignment : .leading, spacing: 3){
                 Text(coin.name ?? "")
                     .font(.subheadline)
@@ -39,7 +32,7 @@ struct CoinRow: View {
             VStack(alignment : .trailing, spacing: 3){
                 Text(coin.currentPrice?.convertCurrency() ?? "0.0")
                     .font(.subheadline)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.primary)
                     .fontWeight(.semibold)
                 Text(coin.priceChangePercentage24H?.convertPrecentages() ?? "-1.0")
                     .font(.caption)
