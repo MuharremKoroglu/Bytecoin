@@ -79,6 +79,27 @@ extension Int {
     }
 }
 
+extension Date {
+    
+    init(willFormattedDate : String) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let date = formatter.date(from: willFormattedDate) ?? Date()
+        self.init(timeInterval: 0, since: date)
+    }
+    
+    private var dateFormatter : DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter
+    }
+    
+    func convertDateToString () -> String {
+        return dateFormatter.string(from: self)
+    }
+
+}
+
 extension UIApplication {
     
     func endEditing () {

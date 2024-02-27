@@ -69,7 +69,7 @@ enum APIRequestService {
                 order: "market_cap_desc",
                 totalPageNumber: 100,
                 page: 1,
-                sparkLine: true,
+                sparkLine: "true",
                 priceChangePercentage: "24h",
                 localization: "en",
                 precision: nil

@@ -20,6 +20,7 @@
 		3B1C111A2B8626EA00C0100F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C11192B8626EA00C0100F /* Constants.swift */; };
 		3BA5D0762B8C67F1006AD8A0 /* CoinDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D0752B8C67F1006AD8A0 /* CoinDetailItem.swift */; };
 		3BA5D07C2B8CB341006AD8A0 /* DownloadImageAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D07B2B8CB341006AD8A0 /* DownloadImageAsync.swift */; };
+		3BA6FC932B8DE4D8002E675F /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA6FC922B8DE4D8002E675F /* LineChart.swift */; };
 		3BBDDD242B89CADE00B202ED /* TopLoserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBDDD232B89CADE00B202ED /* TopLoserView.swift */; };
 		3BBEE2F92B87512100E0F19F /* UserWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE2F82B87512100E0F19F /* UserWelcome.swift */; };
 		3BBEE2FB2B8755C800E0F19F /* AccountBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE2FA2B8755C800E0F19F /* AccountBalance.swift */; };
@@ -63,6 +64,7 @@
 		3B1C11192B8626EA00C0100F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3BA5D0752B8C67F1006AD8A0 /* CoinDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailItem.swift; sourceTree = "<group>"; };
 		3BA5D07B2B8CB341006AD8A0 /* DownloadImageAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageAsync.swift; sourceTree = "<group>"; };
+		3BA6FC922B8DE4D8002E675F /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		3BBDDD232B89CADE00B202ED /* TopLoserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopLoserView.swift; sourceTree = "<group>"; };
 		3BBEE2F82B87512100E0F19F /* UserWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWelcome.swift; sourceTree = "<group>"; };
 		3BBEE2FA2B8755C800E0F19F /* AccountBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountBalance.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				3BE2DADC2B88CCB9003E3D18 /* CoinRow.swift */,
 				3BA5D0752B8C67F1006AD8A0 /* CoinDetailItem.swift */,
 				3BA5D07B2B8CB341006AD8A0 /* DownloadImageAsync.swift */,
+				3BA6FC922B8DE4D8002E675F /* LineChart.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				3B1C11092B86259D00C0100F /* AllCoinsDataRequestModel.swift in Sources */,
 				3BC4C41F2B8B7018001D2BFE /* CoinOverViewView.swift in Sources */,
 				3BA5D07C2B8CB341006AD8A0 /* DownloadImageAsync.swift in Sources */,
+				3BA6FC932B8DE4D8002E675F /* LineChart.swift in Sources */,
 				3BE2DAD12B88C199003E3D18 /* Extensions.swift in Sources */,
 				3BBEE3012B876C2100E0F19F /* AllUserDataRequestModel.swift in Sources */,
 				3BE2DAE12B891B70003E3D18 /* SearchBarView.swift in Sources */,

@@ -16,7 +16,7 @@ struct AllCoinsDataRequestModel : Encodable{
     let order : String
     let totalPageNumber : Int
     let page : Int
-    let sparkLine : Bool
+    let sparkLine : String
     let priceChangePercentage : String
     let localization : String
     let precision : String?

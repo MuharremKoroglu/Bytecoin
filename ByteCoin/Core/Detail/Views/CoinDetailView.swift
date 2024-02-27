@@ -14,39 +14,45 @@ struct CoinDetailView: View {
     let coin : AllCoinsDataResponseModel
     
     var body: some View {
-        ScrollView(.vertical,showsIndicators: false) {
-            VStack {
-                CoinOverViewView(coinComesFromMarketView: coin, coinComesFromViewModel: viewModel.coin ?? SingleCoinDataResponseModel(id: "", symbol: "", name: "", hashingAlgorithm: "", description: Description(en: ""), links: ImportantLinks(homepage: [""], whitepaper: "")))
-                CoinAdditionalDetailsView(coinComesFromMarketView: coin, coinComesFromViewModel: viewModel.coin ?? SingleCoinDataResponseModel(id: "", symbol: "", name: "", hashingAlgorithm: "", description: Description(en: ""), links: ImportantLinks(homepage: [""], whitepaper: "")))
+        GeometryReader { geometry in
+            let size = geometry.size
+            ScrollView(.vertical,showsIndicators: false) {
+                VStack {
+                    CoinPriceLineChartView(coin: coin)
+                        .frame(height: size.height * 0.5)
+                    CoinOverViewView(coinComesFromMarketView: coin, coinComesFromViewModel: viewModel.coin ?? SingleCoinDataResponseModel(id: "", symbol: "", name: "", hashingAlgorithm: "", description: Description(en: ""), links: ImportantLinks(homepage: [""], whitepaper: "")))
+                    CoinAdditionalDetailsView(coinComesFromMarketView: coin, coinComesFromViewModel: viewModel.coin ?? SingleCoinDataResponseModel(id: "", symbol: "", name: "", hashingAlgorithm: "", description: Description(en: ""), links: ImportantLinks(homepage: [""], whitepaper: "")))
+                }
+            }.onAppear {
+                viewModel.getSingleCoin(id: coin.id ?? "bitcoin")
             }
-        }.onAppear {
-            viewModel.getSingleCoin(id: coin.id ?? "bitcoin")
-        }
-        .navigationTitle(coin.name ?? "Bitcoin")
-        .navigationBarBackButtonHidden()
-        .navigationBarTitleDisplayMode(.large)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading){
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Image(systemName: "chevron.left")
-                        .imageScale(.large)
-                        .foregroundStyle(.appMain)
-                        .padding(.all, 10)
-                        .bold()
-                    
+            .navigationTitle(coin.name ?? "Bitcoin")
+            .navigationBarBackButtonHidden()
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading){
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .imageScale(.large)
+                            .foregroundStyle(.appMain)
+                            .padding(.all, 10)
+                            .bold()
+                        
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing){
+                    HStack {
+                        Text(coin.symbol?.uppercased() ?? "")
+                            .font(.callout)
+                            .foregroundStyle(.gray)
+                        DownloadImageAsync(url: coin.image ?? "")
+                    }
                 }
             }
-            ToolbarItem(placement: .topBarTrailing){
-                HStack {
-                    Text(coin.symbol?.uppercased() ?? "")
-                        .font(.callout)
-                        .foregroundStyle(.gray)
-                    DownloadImageAsync(url: coin.image ?? "")
-                }
-            }
         }
+
     }
 }
 
