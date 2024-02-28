@@ -93,6 +93,12 @@ struct LineChart: View {
         }
     }
     
+
+    
+}
+
+extension LineChart {
+    
     private func updateSelectedValue(_ position: CGPoint, geometry: GeometryProxy) {
         let size = geometry.size
         let index = Int((position.x / size.width) * CGFloat(lineChartData.count))
@@ -101,7 +107,6 @@ struct LineChart: View {
         }
         selectedValue = lineChartData[index]
     }
-    
 }
 
 struct ChartPriceIndicator: View {

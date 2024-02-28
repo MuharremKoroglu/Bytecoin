@@ -15,6 +15,11 @@ class HomeViewViewModel : ObservableObject {
     
     private var networkService = NetworkService()
     
+    init() {
+        getAllCurrencies()
+        getAllUser()
+    }
+    
     func getAllCurrencies () {
                 
         Task {

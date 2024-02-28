@@ -18,6 +18,10 @@ class MarketViewViewModel : ObservableObject {
     
     private var networkService = NetworkService()
     
+    init(){
+        getAllCryptos()
+    }
+    
     func getAllCryptos () {
         
         Task {

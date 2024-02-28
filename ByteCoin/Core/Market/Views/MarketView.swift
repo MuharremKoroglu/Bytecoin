@@ -18,9 +18,6 @@ struct MarketView: View {
                 SearchBarView(viewModel: viewModel)
                 AllCoinView(viewModel: viewModel)
             }.navigationTitle("Coin Market")
-                .onAppear{
-                    viewModel.getAllCryptos()
-                }
         }
 
     }

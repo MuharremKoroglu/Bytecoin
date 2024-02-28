@@ -10,18 +10,16 @@ import SwiftUI
 struct CoinOverViewView: View {
     
    let coinComesFromMarketView : AllCoinsDataResponseModel
-   let coinComesFromViewModel : SingleCoinDataResponseModel
     
-   private var spacing : CGFloat = 20
+   private var spacing : CGFloat = 30
     
    private var columns : [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible()),
     ]
     
-    init(coinComesFromMarketView: AllCoinsDataResponseModel, coinComesFromViewModel: SingleCoinDataResponseModel) {
+    init(coinComesFromMarketView: AllCoinsDataResponseModel) {
         self.coinComesFromMarketView = coinComesFromMarketView
-        self.coinComesFromViewModel = coinComesFromViewModel
     }
     
     var body: some View {
@@ -56,8 +54,4 @@ struct CoinOverViewView: View {
             
         }.padding()
     }
-}
-
-#Preview {
-    CoinOverViewView(coinComesFromMarketView: AllCoinsDataResponseModel(id: "", symbol: "BTC", name: "Bitcoin", image: "btc", currentPrice: 51102, marketCap: 1, marketCapRank: 1, fullyDilutedValuation: 1, totalVolume: 1, high24H: 1, low24H: 1, priceChange24H: 1, priceChangePercentage24H: 1, marketCapChange24H: 1, marketCapChangePercentage24H: 1, circulatingSupply: 1, totalSupply: 1, maxSupply: 1, ath: 1, athChangePercentage: 1, athDate: "", atl: 1, atlChangePercentage: 1, atlDate: "", roi: Roi(times: 1, currency: "", percentage: 1), lastUpdated: "", sparklineIn7D: SparklineIn7D(price: [1]), priceChangePercentage24HInCurrency: 1), coinComesFromViewModel: SingleCoinDataResponseModel(id: "", symbol: "BTC", name: "Bitcoin", hashingAlgorithm: "SHA-256", description: Description(en: ""), links: ImportantLinks(homepage: [""], whitepaper: "")))
 }

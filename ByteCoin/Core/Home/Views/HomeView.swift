@@ -19,9 +19,6 @@ struct HomeView: View {
                     TopGainersView(viewModel: viewModel)
                     TopLoserView(viewModel: viewModel)
                     RecentTransactionsView(viewModel: viewModel)
-                }.onAppear{
-                    viewModel.getAllUser()
-                    viewModel.getAllCurrencies()
                 }
             }
         }

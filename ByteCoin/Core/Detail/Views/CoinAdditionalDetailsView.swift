@@ -10,18 +10,16 @@ import SwiftUI
 struct CoinAdditionalDetailsView: View {
     
     let coinComesFromMarketView : AllCoinsDataResponseModel
-    let coinComesFromViewModel : SingleCoinDataResponseModel
     
     private var columns : [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible()),
     ]
     
-    private var spacing : CGFloat = 20
+    private var spacing : CGFloat = 30
     
-    init(coinComesFromMarketView: AllCoinsDataResponseModel, coinComesFromViewModel: SingleCoinDataResponseModel) {
+    init(coinComesFromMarketView: AllCoinsDataResponseModel) {
         self.coinComesFromMarketView = coinComesFromMarketView
-        self.coinComesFromViewModel = coinComesFromViewModel
     }
     
     var body: some View {
