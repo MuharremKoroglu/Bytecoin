@@ -13,14 +13,16 @@ class HomeViewViewModel : ObservableObject {
     @Published var topLoserCoins : [AllCoinsDataResponseModel] = []
     @Published var allUsers : [UserResult] = []
     
+    private var authenticationManager = AuthenticationManager()
     private var networkService = NetworkService()
     
     init() {
         getAllCurrencies()
         getAllUser()
+        signIn()
     }
     
-    func getAllCurrencies () {
+    private func getAllCurrencies () {
                 
         Task {
             let response = try await networkService.networkService(request: APIRequestService.allCoinCurrencies, data: [AllCoinsDataResponseModel].self)
@@ -38,7 +40,7 @@ class HomeViewViewModel : ObservableObject {
         
     }
     
-    func getAllUser () {
+    private func getAllUser () {
         
         Task {
             let response = try await networkService.networkService(request: APIRequestService.allUsers, data: AllUserDataResponseModel.self)
@@ -52,6 +54,17 @@ class HomeViewViewModel : ObservableObject {
                 print("KULLANICI VERİLERİ GETİRİLEMEDİ : \(failure)")
             }
 
+        }
+    }
+    
+    private func signIn () {
+        
+        Task {
+            do {
+                try await authenticationManager.signInAnonymously()
+            }catch {
+                print("GİRİŞTE HATA : \(error)")
+            }
         }
     }
     

@@ -38,6 +38,7 @@ struct AllCoinsDataResponseModel: Identifiable, Codable {
     let lastUpdated: String?
     let sparklineIn7D: SparklineIn7D?
     let priceChangePercentage24HInCurrency: Double?
+    let currentCoinAmount : Double?
 
     enum CodingKeys: String, CodingKey {
         case id, symbol, name, image
@@ -65,6 +66,7 @@ struct AllCoinsDataResponseModel: Identifiable, Codable {
         case lastUpdated = "last_updated"
         case sparklineIn7D = "sparkline_in_7d"
         case priceChangePercentage24HInCurrency = "price_change_percentage_24h_in_currency"
+        case currentCoinAmount
     }
 }
 

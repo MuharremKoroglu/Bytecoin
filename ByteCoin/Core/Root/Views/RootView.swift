@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RootView: View {
     
+    @StateObject private var authenticationManager = AuthenticationManager()
     @State private var selectedTab : Int = 1
 
     init() {
@@ -21,14 +22,13 @@ struct RootView: View {
             TabView(selection: $selectedTab)  {
                 HomeView().tag(1)
                 MarketView().tag(2)
-                Text("Tab Content 3").tag(3)
+                PortfolioView().tag(3)
                 Text("Tab Content 4").tag(4)
                 
             }
             CustomTabBar(selectedTab: $selectedTab)
         }.ignoresSafeArea(.keyboard)
-        
-        
+            .environmentObject(authenticationManager)
     }
 }
 

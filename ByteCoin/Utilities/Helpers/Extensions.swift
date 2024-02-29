@@ -100,6 +100,15 @@ extension Date {
 
 }
 
+extension String {
+    
+    func convertToDouble () -> Double {
+        let cleanedInput = self.replacingOccurrences(of: ",", with: ".")
+        return Double(cleanedInput) ?? 0
+    }
+    
+}
+
 extension UIApplication {
     
     func endEditing () {

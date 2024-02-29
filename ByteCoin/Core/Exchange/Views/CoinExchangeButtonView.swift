@@ -10,16 +10,20 @@ import SwiftUI
 struct CoinExchangeButtonView: View {
     
     @Environment(\.presentationMode)  var presentationMode
+    @StateObject var viewModel : CoinExchangeViewViewModel
+    
     let buttonType : ButtonsModel
+    let coin : AllCoinsDataResponseModel
+    let coinAmount : String
     
     var body: some View {
         BuyOrSellButtonItem(buttonType: buttonType) {
-            presentationMode.wrappedValue.dismiss()
+            viewModel.editPortfolio(coin: coin, coinAmount: coinAmount.convertToDouble(), buttonType: buttonType)
+            if viewModel.saveSuccessfully {
+                presentationMode.wrappedValue.dismiss()
+            }
+            
         }.padding(.horizontal,25)
             .padding(.bottom, 15)
     }
-}
-
-#Preview {
-    CoinExchangeButtonView(buttonType: .buy)
 }
