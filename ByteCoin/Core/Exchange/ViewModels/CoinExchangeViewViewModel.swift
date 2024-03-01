@@ -6,42 +6,104 @@
 //
 
 import Foundation
-import FirebaseAuth
 
 class CoinExchangeViewViewModel : ObservableObject {
-    
-    @Published var saveSuccessfully : Bool = false
-    
-    private var authManager = AuthenticationManager()
-    private var dbManager = DatabaseManager()
 
+    @Published var isCompletedSuccessfully : Bool = false
     
-    func editPortfolio (coin : AllCoinsDataResponseModel, coinAmount : Double, buttonType : ButtonsModel) {
+    private var coinInPortfolio : FirebaseDataModel? = nil
+    private let authenticationManager = AuthenticationManager()
+    private let databaseManager = DatabaseManager()
+    
+    
+    func getCoinHoldingInfo (coin : AllCoinsDataResponseModel) {
         
         Task {
             do {
-                let user = try authManager.getCurrentUser()
-                do {
-                    let portfolio = DatabasePortfolioModel(userId: user.uid, coinId: coin.id ?? "", coinAmount: buttonType == .buy ? coinAmount : -(coinAmount))
-                    do {
-                        try await dbManager.createPortfolio(portfolio: portfolio)
-                        await MainActor.run {
-                            saveSuccessfully = true
-                        }
-                        
-                    }catch {
-                        print("VERİ KAYDEDİLEMEDİ : \(error)")
-                    }
+                if let user = try authenticationManager.currentUser() {
                     
+                    do {
+                        let coin = try await databaseManager.getData(userId: user.uid, coinId: coin.id ?? "")
+                        await MainActor.run {
+                            coinInPortfolio = coin
+                        }
+                    }catch {
+                        print("CoinExchangeViewViewModel' de BUY COIN FONKİSYONUNDA VERİ Alınamadı : \(error)")
+                    }
                 }
             }catch {
-                print("KULLANICI ALINAMADI : \(error)")
+                print("CoinExchangeViewViewModel' de getCoinHoldingInfo FONKİSYONUNDA KULLANICI ALINAMADI : \(error)")
             }
         }
-
     }
     
     
+    func buyCoin (coin : AllCoinsDataResponseModel, coinAmount : Double) {
+        
+        Task {
+            do {
+                if let user = try authenticationManager.currentUser() {
+                    if coinInPortfolio != nil {
+                        var currentCoinAmount = coinInPortfolio!.coinAmount
+                        currentCoinAmount! += coinAmount
+                        do {
+                            try await databaseManager.updateData(userId: user.uid, coinId: coin.id ?? "", newValue: currentCoinAmount!)
+                            await MainActor.run {
+                                isCompletedSuccessfully = true
+                            }
+                        }catch {
+                            print("CoinExchangeViewViewModel' de BUY COIN FONKİSYONUNDA COIN UPDATE EDİLMEDİ : \(error)")
+                        }
+                    }else {
+                        let data = FirebaseDataModel(coinId: coin.id ?? "", coinAmount: coinAmount)
+                        do {
+                            try await databaseManager.createData(userId: user.uid, data: data)
+                            await MainActor.run {
+                                isCompletedSuccessfully = true
+                            }
+                        }catch {
+                            print("CoinExchangeViewViewModel' de BUY COIN FONKİSYONUNDA COIN CREATE EDİLMEDİ : \(error)")
+                        }
+                    }
+                }
+            }catch {
+                print("CoinExchangeViewViewModel' de BUY COIN FONKİSYONUNDA KULLANICI ALINAMADI : \(error)")
+            }
+        }
+    }
+    
+    func sellCoin (coin : AllCoinsDataResponseModel, coinAmount : Double) {
+        
+        Task {
+            do {
+                if let user = try authenticationManager.currentUser() {
+                    var currentCoinAmount = coinInPortfolio!.coinAmount
+                    currentCoinAmount! -= coinAmount
+                    if currentCoinAmount! <= 0 {
+                        do {
+                            try await databaseManager.deleteData(userId: user.uid, coinId: coin.id ?? "")
+                            await MainActor.run {
+                                isCompletedSuccessfully = true
+                            }
+                        }catch {
+                            print("CoinExchangeViewViewModel' de SELL COIN FONKİSYONUNDA COIN DELETE EDİLMEDİ : \(error)")
+                        }
+                    }else {
+                        do {
+                            try await databaseManager.updateData(userId: user.uid, coinId: coin.id ?? "", newValue: currentCoinAmount ?? 0)
+                            await MainActor.run {
+                                isCompletedSuccessfully = true
+                            }
+                        }catch {
+                            print("CoinExchangeViewViewModel' de SELL COIN FONKİSYONUNDA COIN UPDATE EDİLMEDİ : \(error)")
+                        }
+                    }
+                }
+            }catch {
+                print("CoinExchangeViewViewModel' de SELL COIN FONKİSYONUNDA KULLANICI ALINAMADI : \(error)")
+            }
+        }
+    }
     
     
 }

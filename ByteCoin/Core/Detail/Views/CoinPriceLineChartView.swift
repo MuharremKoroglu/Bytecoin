@@ -11,7 +11,6 @@ struct CoinPriceLineChartView: View {
     
     let coin : AllCoinsDataResponseModel
         
-
     var body: some View {
         
         LineChart(coin: coin)

@@ -9,33 +9,32 @@ import Foundation
 import FirebaseAuth
 
 class AuthenticationManager : ObservableObject {
+
     
-    func getCurrentUser () throws -> User {
-        guard let user = Auth.auth().currentUser else {
-            throw AuthenticationError.currentUserNotFound
-        }
+    func currentUser() throws -> User? {
+        let user = Auth.auth().currentUser
         return user
     }
     
-
-    func signInAnonymously () async throws{
-        try await Auth.auth().signInAnonymously()
+    func signInAnonymously() async throws -> User?{
+        let authResult = try await Auth.auth().signInAnonymously()
+        let user = authResult.user
+        return user
     }
     
     
-    func signOut () throws{
+    func signOut() throws{
         try Auth.auth().signOut()
     }
     
-    func deleteUser () async throws {
-        guard let user = Auth.auth().currentUser else {
-            throw AuthenticationError.currentUserNotFound
+    func deleteAccount() throws{
+        guard let user = try self.currentUser() else {
+            return
         }
-        try await user.delete()
+        user.delete()
     }
+    
     
 }
 
-enum AuthenticationError : Error {
-    case currentUserNotFound
-}
+

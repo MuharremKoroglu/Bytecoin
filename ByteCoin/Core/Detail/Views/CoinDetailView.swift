@@ -10,6 +10,7 @@ import SwiftUI
 struct CoinDetailView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    @StateObject private var viewModel = CoinDetailViewViewModel()
     
     let coin : AllCoinsDataResponseModel
     
@@ -20,7 +21,7 @@ struct CoinDetailView: View {
                 VStack {
                     CoinPriceLineChartView(coin: coin)
                         .frame(height: size.height * 0.5)
-                    BuyOrSellButtonsView(coin: coin)
+                    BuyOrSellButtonsView(viewModel: viewModel, coin: coin)
                     CoinOverViewView(coinComesFromMarketView: coin)
                     CoinAdditionalDetailsView(coinComesFromMarketView: coin)
                 }

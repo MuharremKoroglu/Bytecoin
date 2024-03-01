@@ -15,15 +15,24 @@ struct CoinExchangeButtonView: View {
     let buttonType : ButtonsModel
     let coin : AllCoinsDataResponseModel
     let coinAmount : String
+    let isCoinInPortfolio : Bool
     
     var body: some View {
-        BuyOrSellButtonItem(buttonType: buttonType) {
-            viewModel.editPortfolio(coin: coin, coinAmount: coinAmount.convertToDouble(), buttonType: buttonType)
-            if viewModel.saveSuccessfully {
-                presentationMode.wrappedValue.dismiss()
+        BuyOrSellButtonItem(isButtonDisabled: isCoinInPortfolio, buttonType: buttonType) {
+            switch buttonType {
+            case .buy:
+                viewModel.buyCoin(coin: coin, coinAmount: coinAmount.convertToDouble())
+            case .sell:
+                viewModel.sellCoin(coin: coin, coinAmount: coinAmount.convertToDouble())
             }
-            
         }.padding(.horizontal,25)
             .padding(.bottom, 15)
+            .onReceive(viewModel.$isCompletedSuccessfully) { isSucceed in
+                if isSucceed {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            }
     }
 }

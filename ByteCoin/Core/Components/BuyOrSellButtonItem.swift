@@ -9,8 +9,15 @@ import SwiftUI
 
 struct BuyOrSellButtonItem: View {
     
+    let isButtonDisabled : Bool
     let buttonType : ButtonsModel
     var buttonAction : (()->Void)?
+    
+    init(isButtonDisabled : Bool = false,buttonType: ButtonsModel, buttonAction: ( () -> Void)? = nil) {
+        self.isButtonDisabled = isButtonDisabled
+        self.buttonType = buttonType
+        self.buttonAction = buttonAction
+    }
     
     var body: some View {
         VStack {
@@ -31,11 +38,10 @@ struct BuyOrSellButtonItem: View {
                 RoundedRectangle(cornerRadius: 5)
                     .fill(buttonType.buttonColor)
             )
+            .disabled(buttonType == .sell && !isButtonDisabled)
+            .opacity(buttonType == .sell && !isButtonDisabled ? 0.5 : 1)
             
         }
     }
 }
 
-#Preview {
-    BuyOrSellButtonItem(buttonType: .buy)
-}

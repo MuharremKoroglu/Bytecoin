@@ -9,25 +9,38 @@ import Foundation
 
 class CoinDetailViewViewModel : ObservableObject {
     
-    @Published var coin : SingleCoinDataResponseModel?
-    private var networkService = NetworkService()
+    @Published var isCoinInPortfolio : Bool = false
     
-    func getSingleCoin (id : String) {
-        
-        Task {
-            let response = try await networkService.networkService(request: .getSingleCurrency(id: id), data: SingleCoinDataResponseModel.self)
-            
-            switch response {
-            case .success(let coinData):
-                await MainActor.run {
-                    self.coin = coinData
-                    
-                }
-            case .failure(let failure):
-                print("TEK COİN VERİSİ GETİRİLEMEDİ = \(failure)")
-            }
+    private var portfolioCoin : FirebaseDataModel? {
+        didSet {
+            isCoinInPortfolio = true
         }
-        
     }
+    private let authenticationManager = AuthenticationManager()
+    private let databaseManager = DatabaseManager()
+    
+    func getCoinPortfolioInfo(coin : AllCoinsDataResponseModel) {
+        Task {
+            
+            do {
+                if let user = try authenticationManager.currentUser() {
+                    
+                    do {
+                        let coin = try await databaseManager.getData(userId: user.uid, coinId: coin.id ?? "")
+                        await MainActor.run {
+                            portfolioCoin = coin
+                        }
+                    }catch {
+                        print("CoinDetailViewViewModel'de getCoinPortfolioInfo fonksiyonunda COIN GETİRİLEMEDİ :\(error)")
+                    }
+                }
+            }catch {
+                print("CoinDetailViewViewModel'de getCoinPortfolioInfo fonksiyonunda KULLANICI BULUNAMADI :\(error)")
+            }
+
+        }
+    }
+    
+    
 
 }

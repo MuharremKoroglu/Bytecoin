@@ -13,7 +13,7 @@ struct SearchBarInPortfolioView: View {
 
     var body: some View {
         VStack {
-            SearchBar(searchText: $viewModel.searchedText)
+            //SearchBar(searchText: $viewModel.searchedText)
         }
     }
 }

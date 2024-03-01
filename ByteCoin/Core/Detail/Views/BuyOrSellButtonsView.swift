@@ -9,25 +9,35 @@ import SwiftUI
 
 struct BuyOrSellButtonsView: View {
     
-    let coin : AllCoinsDataResponseModel
+    @StateObject var viewModel : CoinDetailViewViewModel
+    
     @State var openSellScreen : Bool = false
     @State var openBuyScreen : Bool = false
+    
+    let coin : AllCoinsDataResponseModel
     
     var body: some View {
         HStack {
             
-            BuyOrSellButtonItem(buttonType: .sell) {
+            BuyOrSellButtonItem(isButtonDisabled: viewModel.isCoinInPortfolio, buttonType: .sell) {
                 openSellScreen.toggle()
-            }.sheet(isPresented: $openSellScreen) {
-                CoinExchangeView(exchangeType: ButtonsModel.sell, coin: coin)
+            }.sheet(isPresented: $openSellScreen,onDismiss: {
+                viewModel.getCoinPortfolioInfo(coin: coin)
+            }) {
+                CoinExchangeView(exchangeType: ButtonsModel.sell, coin: coin,isCoinInPortfolio: viewModel.isCoinInPortfolio)
             }
             BuyOrSellButtonItem(buttonType: .buy) {
                 openBuyScreen.toggle()
-            }.sheet(isPresented: $openBuyScreen) {
+            }.sheet(isPresented: $openBuyScreen,onDismiss: {
+                viewModel.getCoinPortfolioInfo(coin: coin)
+            }) {
                 CoinExchangeView(exchangeType: ButtonsModel.buy, coin: coin)
             }
             
         }.padding()
+            .onAppear{
+                viewModel.getCoinPortfolioInfo(coin: coin)
+            }
     }
     
 }

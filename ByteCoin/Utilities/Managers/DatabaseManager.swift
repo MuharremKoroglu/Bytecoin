@@ -6,34 +6,40 @@
 //
 
 import Foundation
-import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+
 class DatabaseManager : ObservableObject {
     
-    private let usersCollection = Firestore.firestore().collection("users")
     
-    private func getPortfolioDocument(userId : String, coinId: String) -> DocumentReference {
-        return usersCollection.document(userId).collection(coinId).document(coinId)
+    private let collection = Firestore.firestore().collection("users")
+    
+    private func getDocument (documentId : String, collectionId : String) -> DocumentReference {
+        return collection.document(documentId).collection(collectionId).document(collectionId)
     }
     
-    func createPortfolio (portfolio : DatabasePortfolioModel) async throws{
-        try getPortfolioDocument(userId: portfolio.userId, coinId: portfolio.coinId).setData(from: portfolio, merge: true)
+    func createData (userId : String,data : FirebaseDataModel) async throws{
+        try getDocument(documentId: userId, collectionId: data.coinId).setData(from: data, merge: false)
     }
     
-    func getPortfolio (userId : String, coinId: String) async throws -> DatabasePortfolioModel {
-        try await getPortfolioDocument(userId: userId, coinId: coinId).getDocument(as: DatabasePortfolioModel.self)
+    func getData (userId : String, coinId : String) async throws -> FirebaseDataModel{
+        try await getDocument(documentId: userId, collectionId: coinId).getDocument(as: FirebaseDataModel.self)
     }
     
-    func updateHoldingsInPortfolio (userId : String, coinId: String, newHoldingAmount : Double) async throws{
-        let newHoldings : [String : Any] = [
-            DatabasePortfolioModel.CodingKeys.coinAmount.rawValue : newHoldingAmount
+    func updateData (userId : String, coinId : String, newValue : Double) async throws{
         
+        let coinAmountData : [String : Any] = [
+            FirebaseDataModel.CodingKeys.coinAmount.rawValue : newValue
         ]
         
-        try await getPortfolioDocument(userId: userId, coinId: coinId).updateData(newHoldings)
+        try await getDocument(documentId: userId, collectionId: coinId).updateData(coinAmountData)
+        
     }
     
+    func deleteData (userId : String, coinId : String) async throws{
+       try await getDocument(documentId: userId, collectionId: coinId).delete()
+    }
     
+
 }

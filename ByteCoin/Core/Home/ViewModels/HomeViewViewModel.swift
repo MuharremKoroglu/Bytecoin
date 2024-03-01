@@ -58,13 +58,14 @@ class HomeViewViewModel : ObservableObject {
     }
     
     private func signIn () {
-        
         Task {
             do {
-                try await authenticationManager.signInAnonymously()
+                let user = try await authenticationManager.signInAnonymously()
+                print("KULLANICI GİRİŞ YAPTI : \(user?.uid)")
             }catch {
-                print("GİRİŞTE HATA : \(error)")
+                print("KULLANICI GİRİŞİNDE HATA : \(error)")
             }
+            
         }
     }
     

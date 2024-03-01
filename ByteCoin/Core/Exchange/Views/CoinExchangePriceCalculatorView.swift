@@ -11,6 +11,7 @@ struct CoinExchangePriceCalculatorView: View {
     
     @Binding var coinAmount : String
     let coin : AllCoinsDataResponseModel
+    let exchangeType : ButtonsModel
     
     var body: some View {
         VStack {
@@ -21,7 +22,7 @@ struct CoinExchangePriceCalculatorView: View {
             )
             
             CoinExchangeQuantitySection(
-                sectionName: "What is the amount you want to buy?",
+                sectionName: "What is the amount you want to \(exchangeType.rawValue)?",
                 coinAmount: $coinAmount
             )
             
