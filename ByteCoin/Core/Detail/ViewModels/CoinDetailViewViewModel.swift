@@ -7,15 +7,12 @@
 
 import Foundation
 
+@MainActor
 class CoinDetailViewViewModel : ObservableObject {
     
     @Published var isCoinInPortfolio : Bool = false
     
-    private var portfolioCoin : FirebaseDataModel? {
-        didSet {
-            isCoinInPortfolio = true
-        }
-    }
+    
     private let authenticationManager = AuthenticationManager()
     private let databaseManager = DatabaseManager()
     
@@ -26,11 +23,11 @@ class CoinDetailViewViewModel : ObservableObject {
                 if let user = try authenticationManager.currentUser() {
                     
                     do {
-                        let coin = try await databaseManager.getData(userId: user.uid, coinId: coin.id ?? "")
-                        await MainActor.run {
-                            portfolioCoin = coin
-                        }
+                        let coin = try await databaseManager.getSingleDocumentData(userId: user.uid, coinId: coin.id ?? "")
+                        isCoinInPortfolio = true
+                        
                     }catch {
+                        isCoinInPortfolio = false
                         print("CoinDetailViewViewModel'de getCoinPortfolioInfo fonksiyonunda COIN GETİRİLEMEDİ :\(error)")
                     }
                 }

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PortfolioCoinListView: View {
+    
+    @StateObject var viewModel : PortfolioViewViewModel
+
     var body: some View {
         VStack {
             HStack {
@@ -20,13 +23,14 @@ struct PortfolioCoinListView: View {
                 .foregroundStyle(.gray)
                 .padding(.horizontal,15)
             ScrollView(.vertical, showsIndicators: false) {
-                Text("COIN LIST")
+                VStack {
+                    ForEach(viewModel.portfolioCoins, id: \.id) { coin in
+                        PortfolioCoinRow(coin: coin)
+                    }
+                }
+                
             }
             
         }
     }
-}
-
-#Preview {
-    PortfolioCoinListView()
 }

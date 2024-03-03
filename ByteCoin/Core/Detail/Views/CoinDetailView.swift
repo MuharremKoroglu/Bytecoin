@@ -25,7 +25,7 @@ struct CoinDetailView: View {
                     CoinOverViewView(coinComesFromMarketView: coin)
                     CoinAdditionalDetailsView(coinComesFromMarketView: coin)
                 }
-            }.navigationTitle(coin.name ?? "Bitcoin")
+            }.navigationTitle(coin.name?.capitalized ?? "Bitcoin")
             .navigationBarBackButtonHidden()
             .navigationBarTitleDisplayMode(.large)
             .toolbar {

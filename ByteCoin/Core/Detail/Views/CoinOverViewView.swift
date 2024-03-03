@@ -44,7 +44,7 @@ struct CoinOverViewView: View {
                 )
                 CoinDetailItem(
                     title: "Market Rank ",
-                    value: coinComesFromMarketView.marketCapRank?.convertNumberToString() ?? "n/a"
+                    value: coinComesFromMarketView.marketCapRank?.convertIntToString() ?? "n/a"
                 )
                 CoinDetailItem(
                     title: "Market Volume",

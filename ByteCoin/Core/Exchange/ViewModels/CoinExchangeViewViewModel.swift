@@ -23,7 +23,7 @@ class CoinExchangeViewViewModel : ObservableObject {
                 if let user = try authenticationManager.currentUser() {
                     
                     do {
-                        let coin = try await databaseManager.getData(userId: user.uid, coinId: coin.id ?? "")
+                        let coin = try await databaseManager.getSingleDocumentData(userId: user.uid, coinId: coin.id ?? "")
                         await MainActor.run {
                             coinInPortfolio = coin
                         }

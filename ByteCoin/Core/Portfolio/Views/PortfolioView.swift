@@ -15,9 +15,12 @@ struct PortfolioView: View {
         NavigationStack {
             VStack {
                 SearchBarInPortfolioView(viewModel: viewModel)
-                PortfolioCoinListView()
+                PortfolioCoinListView(viewModel: viewModel)
                 
             }.navigationTitle("Your Portfolio")
+                .onAppear {
+                    viewModel.getPortfolioCoins()
+                }
             
         }
     }

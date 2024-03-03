@@ -21,7 +21,7 @@ struct AllCoinView: View {
                 .foregroundStyle(.gray)
                 .padding(.horizontal,15)
             ScrollView(.vertical, showsIndicators : false) {
-                VStack {
+                LazyVStack {
                     ForEach(viewModel.filteredCoins, id: \.id) { coin in
                         NavigationLink {
                             CoinDetailView(coin: coin)

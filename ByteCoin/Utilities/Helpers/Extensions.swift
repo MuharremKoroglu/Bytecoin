@@ -37,7 +37,11 @@ extension Double {
         return (numberFormatter.string(for: self) ?? "0.0") + "%" 
     }
     
-    func convertNumberToString () -> String {
+    func convertDoubleToStringFromInt () -> String{
+        return String(Int(self))
+    }
+    
+    func convertDoubleToString () -> String {
         return String(format: "%.2f", self)
     }
     
@@ -48,22 +52,22 @@ extension Double {
         switch num {
         case 1_000_000_000_000...:
             let formatted = num / 1_000_000_000_000
-            let stringFormatted = formatted.convertNumberToString()
+            let stringFormatted = formatted.convertDoubleToString()
             return "\(sign)\(stringFormatted)Tr"
         case 1_000_000_000...:
             let formatted = num / 1_000_000_000
-            let stringFormatted = formatted.convertNumberToString()
+            let stringFormatted = formatted.convertDoubleToString()
             return "\(sign)\(stringFormatted)Bn"
         case 1_000_000...:
             let formatted = num / 1_000_000
-            let stringFormatted = formatted.convertNumberToString()
+            let stringFormatted = formatted.convertDoubleToString()
             return "\(sign)\(stringFormatted)M"
         case 1_000...:
             let formatted = num / 1_000
-            let stringFormatted = formatted.convertNumberToString()
+            let stringFormatted = formatted.convertDoubleToString()
             return "\(sign)\(stringFormatted)K"
         case 0...:
-            return self.convertNumberToString()
+            return self.convertDoubleToString()
 
         default:
             return "\(sign)\(self)"
@@ -74,7 +78,7 @@ extension Double {
 }
 
 extension Int {
-    func convertNumberToString () -> String {
+    func convertIntToString () -> String {
         return String(self)
     }
 }

@@ -26,18 +26,19 @@ struct PortfolioCoinRow: View {
                     .padding(.leading, 4)
             }
             Spacer()
-            Text(coin.currentCoinAmount?.convertNumberToString() ?? "")
+            Text(coin.currentCoinAmount?.convertDoubleToStringFromInt() ?? "")
                 .font(.subheadline)
                 .fontWeight(.bold)
                 .foregroundStyle(.primary)
             Spacer()
-            Text(calculateTotalPrice().convertNumberToString())
+            Text(calculateTotalPrice().convertWithAbbreviations())
                 .font(.subheadline)
                 .fontWeight(.bold)
                 .foregroundStyle(.primary)
             
 
-        }
+        }.padding(.horizontal, 15)
+            .padding(.vertical, 5)
     }
 }
 
