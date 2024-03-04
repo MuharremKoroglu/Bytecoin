@@ -10,8 +10,7 @@ import SwiftUI
 struct CoinDetailView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @StateObject private var viewModel = CoinDetailViewViewModel()
-    
+
     let coin : AllCoinsDataResponseModel
     
     var body: some View {
@@ -21,9 +20,9 @@ struct CoinDetailView: View {
                 VStack {
                     CoinPriceLineChartView(coin: coin)
                         .frame(height: size.height * 0.5)
-                    BuyOrSellButtonsView(viewModel: viewModel, coin: coin)
-                    CoinOverViewView(coinComesFromMarketView: coin)
-                    CoinAdditionalDetailsView(coinComesFromMarketView: coin)
+                    BuyOrSellButtonsView(coin: coin)
+                    CoinOverViewView(coin: coin)
+                    CoinAdditionalDetailsView(coin: coin)
                 }
             }.navigationTitle(coin.name?.capitalized ?? "Bitcoin")
             .navigationBarBackButtonHidden()

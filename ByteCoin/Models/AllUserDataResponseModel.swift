@@ -7,27 +7,45 @@
 
 import Foundation
 
-// MARK: - UserModel
 struct AllUserDataResponseModel: Codable, Identifiable {
-    let id = UUID()
+    var id = UUID()
     let results: [UserResult]?
+    
+    enum CodingKeys: String, CodingKey {
+        case results
+    }
 }
 
-// MARK: - Result
 struct UserResult: Codable, Identifiable  {
-    let id = UUID()
+    var id = UUID()
     let name: UserName?
     let picture: UserPicture?
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case picture
+    }
 }
 
-// MARK: - Name
 struct UserName: Codable, Identifiable  {
-    let id = UUID()
+    var id = UUID()
     let title, first, last: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case title
+        case first
+        case last
+    }
+    
 }
 
-// MARK: - Picture
 struct UserPicture: Codable, Identifiable  {
-    let id = UUID()
+    var id = UUID()
     let large, medium, thumbnail: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case large
+        case medium
+        case thumbnail
+    }
 }

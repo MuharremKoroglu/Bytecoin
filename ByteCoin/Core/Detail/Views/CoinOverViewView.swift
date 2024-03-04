@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CoinOverViewView: View {
     
-   let coinComesFromMarketView : AllCoinsDataResponseModel
+   let coin : AllCoinsDataResponseModel
     
    private var spacing : CGFloat = 30
     
@@ -18,8 +18,8 @@ struct CoinOverViewView: View {
         GridItem(.flexible()),
     ]
     
-    init(coinComesFromMarketView: AllCoinsDataResponseModel) {
-        self.coinComesFromMarketView = coinComesFromMarketView
+    init(coin: AllCoinsDataResponseModel) {
+        self.coin = coin
     }
     
     var body: some View {
@@ -34,21 +34,21 @@ struct CoinOverViewView: View {
                       content: {
                 CoinDetailItem(
                     title: "Current Price",
-                    value: (coinComesFromMarketView.currentPrice?.convertCurrency()) ?? "n/a",
-                    marketCapChange: coinComesFromMarketView.priceChangePercentage24H
+                    value: (coin.currentPrice?.convertCurrency()) ?? "n/a",
+                    marketCapChange: coin.priceChangePercentage24H
                 )
                 CoinDetailItem(
                     title: "Market Capitalization",
-                    value: "$" + (coinComesFromMarketView.marketCap?.convertWithAbbreviations() ?? "n/a") ,
-                    marketCapChange: coinComesFromMarketView.marketCapChangePercentage24H
+                    value: "$" + (coin.marketCap?.convertWithAbbreviations() ?? "n/a") ,
+                    marketCapChange: coin.marketCapChangePercentage24H
                 )
                 CoinDetailItem(
                     title: "Market Rank ",
-                    value: coinComesFromMarketView.marketCapRank?.convertIntToString() ?? "n/a"
+                    value: coin.marketCapRank?.convertIntToString() ?? "n/a"
                 )
                 CoinDetailItem(
                     title: "Market Volume",
-                    value: "$" + (coinComesFromMarketView.totalVolume?.convertWithAbbreviations() ?? "n/a")
+                    value: "$" + (coin.totalVolume?.convertWithAbbreviations() ?? "n/a")
                 )
             })
             

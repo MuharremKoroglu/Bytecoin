@@ -9,7 +9,10 @@ import SwiftUI
 
 struct CoinExchangePriceCalculatorView: View {
     
+    @EnvironmentObject var homeViewModel : HomeViewViewModel
+    
     @Binding var coinAmount : String
+    
     let coin : AllCoinsDataResponseModel
     let exchangeType : ButtonsModel
     
@@ -17,8 +20,8 @@ struct CoinExchangePriceCalculatorView: View {
         VStack {
             
             CoinExchangePriceSection(
-                sectionName: "Current Price",
-                content: coin.currentPrice?.convertCurrency() ?? ""
+                sectionName: "Current Amount",
+                content: homeViewModel.coinAmount.convertDoubleToStringFromInt()
             )
             
             CoinExchangeQuantitySection(
@@ -30,8 +33,8 @@ struct CoinExchangePriceCalculatorView: View {
                 sectionName: "Total Amount",
                 content: calculateTheTotalAmount().convertCurrency()
             )
-
-        }.padding(.vertical, 20)
+            
+        }
     }
 
 }

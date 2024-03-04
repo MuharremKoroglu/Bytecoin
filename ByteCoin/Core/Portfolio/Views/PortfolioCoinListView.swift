@@ -9,28 +9,30 @@ import SwiftUI
 
 struct PortfolioCoinListView: View {
     
-    @StateObject var viewModel : PortfolioViewViewModel
+    @EnvironmentObject var homeViewModel : HomeViewViewModel
 
     var body: some View {
         VStack {
             HStack {
                 Text("Coin")
                 Spacer()
-                Text("Amount")
-                Spacer()
+                Text("Holdings")
                 Text("Total")
+                    .frame(width: 110,alignment: .trailing)
             }.font(.caption)
                 .foregroundStyle(.gray)
                 .padding(.horizontal,15)
             ScrollView(.vertical, showsIndicators: false) {
-                VStack {
-                    ForEach(viewModel.portfolioCoins, id: \.id) { coin in
+                LazyVStack {
+                    ForEach(homeViewModel.filteredPortfolioCoins, id: \.id) { coin in
                         PortfolioCoinRow(coin: coin)
                     }
                 }
-                
+            }.refreshable {
+                homeViewModel.getPortfolioCoins()
             }
-            
+        }.onAppear{
+            homeViewModel.getPortfolioCoins()
         }
     }
 }

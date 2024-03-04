@@ -9,12 +9,12 @@ import SwiftUI
 
 struct BuyOrSellButtonItem: View {
     
-    let isButtonDisabled : Bool
+    let isCoinInPortfolio : Bool
     let buttonType : ButtonsModel
     var buttonAction : (()->Void)?
     
-    init(isButtonDisabled : Bool = false,buttonType: ButtonsModel, buttonAction: ( () -> Void)? = nil) {
-        self.isButtonDisabled = isButtonDisabled
+    init(isCoinInPortfolio: Bool = false, buttonType: ButtonsModel, buttonAction: (() -> Void)? = nil) {
+        self.isCoinInPortfolio = isCoinInPortfolio
         self.buttonType = buttonType
         self.buttonAction = buttonAction
     }
@@ -38,8 +38,8 @@ struct BuyOrSellButtonItem: View {
                 RoundedRectangle(cornerRadius: 5)
                     .fill(buttonType.buttonColor)
             )
-            .disabled(buttonType == .sell && !isButtonDisabled)
-            .opacity(buttonType == .sell && !isButtonDisabled ? 0.5 : 1)
+            .disabled(buttonType == .sell && !isCoinInPortfolio)
+            .opacity(buttonType == .sell && !isCoinInPortfolio ? 0.5 : 1)
             
         }
     }

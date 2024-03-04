@@ -38,6 +38,3 @@ struct RecentTransaction: View {
     }
 }
 
-#Preview {
-    RecentTransaction(user: UserResult(name: UserName(title: "test", first: "Antonio", last: "Martinez"), picture: UserPicture(large: "", medium: "", thumbnail: "")))
-}

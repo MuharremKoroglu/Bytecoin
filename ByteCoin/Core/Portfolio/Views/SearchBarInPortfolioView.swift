@@ -9,11 +9,11 @@ import SwiftUI
 
 struct SearchBarInPortfolioView: View {
     
-    @StateObject var viewModel : PortfolioViewViewModel
+    @EnvironmentObject var homeViewModel : HomeViewViewModel
 
     var body: some View {
         VStack {
-            SearchBar(searchText: $viewModel.searchedText)
+            SearchBar(searchText: $homeViewModel.portfolioCoinSearchedText)
         }
     }
 }

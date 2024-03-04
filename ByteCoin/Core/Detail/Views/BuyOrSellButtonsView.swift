@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BuyOrSellButtonsView: View {
     
-    @StateObject var viewModel : CoinDetailViewViewModel
+    @EnvironmentObject private var homeViewModel : HomeViewViewModel
     
     @State var openSellScreen : Bool = false
     @State var openBuyScreen : Bool = false
@@ -19,24 +19,26 @@ struct BuyOrSellButtonsView: View {
     var body: some View {
         HStack {
             
-            BuyOrSellButtonItem(isButtonDisabled: viewModel.isCoinInPortfolio, buttonType: .sell) {
+            BuyOrSellButtonItem(isCoinInPortfolio : homeViewModel.isCoinInPortfolio, buttonType: .sell) {
                 openSellScreen.toggle()
             }.sheet(isPresented: $openSellScreen,onDismiss: {
-                viewModel.getCoinPortfolioInfo(coin: coin)
+                homeViewModel.getSingleCoinFromFirebase(coin: coin)
+                
             }) {
-                CoinExchangeView(exchangeType: ButtonsModel.sell, coin: coin,isCoinInPortfolio: viewModel.isCoinInPortfolio)
+                CoinExchangeView(exchangeType: ButtonsModel.sell, coin: coin)
             }
             BuyOrSellButtonItem(buttonType: .buy) {
                 openBuyScreen.toggle()
             }.sheet(isPresented: $openBuyScreen,onDismiss: {
-                viewModel.getCoinPortfolioInfo(coin: coin)
+                homeViewModel.getSingleCoinFromFirebase(coin: coin)
             }) {
                 CoinExchangeView(exchangeType: ButtonsModel.buy, coin: coin)
             }
             
+            
         }.padding()
             .onAppear{
-                viewModel.getCoinPortfolioInfo(coin: coin)
+                homeViewModel.getSingleCoinFromFirebase(coin: coin)
             }
     }
     

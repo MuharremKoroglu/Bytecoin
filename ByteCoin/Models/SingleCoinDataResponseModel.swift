@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: - SingleCoinDataResponseModel
 struct SingleCoinDataResponseModel : Identifiable, Codable {
     let id: String?
     let symbol: String?

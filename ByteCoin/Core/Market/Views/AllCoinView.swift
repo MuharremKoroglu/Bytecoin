@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AllCoinView: View {
     
-    @StateObject var viewModel : MarketViewViewModel
+    @EnvironmentObject private var viewModel : HomeViewViewModel
     
     var body: some View {
         VStack {
@@ -22,7 +22,7 @@ struct AllCoinView: View {
                 .padding(.horizontal,15)
             ScrollView(.vertical, showsIndicators : false) {
                 LazyVStack {
-                    ForEach(viewModel.filteredCoins, id: \.id) { coin in
+                    ForEach(viewModel.filteredMarketCoins, id: \.id) { coin in
                         NavigationLink {
                             CoinDetailView(coin: coin)
                         } label: {
@@ -31,6 +31,8 @@ struct AllCoinView: View {
 
                     }
                 }
+            }.refreshable {
+                viewModel.getAllCoins()
             }
 
         }

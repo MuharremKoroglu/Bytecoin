@@ -30,10 +30,10 @@ struct PortfolioCoinRow: View {
                 .font(.subheadline)
                 .fontWeight(.bold)
                 .foregroundStyle(.primary)
-            Spacer()
-            Text(calculateTotalPrice().convertWithAbbreviations())
+            Text(calculateTotalPrice().convertCurrency())
                 .font(.subheadline)
                 .fontWeight(.bold)
+                .frame(width: 130,alignment: .trailing)
                 .foregroundStyle(.primary)
             
 

@@ -9,17 +9,10 @@ import SwiftUI
 
 struct CoinExchangeView: View {
     
-    @StateObject private var viewModel = CoinExchangeViewViewModel()
     @State private var coinAmount : String = ""
+    
     let exchangeType : ButtonsModel
     let coin : AllCoinsDataResponseModel
-    let isCoinInPortfolio : Bool
-    
-    init(exchangeType: ButtonsModel, coin: AllCoinsDataResponseModel,isCoinInPortfolio : Bool = true) {
-        self.exchangeType = exchangeType
-        self.coin = coin
-        self.isCoinInPortfolio = isCoinInPortfolio
-    }
     
     var body: some View {
         NavigationStack {
@@ -34,18 +27,13 @@ struct CoinExchangeView: View {
                         exchangeType: exchangeType
                     )
                     CoinExchangeButtonView(
-                        viewModel: viewModel,
                         buttonType: exchangeType,
                         coin: coin,
-                        coinAmount: coinAmount,
-                        isCoinInPortfolio: isCoinInPortfolio
+                        coinAmount: coinAmount
                     )
                     
                 }
             }.navigationTitle(exchangeType.buttonTitle)
-                .onAppear{
-                    viewModel.getCoinHoldingInfo(coin: coin)
-                }
             
         }
 

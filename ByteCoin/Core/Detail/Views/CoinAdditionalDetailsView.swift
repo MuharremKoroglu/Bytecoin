@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CoinAdditionalDetailsView: View {
     
-    let coinComesFromMarketView : AllCoinsDataResponseModel
+    let coin : AllCoinsDataResponseModel
     
     private var columns : [GridItem] = [
         GridItem(.flexible()),
@@ -18,8 +18,8 @@ struct CoinAdditionalDetailsView: View {
     
     private var spacing : CGFloat = 30
     
-    init(coinComesFromMarketView: AllCoinsDataResponseModel) {
-        self.coinComesFromMarketView = coinComesFromMarketView
+    init(coin: AllCoinsDataResponseModel) {
+        self.coin = coin
     }
     
     var body: some View {
@@ -34,31 +34,31 @@ struct CoinAdditionalDetailsView: View {
                       content: {
                 CoinDetailItem(
                     title: "24h High",
-                    value: (coinComesFromMarketView.high24H?.convertCurrency()) ?? "n/a"
+                    value: (coin.high24H?.convertCurrency()) ?? "n/a"
                 )
                 CoinDetailItem(
                     title: "24h Low",
-                    value: (coinComesFromMarketView.low24H?.convertCurrency() ?? "n/a")
+                    value: (coin.low24H?.convertCurrency() ?? "n/a")
                 )
                 CoinDetailItem(
                     title: "24h Price Change",
-                    value: coinComesFromMarketView.priceChange24H?.convertCurrency() ?? "n/a",
-                    marketCapChange: coinComesFromMarketView.priceChangePercentage24H
+                    value: coin.priceChange24H?.convertCurrency() ?? "n/a",
+                    marketCapChange: coin.priceChangePercentage24H
                 )
                 CoinDetailItem(
                     title: "24h Market Cap Change",
-                    value: "$" + (coinComesFromMarketView.marketCapChange24H?.convertWithAbbreviations() ?? "n/a"),
-                    marketCapChange: coinComesFromMarketView.marketCapChangePercentage24H
+                    value: "$" + (coin.marketCapChange24H?.convertWithAbbreviations() ?? "n/a"),
+                    marketCapChange: coin.marketCapChangePercentage24H
                 )
                 CoinDetailItem(
                     title: "All Time High",
-                    value: (coinComesFromMarketView.ath?.convertCurrency() ?? "n/a"),
-                    marketCapChange: coinComesFromMarketView.athChangePercentage
+                    value: (coin.ath?.convertCurrency() ?? "n/a"),
+                    marketCapChange: coin.athChangePercentage
                 )
                 CoinDetailItem(
                     title: "All Time Low",
-                    value: (coinComesFromMarketView.atl?.convertCurrency() ?? "n/a"),
-                    marketCapChange: coinComesFromMarketView.atlChangePercentage
+                    value: (coin.atl?.convertCurrency() ?? "n/a"),
+                    marketCapChange: coin.atlChangePercentage
                 )
                 
             })

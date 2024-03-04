@@ -7,7 +7,6 @@
 
 import Foundation
 
-//MARK: - AllCoinsDataRequestModel
 struct AllCoinsDataRequestModel : Encodable{
     
     let vsCurrency : String

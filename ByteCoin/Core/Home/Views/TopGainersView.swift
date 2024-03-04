@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct TopGainersView: View {
-    @StateObject var viewModel : HomeViewViewModel
+    
+    @EnvironmentObject private var viewModel : HomeViewViewModel
+    
     var body: some View {
         VStack(alignment: .leading,spacing: 10) {
             Text("Top Gainers")
@@ -23,13 +25,9 @@ struct TopGainersView: View {
                         } label: {
                             TopGainerAndLoserItem(coin: coin)
                         }.buttonStyle(PlainButtonStyle())
-
-                        
                     }
                 }
             }
-            
-            
         }.padding(.horizontal, 15)
     }
 }

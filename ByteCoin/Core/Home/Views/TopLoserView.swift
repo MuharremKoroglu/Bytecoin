@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TopLoserView: View {
-    @StateObject var viewModel : HomeViewViewModel
+    
+    @EnvironmentObject private var viewModel : HomeViewViewModel
     
     var body: some View {
         VStack(alignment: .leading,spacing: 10) {
@@ -27,8 +28,6 @@ struct TopLoserView: View {
                     }
                 }
             }
-            
-            
         }.padding(.horizontal, 15)
     }
 }

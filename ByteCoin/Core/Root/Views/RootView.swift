@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RootView: View {
     
-    @StateObject private var authenticationManager = AuthenticationManager()
+    @StateObject private var homeViewModel = HomeViewViewModel()
     @State private var selectedTab : Int = 1
 
     init() {
@@ -28,7 +28,7 @@ struct RootView: View {
             }
             CustomTabBar(selectedTab: $selectedTab)
         }.ignoresSafeArea(.keyboard)
-            .environmentObject(authenticationManager)
+            .environmentObject(homeViewModel)
     }
 }
 

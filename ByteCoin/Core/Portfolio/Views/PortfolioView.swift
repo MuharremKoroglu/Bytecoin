@@ -9,19 +9,14 @@ import SwiftUI
 
 struct PortfolioView: View {
     
-    @StateObject private var viewModel = PortfolioViewViewModel()
-    
     var body: some View {
         NavigationStack {
             VStack {
-                SearchBarInPortfolioView(viewModel: viewModel)
-                PortfolioCoinListView(viewModel: viewModel)
+                
+                SearchBarInPortfolioView()
+                PortfolioCoinListView()
                 
             }.navigationTitle("Your Portfolio")
-                .onAppear {
-                    viewModel.getPortfolioCoins()
-                }
-            
         }
     }
 }

@@ -18,7 +18,7 @@ struct CoinRow: View {
                 .foregroundStyle(.gray)
             DownloadImageAsync(url: coin.image ?? "",width: 32,height: 32)
             VStack(alignment : .leading, spacing: 3){
-                Text(coin.name ?? "")
+                Text(coin.name?.capitalized ?? "")
                     .font(.subheadline)
                     .fontWeight(.bold)
                     .foregroundStyle(.primary)
