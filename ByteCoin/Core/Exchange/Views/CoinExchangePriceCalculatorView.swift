@@ -11,7 +11,7 @@ struct CoinExchangePriceCalculatorView: View {
     
     @EnvironmentObject var homeViewModel : HomeViewViewModel
     
-    @Binding var coinAmount : String
+    @Binding var transactionCoinAmount : String
     
     let coin : AllCoinsDataResponseModel
     let exchangeType : ButtonsModel
@@ -26,7 +26,7 @@ struct CoinExchangePriceCalculatorView: View {
             
             CoinExchangeQuantitySection(
                 sectionName: "What is the amount you want to \(exchangeType.rawValue)?",
-                coinAmount: $coinAmount
+                coinAmount: $transactionCoinAmount
             )
             
             CoinExchangePriceSection(
@@ -43,7 +43,7 @@ extension CoinExchangePriceCalculatorView {
     
     private func calculateTheTotalAmount () -> Double {
         
-        return coinAmount.convertToDouble() * (coin.currentPrice ?? 0)
+        return transactionCoinAmount.convertToDouble() * (coin.currentPrice ?? 0)
     }
     
 }

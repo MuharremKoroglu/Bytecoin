@@ -9,16 +9,29 @@ import SwiftUI
 
 struct WelcomeView: View {
     
-    @EnvironmentObject private var viewModel : HomeViewViewModel
+    @EnvironmentObject private var homeViewModel : HomeViewViewModel
+    @EnvironmentObject private var launchViewModel : LaunchViewViewModel
+    
+    @State private var isFirstLaunch : Bool = false
     
     var body: some View {
         VStack(spacing : 10) {
             
             UserWelcome()
-            AccountBalance()
+            AccountBalance(accountBalance: homeViewModel.balance, accountProfit: homeViewModel.profit)
             
         }.padding(.horizontal, 15)
-            
+            .onAppear {
+                if !isFirstLaunch {
+                    homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)
+                    isFirstLaunch = true
+                }
+            }
+            .onReceive(homeViewModel.$reloadWallet) { isUpdated in
+                if isUpdated {
+                    homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)
+                }
+            }
     }
 }
 

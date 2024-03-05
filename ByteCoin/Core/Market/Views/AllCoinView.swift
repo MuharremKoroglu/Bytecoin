@@ -28,13 +28,10 @@ struct AllCoinView: View {
                         } label: {
                             CoinRow(coin: coin)
                         }.buttonStyle(PlainButtonStyle()) 
-
+                        
                     }
                 }
-            }.refreshable {
-                viewModel.getAllCoins()
             }
-
         }
     }
 }

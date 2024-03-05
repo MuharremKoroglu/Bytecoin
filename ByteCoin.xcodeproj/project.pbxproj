@@ -79,6 +79,11 @@
 		3BC4C41D2B8B6F9A001D2BFE /* CoinPriceLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC4C41C2B8B6F9A001D2BFE /* CoinPriceLineChartView.swift */; };
 		3BC4C41F2B8B7018001D2BFE /* CoinOverViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC4C41E2B8B7018001D2BFE /* CoinOverViewView.swift */; };
 		3BC4C4212B8B702B001D2BFE /* CoinAdditionalDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC4C4202B8B702B001D2BFE /* CoinAdditionalDetailsView.swift */; };
+		3BD943432B977F02008B3AE4 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3BD943422B977F02008B3AE4 /* Lottie */; };
+		3BD943452B977F32008B3AE4 /* LottieAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD943442B977F32008B3AE4 /* LottieAnimation.swift */; };
+		3BD9434C2B977FCF008B3AE4 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD9434B2B977FCF008B3AE4 /* LaunchView.swift */; };
+		3BD943522B978479008B3AE4 /* crypto.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BD943512B978478008B3AE4 /* crypto.json */; };
+		3BD943542B979DF1008B3AE4 /* LaunchViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD943532B979DF1008B3AE4 /* LaunchViewViewModel.swift */; };
 		3BE2DACF2B889DED003E3D18 /* CustomTabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2DACE2B889DED003E3D18 /* CustomTabBarModel.swift */; };
 		3BE2DAD12B88C199003E3D18 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2DAD02B88C199003E3D18 /* Extensions.swift */; };
 		3BE2DAD72B88C775003E3D18 /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2DAD62B88C775003E3D18 /* MarketView.swift */; };
@@ -138,6 +143,10 @@
 		3BC4C41C2B8B6F9A001D2BFE /* CoinPriceLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPriceLineChartView.swift; sourceTree = "<group>"; };
 		3BC4C41E2B8B7018001D2BFE /* CoinOverViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinOverViewView.swift; sourceTree = "<group>"; };
 		3BC4C4202B8B702B001D2BFE /* CoinAdditionalDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinAdditionalDetailsView.swift; sourceTree = "<group>"; };
+		3BD943442B977F32008B3AE4 /* LottieAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimation.swift; sourceTree = "<group>"; };
+		3BD9434B2B977FCF008B3AE4 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		3BD943512B978478008B3AE4 /* crypto.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crypto.json; sourceTree = "<group>"; };
+		3BD943532B979DF1008B3AE4 /* LaunchViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewViewModel.swift; sourceTree = "<group>"; };
 		3BE2DACE2B889DED003E3D18 /* CustomTabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarModel.swift; sourceTree = "<group>"; };
 		3BE2DAD02B88C199003E3D18 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3BE2DAD62B88C775003E3D18 /* MarketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
@@ -165,6 +174,7 @@
 				3B91B5742B92051B00126E1F /* FirebaseFirestoreCombine-Community in Frameworks */,
 				3B91B55E2B92051B00126E1F /* FirebaseAnalyticsSwift in Frameworks */,
 				3B91B5822B92051B00126E1F /* FirebaseMLModelDownloader in Frameworks */,
+				3BD943432B977F02008B3AE4 /* Lottie in Frameworks */,
 				3B91B5602B92051B00126E1F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				3B91B55A2B92051B00126E1F /* FirebaseAnalytics in Frameworks */,
 				3B91B5762B92051B00126E1F /* FirebaseFirestoreSwift in Frameworks */,
@@ -211,6 +221,7 @@
 			children = (
 				3B91B5362B92037200126E1F /* GoogleService-Info.plist */,
 				3B1C10F72B86255500C0100F /* ByteCoinApp.swift */,
+				3BD943512B978478008B3AE4 /* crypto.json */,
 				3B1C10FB2B86255700C0100F /* Assets.xcassets */,
 				3B1C10FD2B86255700C0100F /* Preview Content */,
 				3B1C11172B8626D200C0100F /* Utilities */,
@@ -342,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				3BF90A0E2B87C80E007B1BED /* Root */,
+				3BD943462B977F68008B3AE4 /* Launch */,
 				3BBEE2F62B8727B000E0F19F /* Home */,
 				3BE2DAD22B88C6E7003E3D18 /* Market */,
 				3BC4C4102B8B1904001D2BFE /* Detail */,
@@ -398,8 +410,34 @@
 				3B6984912B8F514D00FA233B /* BuyOrSellButtonItem.swift */,
 				3B69849D2B8F7D6400FA233B /* CoinExchangePriceSection.swift */,
 				3B69849F2B8F7DC400FA233B /* CoinExchangeQuantitySection.swift */,
+				3BD943442B977F32008B3AE4 /* LottieAnimation.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		3BD943462B977F68008B3AE4 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				3BD943472B977F76008B3AE4 /* Views */,
+				3BD943482B977F80008B3AE4 /* ViewModels */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		3BD943472B977F76008B3AE4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3BD9434B2B977FCF008B3AE4 /* LaunchView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3BD943482B977F80008B3AE4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3BD943532B979DF1008B3AE4 /* LaunchViewViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		3BE2DAD22B88C6E7003E3D18 /* Market */ = {
@@ -481,6 +519,7 @@
 				3B91B5892B92051B00126E1F /* FirebaseRemoteConfigSwift */,
 				3B91B58B2B92051B00126E1F /* FirebaseStorage */,
 				3B91B58D2B92051B00126E1F /* FirebaseStorageCombine-Community */,
+				3BD943422B977F02008B3AE4 /* Lottie */,
 			);
 			productName = ByteCoin;
 			productReference = 3B1C10F42B86255500C0100F /* ByteCoin.app */;
@@ -513,6 +552,7 @@
 			packageReferences = (
 				3B1C11142B86267300C0100F /* XCRemoteSwiftPackageReference "Alamofire" */,
 				3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3BD943412B977F02008B3AE4 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 3B1C10F52B86255500C0100F /* Products */;
 			projectDirPath = "";
@@ -528,6 +568,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BD943522B978479008B3AE4 /* crypto.json in Resources */,
 				3B1C10FF2B86255700C0100F /* Preview Assets.xcassets in Resources */,
 				3B1C10FC2B86255700C0100F /* Assets.xcassets in Resources */,
 				3B91B5372B92037200126E1F /* GoogleService-Info.plist in Resources */,
@@ -555,6 +596,7 @@
 				3BF90A142B87C864007B1BED /* CustomTabBar.swift in Sources */,
 				3BC4C4192B8B2B52001D2BFE /* SingleCoinDetailDataRequestModel.swift in Sources */,
 				3BE2DADB2B88CB82003E3D18 /* SearchBar.swift in Sources */,
+				3BD943542B979DF1008B3AE4 /* LaunchViewViewModel.swift in Sources */,
 				3B1C11122B86262800C0100F /* HomeViewViewModel.swift in Sources */,
 				3B6984A22B8F7E3400FA233B /* CoinExchangeButtonView.swift in Sources */,
 				3B6984962B8F61DD00FA233B /* CoinExchangeView.swift in Sources */,
@@ -566,6 +608,7 @@
 				3BBEE2FB2B8755C800E0F19F /* AccountBalance.swift in Sources */,
 				3BE2DACF2B889DED003E3D18 /* CustomTabBarModel.swift in Sources */,
 				3BF90A0D2B87AE7D007B1BED /* WelcomeView.swift in Sources */,
+				3BD9434C2B977FCF008B3AE4 /* LaunchView.swift in Sources */,
 				3BE2DADF2B88CF1B003E3D18 /* AllCoinView.swift in Sources */,
 				3BBEE2F92B87512100E0F19F /* UserWelcome.swift in Sources */,
 				3BF90A0B2B87AC95007B1BED /* TopGainersView.swift in Sources */,
@@ -588,6 +631,7 @@
 				3BBEE2FD2B87643E00E0F19F /* TopGainerAndLoserItem.swift in Sources */,
 				3B1C10F82B86255500C0100F /* ByteCoinApp.swift in Sources */,
 				3BF90A112B87C841007B1BED /* RootView.swift in Sources */,
+				3BD943452B977F32008B3AE4 /* LottieAnimation.swift in Sources */,
 				3BBDDD242B89CADE00B202ED /* TopLoserView.swift in Sources */,
 				3BBEE2FF2B876BEF00E0F19F /* AllUserDataResponseModel.swift in Sources */,
 				3B1C111A2B8626EA00C0100F /* Constants.swift in Sources */,
@@ -816,6 +860,14 @@
 				minimumVersion = 10.21.0;
 			};
 		};
+		3BD943412B977F02008B3AE4 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -958,6 +1010,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		3BD943422B977F02008B3AE4 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3BD943412B977F02008B3AE4 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

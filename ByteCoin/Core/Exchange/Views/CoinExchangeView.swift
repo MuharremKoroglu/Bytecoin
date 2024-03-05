@@ -22,7 +22,7 @@ struct CoinExchangeView: View {
                         coin: coin
                     )
                     CoinExchangePriceCalculatorView(
-                        coinAmount: $coinAmount,
+                        transactionCoinAmount: $coinAmount,
                         coin: coin,
                         exchangeType: exchangeType
                     )

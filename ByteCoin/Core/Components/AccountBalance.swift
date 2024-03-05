@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct AccountBalance: View {
+    
+    let accountBalance : Double
+    let accountProfit : Double
+    
     var body: some View {
         VStack (alignment : .leading,spacing: 25) {
             VStack (alignment: .leading){
@@ -22,20 +26,20 @@ struct AccountBalance: View {
                     Text("Your Current Balance")
                         .font(.title3)
                         .foregroundStyle(.white)
-                    Text("$152,463")
+                    Text(accountBalance.convertCurrency())
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundStyle(.white)
                 }
                 Spacer()
                 HStack{
-                    Image(systemName: "triangle.fill")
+                    Image(systemName: accountProfit > 0 ? "arrowtriangle.up.fill" : "arrowtriangle.down.fill")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 12,height: 12)
-                        .foregroundStyle(.green)
+                        .foregroundStyle(accountProfit > 0 ? .green : .red)
                     
-                    Text("+25%")
+                    Text(accountProfit.convertPrecentages())
                         .font(.headline)
                         .fontWeight(.bold)
                         .foregroundStyle(.white)
@@ -45,12 +49,8 @@ struct AccountBalance: View {
         }.padding(.horizontal,15)
         .padding(.vertical, 15)
         .background(
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 5)
                 .fill(.appMain)
         )
     }
-}
-
-#Preview {
-    AccountBalance()
 }

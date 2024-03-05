@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-class DatabaseManager : ObservableObject {
+class DatabaseManager {
     
     
     private let collection = Firestore.firestore().collection("users")

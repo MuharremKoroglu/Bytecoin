@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecentTransactionsView: View {
     
-    @EnvironmentObject private var viewModel : HomeViewViewModel
+    @EnvironmentObject private var homeViewModel : HomeViewViewModel
     
     var body: some View {
         VStack(alignment : .leading,spacing: 10) {
@@ -19,7 +19,7 @@ struct RecentTransactionsView: View {
                 .foregroundStyle(.primary)
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack(spacing: 15) {
-                    ForEach(viewModel.allUsers, id: \.id) { user in
+                    ForEach(homeViewModel.allUsers, id: \.id) { user in
                         RecentTransaction(user: user)
                     }
                 }

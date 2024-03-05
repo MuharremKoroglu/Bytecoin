@@ -8,9 +8,8 @@
 import Foundation
 import FirebaseAuth
 
-class AuthenticationManager : ObservableObject {
+class AuthenticationManager {
 
-    
     func currentUser() throws -> User? {
         let user = Auth.auth().currentUser
         return user

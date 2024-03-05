@@ -30,7 +30,7 @@ struct PortfolioCoinRow: View {
                 .font(.subheadline)
                 .fontWeight(.bold)
                 .foregroundStyle(.primary)
-            Text(calculateTotalPrice().convertCurrency())
+            Text(coin.totalPrice.convertCurrency())
                 .font(.subheadline)
                 .fontWeight(.bold)
                 .frame(width: 130,alignment: .trailing)
@@ -40,22 +40,4 @@ struct PortfolioCoinRow: View {
         }.padding(.horizontal, 15)
             .padding(.vertical, 5)
     }
-}
-
-extension PortfolioCoinRow {
-    
-    private func calculateTotalPrice () -> Double {
-        
-        guard let coinPrice = coin.currentPrice else {
-            return 0
-        }
-        
-        guard let coinHoldings = coin.currentCoinAmount else {
-            return 0
-        }
-        
-        return coinPrice * coinHoldings
-        
-    }
-    
 }

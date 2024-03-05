@@ -23,6 +23,10 @@ class HomeViewViewModel : ObservableObject {
     @Published var portfolioCoinSearchedText : String = ""
     
     @Published var isCompletedSuccessfully : Bool = false
+    @Published var reloadWallet : Bool = false
+    
+    @Published var balance : Double = 0
+    @Published var profit : Double = 0
     
     var filteredMarketCoins: [AllCoinsDataResponseModel] {
         return self.filterCoins(searchedText: marketCoinSearchedText, coins: marketCoins)
@@ -32,13 +36,10 @@ class HomeViewViewModel : ObservableObject {
         return self.filterCoins(searchedText: portfolioCoinSearchedText, coins: portfolioCoins)
     }
     
-    private var userUid : String = ""
     private let databaseManager = DatabaseManager()
-    private let authenticationManager = AuthenticationManager()
-    private var networkService = NetworkService()
+    private let networkService = NetworkService()
     
     init() {
-        signIn()
         getAllCoins()
         getAllUser()
     }
@@ -62,28 +63,29 @@ class HomeViewViewModel : ObservableObject {
         
     }
     
-    func getPortfolioCoins () {
+    func getPortfolioCoins (userId : String) {
         
         Task {
             do {
-                let fetchedCoinsFromFirebase = try await databaseManager.getMultipleDocumentData(userId: userUid)
+                let fetchedCoinsFromFirebase = try await databaseManager.getMultipleDocumentData(userId: userId)
                 let updatedList = fetchedCoinsFromFirebase.compactMap { coinFromFirebase in
                     let coin = marketCoins.first(where: {$0.id == coinFromFirebase.coinId})
                     return coin?.updateHolgins(amount: coinFromFirebase.coinAmount ?? 0)
                 }
                 portfolioCoins = updatedList
+                calculateWalletValues()
             }catch {
                 print("PORTFOLYO ALINAMADI :\(error)")
             }
+            
         }
-        
     }
     
-    func getSingleCoinFromFirebase (coin : AllCoinsDataResponseModel) {
+    func getSingleCoinFromFirebase (userId : String, coin : AllCoinsDataResponseModel) {
         
         Task {
             do {
-                let firebaseCoin = try await databaseManager.getSingleDocumentData(userId: userUid, coinId: coin.id ?? "")
+                let firebaseCoin = try await databaseManager.getSingleDocumentData(userId: userId, coinId: coin.id ?? "")
                 isCoinInPortfolio = true
                 coinAmount = firebaseCoin.coinAmount ?? 0
             }catch {
@@ -95,52 +97,57 @@ class HomeViewViewModel : ObservableObject {
         
     }
     
-    func buyCoin (coin : AllCoinsDataResponseModel, newCoinAmount : Double) {
+    func buyCoin (userId : String, coin : AllCoinsDataResponseModel, newCoinAmount : Double) {
         
         Task {
             if coinAmount != 0 {
                 var coinQuantity = coinAmount
                 coinQuantity += newCoinAmount
                 do {
-                    try await databaseManager.updateData(userId: userUid, coinId: coin.id ?? "", newValue: coinQuantity)
+                    try await databaseManager.updateData(userId: userId, coinId: coin.id ?? "", newValue: coinQuantity)
                     isCompletedSuccessfully = true
+                    reloadWallet = true
                 }catch {
                     print("HomeViewViewModel' de BUY COIN FONKİSYONUNDA COIN UPDATE EDİLMEDİ : \(error)")
                 }
             }else {
                 let data = FirebaseDataModel(coinId: coin.id ?? "", coinAmount: newCoinAmount)
                 do {
-                    try await databaseManager.createData(userId: userUid, data: data)
+                    try await databaseManager.createData(userId: userId, data: data)
                     isCompletedSuccessfully = true
+                    reloadWallet = true
                 }catch {
                     print("HomeViewViewModel' de BUY COIN FONKİSYONUNDA COIN CREATE EDİLMEDİ : \(error)")
                 }
             }
+            
         }
+        
     }
     
-    func sellCoin (coin : AllCoinsDataResponseModel, newCoinAmount : Double) {
+    func sellCoin (userId : String, coin : AllCoinsDataResponseModel, newCoinAmount : Double) {
         
         Task {
             var coinQuantity = coinAmount
             coinQuantity -= newCoinAmount
             if coinQuantity <= 0 {
                 do {
-                    try await databaseManager.deleteData(userId: userUid, coinId: coin.id ?? "")
+                    try await databaseManager.deleteData(userId: userId, coinId: coin.id ?? "")
                     isCompletedSuccessfully = true
+                    reloadWallet = true
                 }catch {
-                    print("CoinExchangeViewViewModel' de SELL COIN FONKİSYONUNDA COIN DELETE EDİLMEDİ : \(error)")
+                    print("SELL COIN FONKİSYONUNDA COIN DELETE EDİLMEDİ : \(error)")
                 }
             }else {
                 do {
-                    try await databaseManager.updateData(userId: userUid, coinId: coin.id ?? "", newValue: coinQuantity )
+                    try await databaseManager.updateData(userId: userId, coinId: coin.id ?? "", newValue: coinQuantity )
                     isCompletedSuccessfully = true
+                    reloadWallet = true
                 }catch {
-                    print("CoinExchangeViewViewModel' de SELL COIN FONKİSYONUNDA COIN UPDATE EDİLMEDİ : \(error)")
+                    print("SELL COIN FONKİSYONUNDA COIN UPDATE EDİLMEDİ : \(error)")
                 }
             }
         }
-        
     }
     
     private func getAllUser () {
@@ -157,23 +164,26 @@ class HomeViewViewModel : ObservableObject {
 
         }
     }
-    
-    private func signIn () {
-        Task {
-            do {
-                if let user = try await authenticationManager.signInAnonymously() {
-                    userUid = user.uid
-                }
-            }catch {
-                print("KULLANICI GİRİŞİNDE HATA : \(error)")
-            }
-            
-        }
-    }
 
 }
 
 extension HomeViewViewModel {
+    
+    private func calculateWalletValues () {
+        let portfolioValue = portfolioCoins.map({$0.totalPrice}).reduce(0, +)
+        let previousValue = portfolioCoins.map { coin in
+            let currentValue = coin.totalPrice
+            let changePercentage = (coin.priceChangePercentage24H ?? 0) / 100
+            let previousValue = currentValue / (1 + changePercentage)
+            return previousValue
+        }
+        let totalPreviousValue = previousValue.reduce(0, +)
+        let totalProfit = ((portfolioValue - totalPreviousValue) / totalPreviousValue) * 100
+        
+        self.balance = portfolioValue
+        self.profit = totalProfit.isNaN ? 0 : totalProfit
+
+    }
     
     private func setUpTopGainersAndLosersCoinList () {
         

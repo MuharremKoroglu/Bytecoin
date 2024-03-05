@@ -10,7 +10,10 @@ import SwiftUI
 struct PortfolioCoinListView: View {
     
     @EnvironmentObject var homeViewModel : HomeViewViewModel
-
+    @EnvironmentObject var launchViewModel : LaunchViewViewModel
+    
+    @State private var isFirstLaunch : Bool = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -25,14 +28,24 @@ struct PortfolioCoinListView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack {
                     ForEach(homeViewModel.filteredPortfolioCoins, id: \.id) { coin in
-                        PortfolioCoinRow(coin: coin)
+                        NavigationLink {
+                            CoinDetailView(coin: coin)
+                        } label: {
+                            PortfolioCoinRow(coin: coin)
+                        }.buttonStyle(PlainButtonStyle())
                     }
                 }
-            }.refreshable {
-                homeViewModel.getPortfolioCoins()
             }
-        }.onAppear{
-            homeViewModel.getPortfolioCoins()
+        }.onAppear {
+            if !isFirstLaunch {
+                homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)
+                isFirstLaunch = true
+            }
+        }
+        .onReceive(homeViewModel.$reloadWallet) { isUpdated in
+            if isUpdated {
+                homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)
+            }
         }
     }
 }

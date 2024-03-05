@@ -11,7 +11,8 @@ struct CoinExchangeButtonView: View {
     
     @Environment(\.presentationMode)  var presentationMode
     
-    @EnvironmentObject var homeViewModel : HomeViewViewModel
+    @EnvironmentObject private var homeViewModel : HomeViewViewModel
+    @EnvironmentObject private var launchViewModel : LaunchViewViewModel
     
     let buttonType : ButtonsModel
     let coin : AllCoinsDataResponseModel
@@ -21,9 +22,9 @@ struct CoinExchangeButtonView: View {
         BuyOrSellButtonItem(isCoinInPortfolio: homeViewModel.isCoinInPortfolio, buttonType: buttonType) {
             switch buttonType {
             case .buy:
-                homeViewModel.buyCoin(coin: coin, newCoinAmount: coinAmount.convertToDouble())
+                homeViewModel.buyCoin(userId : launchViewModel.userId, coin: coin, newCoinAmount: coinAmount.convertToDouble())
             case .sell:
-                homeViewModel.sellCoin(coin: coin, newCoinAmount: coinAmount.convertToDouble())
+                homeViewModel.sellCoin(userId : launchViewModel.userId, coin: coin, newCoinAmount: coinAmount.convertToDouble())
             }
         }.padding(.horizontal,25)
             .padding(.bottom, 15)

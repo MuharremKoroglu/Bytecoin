@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TopGainersView: View {
     
-    @EnvironmentObject private var viewModel : HomeViewViewModel
+    @EnvironmentObject private var homeViewModel : HomeViewViewModel
     
     var body: some View {
         VStack(alignment: .leading,spacing: 10) {
@@ -19,7 +19,7 @@ struct TopGainersView: View {
             
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack {
-                    ForEach(viewModel.topGainerCoins,id: \.id) { coin in
+                    ForEach(homeViewModel.topGainerCoins,id: \.id) { coin in
                         NavigationLink {
                             CoinDetailView(coin: coin)
                         } label: {
