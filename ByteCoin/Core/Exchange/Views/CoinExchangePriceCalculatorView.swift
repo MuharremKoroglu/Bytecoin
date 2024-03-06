@@ -21,7 +21,7 @@ struct CoinExchangePriceCalculatorView: View {
             
             CoinExchangePriceSection(
                 sectionName: "Current Amount",
-                content: homeViewModel.coinAmount.convertDoubleToStringFromInt()
+                content: coin.currentCoinAmount?.convertDoubleToStringFromInt() ?? "0"
             )
             
             CoinExchangeQuantitySection(

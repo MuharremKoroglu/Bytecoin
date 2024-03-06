@@ -20,7 +20,7 @@ struct BuyOrSellButtonsView: View {
     var body: some View {
         HStack {
             
-            BuyOrSellButtonItem(isCoinInPortfolio : homeViewModel.isCoinInPortfolio, buttonType: .sell) {
+            BuyOrSellButtonItem(coin: homeViewModel.updatedCoin ?? coin, buttonType: .sell) {
                 
                 openSellScreen.toggle()
                 
@@ -29,10 +29,10 @@ struct BuyOrSellButtonsView: View {
                 homeViewModel.getSingleCoinFromFirebase(userId : launchViewModel.userId, coin: coin)
                 
             }) {
-                CoinExchangeView(exchangeType: ButtonsModel.sell, coin: coin)
+                CoinExchangeView(exchangeType: ButtonsModel.sell, coin: homeViewModel.updatedCoin ?? coin)
             }
             
-            BuyOrSellButtonItem(buttonType: .buy) {
+            BuyOrSellButtonItem(coin: homeViewModel.updatedCoin ?? coin, buttonType: .buy) {
                 
                 openBuyScreen.toggle()
                 
@@ -41,7 +41,7 @@ struct BuyOrSellButtonsView: View {
                 homeViewModel.getSingleCoinFromFirebase(userId : launchViewModel.userId, coin: coin)
                 
             }) {
-                CoinExchangeView(exchangeType: ButtonsModel.buy, coin: coin)
+                CoinExchangeView(exchangeType: ButtonsModel.buy, coin: homeViewModel.updatedCoin ?? coin)
             }
             
             

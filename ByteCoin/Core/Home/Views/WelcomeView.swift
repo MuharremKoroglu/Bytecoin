@@ -27,7 +27,7 @@ struct WelcomeView: View {
                     isFirstLaunch = true
                 }
             }
-            .onReceive(homeViewModel.$reloadWallet) { isUpdated in
+            .onReceive(homeViewModel.$reloadPortfolio) { isUpdated in
                 if isUpdated {
                     homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)
                 }

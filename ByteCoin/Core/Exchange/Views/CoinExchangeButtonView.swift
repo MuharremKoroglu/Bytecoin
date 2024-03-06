@@ -19,7 +19,7 @@ struct CoinExchangeButtonView: View {
     let coinAmount : String
     
     var body: some View {
-        BuyOrSellButtonItem(isCoinInPortfolio: homeViewModel.isCoinInPortfolio, buttonType: buttonType) {
+        BuyOrSellButtonItem(coin: coin, buttonType: buttonType) {
             switch buttonType {
             case .buy:
                 homeViewModel.buyCoin(userId : launchViewModel.userId, coin: coin, newCoinAmount: coinAmount.convertToDouble())
@@ -36,5 +36,6 @@ struct CoinExchangeButtonView: View {
                     }
                 }
             }
+            
     }
 }

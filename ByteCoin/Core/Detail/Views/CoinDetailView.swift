@@ -9,8 +9,6 @@ import SwiftUI
 
 struct CoinDetailView: View {
     
-    @Environment(\.presentationMode) var presentationMode
-
     let coin : AllCoinsDataResponseModel
     
     var body: some View {
@@ -29,16 +27,7 @@ struct CoinDetailView: View {
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading){
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .imageScale(.large)
-                            .foregroundStyle(.appMain)
-                            .padding(.all, 10)
-                            .bold()
-                        
-                    }
+                    BackButton()
                 }
                 ToolbarItem(placement: .topBarTrailing){
                     HStack {

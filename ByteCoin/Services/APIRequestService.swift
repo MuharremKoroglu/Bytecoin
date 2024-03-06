@@ -76,7 +76,7 @@ enum APIRequestService {
             )
         case .allUsers:
             return AllUserDataRequestModel(
-                results: 5,
+                results: 4,
                 include: "name,picture",
                 nationality: "us",
                 noinfo: "noinfo"

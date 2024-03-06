@@ -16,7 +16,7 @@ struct PortfolioView: View {
                 SearchBarInPortfolioView()
                 PortfolioCoinListView()
                 
-            }.navigationTitle("Your Portfolio")
+            }.navigationTitle("Portfolio")
         }
     }
 }

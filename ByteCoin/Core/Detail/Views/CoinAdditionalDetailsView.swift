@@ -33,14 +33,6 @@ struct CoinAdditionalDetailsView: View {
                       spacing: spacing,
                       content: {
                 CoinDetailItem(
-                    title: "24h High",
-                    value: (coin.high24H?.convertCurrency()) ?? "n/a"
-                )
-                CoinDetailItem(
-                    title: "24h Low",
-                    value: (coin.low24H?.convertCurrency() ?? "n/a")
-                )
-                CoinDetailItem(
                     title: "24h Price Change",
                     value: coin.priceChange24H?.convertCurrency() ?? "n/a",
                     marketCapChange: coin.priceChangePercentage24H

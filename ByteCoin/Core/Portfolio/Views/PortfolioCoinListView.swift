@@ -29,7 +29,7 @@ struct PortfolioCoinListView: View {
                 LazyVStack {
                     ForEach(homeViewModel.filteredPortfolioCoins, id: \.id) { coin in
                         NavigationLink {
-                            CoinDetailView(coin: coin)
+                            PortfolioDetailView(coin: coin)
                         } label: {
                             PortfolioCoinRow(coin: coin)
                         }.buttonStyle(PlainButtonStyle())
@@ -42,7 +42,7 @@ struct PortfolioCoinListView: View {
                 isFirstLaunch = true
             }
         }
-        .onReceive(homeViewModel.$reloadWallet) { isUpdated in
+        .onReceive(homeViewModel.$reloadPortfolio) { isUpdated in
             if isUpdated {
                 homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)
             }

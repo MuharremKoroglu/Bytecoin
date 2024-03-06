@@ -16,17 +16,17 @@ class HomeViewViewModel : ObservableObject {
     @Published var topLoserCoins : [AllCoinsDataResponseModel] = []
     @Published var allUsers : [UserResult] = []
     
-    @Published var isCoinInPortfolio : Bool = false
-    @Published var coinAmount : Double = 0
-    
     @Published var marketCoinSearchedText : String = ""
     @Published var portfolioCoinSearchedText : String = ""
     
     @Published var isCompletedSuccessfully : Bool = false
-    @Published var reloadWallet : Bool = false
+    @Published var isCoinDeletedFromPortfolio : Bool = false
+    @Published var reloadPortfolio : Bool = false
     
     @Published var balance : Double = 0
     @Published var profit : Double = 0
+    
+    @Published var updatedCoin : AllCoinsDataResponseModel?
     
     var filteredMarketCoins: [AllCoinsDataResponseModel] {
         return self.filterCoins(searchedText: marketCoinSearchedText, coins: marketCoins)
@@ -41,7 +41,6 @@ class HomeViewViewModel : ObservableObject {
     
     init() {
         getAllCoins()
-        getAllUser()
     }
     
     func getAllCoins () {
@@ -81,16 +80,14 @@ class HomeViewViewModel : ObservableObject {
         }
     }
     
-    func getSingleCoinFromFirebase (userId : String, coin : AllCoinsDataResponseModel) {
+    func getSingleCoinFromFirebase (userId : String, coin : AllCoinsDataResponseModel){
         
         Task {
             do {
                 let firebaseCoin = try await databaseManager.getSingleDocumentData(userId: userId, coinId: coin.id ?? "")
-                isCoinInPortfolio = true
-                coinAmount = firebaseCoin.coinAmount ?? 0
+                updatedCoin = coin.updateHolgins(amount: firebaseCoin.coinAmount ?? 0)
             }catch {
-                isCoinInPortfolio = false
-                coinAmount = 0
+                updatedCoin = coin.updateHolgins(amount: 0)
                 print("TEKİL PORTFOLYO ALINAMADI :\(error)")
             }
         }
@@ -98,59 +95,62 @@ class HomeViewViewModel : ObservableObject {
     }
     
     func buyCoin (userId : String, coin : AllCoinsDataResponseModel, newCoinAmount : Double) {
-        
+
         Task {
-            if coinAmount != 0 {
-                var coinQuantity = coinAmount
-                coinQuantity += newCoinAmount
-                do {
-                    try await databaseManager.updateData(userId: userId, coinId: coin.id ?? "", newValue: coinQuantity)
+            if var currentAmount = coin.currentCoinAmount {
+                if currentAmount != 0 {
+                    currentAmount += newCoinAmount
+                    do {
+                        try await databaseManager.updateData(userId: userId, coinId: coin.id ?? "", newValue: currentAmount)
+                        isCompletedSuccessfully = true
+                        reloadPortfolio = true
+                    }catch {
+                        print("HomeViewViewModel' de BUY COIN FONKİSYONUNDA COIN UPDATE EDİLMEDİ : \(error)")
+                    }
+                }else {
+                    let data = FirebaseDataModel(coinId: coin.id ?? "", coinAmount: newCoinAmount)
                     isCompletedSuccessfully = true
-                    reloadWallet = true
-                }catch {
-                    print("HomeViewViewModel' de BUY COIN FONKİSYONUNDA COIN UPDATE EDİLMEDİ : \(error)")
-                }
-            }else {
-                let data = FirebaseDataModel(coinId: coin.id ?? "", coinAmount: newCoinAmount)
-                do {
-                    try await databaseManager.createData(userId: userId, data: data)
-                    isCompletedSuccessfully = true
-                    reloadWallet = true
-                }catch {
-                    print("HomeViewViewModel' de BUY COIN FONKİSYONUNDA COIN CREATE EDİLMEDİ : \(error)")
+                    reloadPortfolio = true
+                    do {
+                        try await databaseManager.createData(userId: userId, data: data)
+                    }catch {
+                        print("HomeViewViewModel' de BUY COIN FONKİSYONUNDA COIN CREATE EDİLMEDİ : \(error)")
+                    }
                 }
             }
-            
         }
         
     }
     
     func sellCoin (userId : String, coin : AllCoinsDataResponseModel, newCoinAmount : Double) {
-        
+
         Task {
-            var coinQuantity = coinAmount
-            coinQuantity -= newCoinAmount
-            if coinQuantity <= 0 {
-                do {
-                    try await databaseManager.deleteData(userId: userId, coinId: coin.id ?? "")
-                    isCompletedSuccessfully = true
-                    reloadWallet = true
-                }catch {
-                    print("SELL COIN FONKİSYONUNDA COIN DELETE EDİLMEDİ : \(error)")
-                }
-            }else {
-                do {
-                    try await databaseManager.updateData(userId: userId, coinId: coin.id ?? "", newValue: coinQuantity )
-                    isCompletedSuccessfully = true
-                    reloadWallet = true
-                }catch {
-                    print("SELL COIN FONKİSYONUNDA COIN UPDATE EDİLMEDİ : \(error)")
+            if var currentAmount = coin.currentCoinAmount {
+                currentAmount -= newCoinAmount
+                if currentAmount <= 0 {
+                    do {
+                        try await databaseManager.deleteData(userId: userId, coinId: coin.id ?? "")
+                        isCompletedSuccessfully = true
+                        reloadPortfolio = true
+                        isCoinDeletedFromPortfolio = true
+                    }catch {
+                        print("SELL COIN FONKİSYONUNDA COIN DELETE EDİLMEDİ : \(error)")
+                    }
+                }else {
+                    do {
+                        try await databaseManager.updateData(userId: userId, coinId: coin.id ?? "", newValue: currentAmount )
+                        isCompletedSuccessfully = true
+                        reloadPortfolio = true
+                    }catch {
+                        print("SELL COIN FONKİSYONUNDA COIN UPDATE EDİLMEDİ : \(error)")
+                    }
                 }
             }
         }
+        
     }
     
-    private func getAllUser () {
+    func getAllUser () {
         
         Task {
             let response = try await networkService.networkService(request: APIRequestService.allUsers, data: AllUserDataResponseModel.self)
