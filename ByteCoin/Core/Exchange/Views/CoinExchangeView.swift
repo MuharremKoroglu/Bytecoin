@@ -29,7 +29,7 @@ struct CoinExchangeView: View {
                     CoinExchangeButtonView(
                         buttonType: exchangeType,
                         coin: coin,
-                        coinAmount: coinAmount
+                        coinAmount: $coinAmount
                     )
                     
                 }

@@ -14,28 +14,28 @@ class DatabaseManager {
     
     private let collection = Firestore.firestore().collection("users")
     
-    private func getCollection (documentId : String) -> CollectionReference {
-        return collection.document(documentId).collection("portfolio")
+    private func getCollectionReference (documentId : String, collectionName : FirebaseCollectionName) -> CollectionReference {
+        return collection.document(documentId).collection(collectionName.rawValue)
     }
     
-    private func getDocument (documentId : String, collectionId : String) -> DocumentReference {
-        return collection.document(documentId).collection("portfolio").document(collectionId)
+    private func getDocumentReference (documentId : String, collectionName : FirebaseCollectionName, collectionId : String) -> DocumentReference {
+        return collection.document(documentId).collection(collectionName.rawValue).document(collectionId)
     }
     
-    func createData (userId : String,data : FirebaseDataModel) async throws{
-        try getDocument(documentId: userId, collectionId: data.coinId).setData(from: data, merge: false)
+    func createData <T: Encodable> (userId : String, collectionName : FirebaseCollectionName, collectionId : String ,data : T) async throws{
+        try getDocumentReference(documentId: userId,collectionName: collectionName ,collectionId: collectionId).setData(from: data, merge: false)
     }
     
-    func getSingleDocumentData (userId : String, coinId : String) async throws -> FirebaseDataModel{
-        try await getDocument(documentId: userId, collectionId: coinId).getDocument(as: FirebaseDataModel.self)
+    func getSingleData <T: Decodable> (userId : String,collectionName: FirebaseCollectionName, collectionId : String, objectType: T.Type) async throws -> T{
+        try await getDocumentReference(documentId: userId,collectionName: collectionName ,collectionId: collectionId).getDocument(as: objectType.self)
     }
     
-    func getMultipleDocumentData(userId: String) async throws -> [FirebaseDataModel] {
-        let userCollectionRef = getCollection(documentId: userId)
+    func getMultipleData <T : Decodable> (userId: String,collectionName : FirebaseCollectionName, objectType: T.Type) async throws -> [T] {
+        let userCollectionRef = getCollectionReference(documentId: userId, collectionName: collectionName)
         let querySnapshot = try await userCollectionRef.getDocuments()
-        var dataModels: [FirebaseDataModel] = []
+        var dataModels: [T] = []
         for document in querySnapshot.documents {
-            if let dataModel = try? document.data(as: FirebaseDataModel.self) {
+            if let dataModel = try? document.data(as: objectType.self) {
                 dataModels.append(dataModel)
             }
         }
@@ -43,18 +43,18 @@ class DatabaseManager {
     }
 
     
-    func updateData (userId : String, coinId : String, newValue : Double) async throws{
+    func updateData (userId : String, collectionName : FirebaseCollectionName, collectionId : String, newValue : Double) async throws{
         
         let coinAmountData : [String : Any] = [
-            FirebaseDataModel.CodingKeys.coinAmount.rawValue : newValue
+            FirebasePortfolioDataModel.CodingKeys.coinAmount.rawValue : newValue
         ]
         
-        try await getDocument(documentId: userId, collectionId: coinId).updateData(coinAmountData)
+        try await getDocumentReference(documentId: userId, collectionName: collectionName, collectionId: collectionId).updateData(coinAmountData)
         
     }
     
-    func deleteData (userId : String, coinId : String) async throws{
-       try await getDocument(documentId: userId, collectionId: coinId).delete()
+    func deleteData (userId : String, collectionName : FirebaseCollectionName,  coinId : String) async throws{
+        try await getDocumentReference(documentId: userId, collectionName: collectionName, collectionId: coinId).delete()
     }
     
 

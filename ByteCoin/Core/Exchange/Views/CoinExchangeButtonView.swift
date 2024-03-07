@@ -16,10 +16,10 @@ struct CoinExchangeButtonView: View {
     
     let buttonType : ButtonsModel
     let coin : AllCoinsDataResponseModel
-    let coinAmount : String
+    @Binding var coinAmount : String
     
     var body: some View {
-        BuyOrSellButtonItem(coin: coin, buttonType: buttonType) {
+        BuyOrSellButtonItem(isButtonDisabled: buyOrSellButtonDisabled(), buttonType: buttonType) {
             switch buttonType {
             case .buy:
                 homeViewModel.buyCoin(userId : launchViewModel.userId, coin: coin, newCoinAmount: coinAmount.convertToDouble())
@@ -36,6 +36,15 @@ struct CoinExchangeButtonView: View {
                     }
                 }
             }
-            
     }
+}
+
+extension CoinExchangeButtonView {
+    
+    func buyOrSellButtonDisabled () -> Bool {
+        return buttonType == .sell &&
+               coinAmount.convertToDouble() > coin.currentCoinAmount ?? 0 ||
+               coinAmount.convertToDouble() == 0
+    }
+    
 }

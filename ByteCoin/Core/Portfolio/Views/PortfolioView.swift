@@ -9,13 +9,19 @@ import SwiftUI
 
 struct PortfolioView: View {
     
+    @EnvironmentObject private var homeViewModel : HomeViewViewModel
+    
     var body: some View {
         NavigationStack {
             VStack {
-                
                 SearchBarInPortfolioView()
-                PortfolioCoinListView()
                 
+                if homeViewModel.portfolioCoins.isEmpty {
+                    EmptyView()
+                }else {
+                    PortfolioCoinListView()
+                }
+
             }.navigationTitle("Portfolio")
         }
     }

@@ -30,12 +30,7 @@ struct CoinDetailView: View {
                     BackButton()
                 }
                 ToolbarItem(placement: .topBarTrailing){
-                    HStack {
-                        Text(coin.symbol?.uppercased() ?? "")
-                            .font(.callout)
-                            .foregroundStyle(.gray)
-                        DownloadImageAsync(url: coin.image ?? "")
-                    }
+                    CoinDetailAddWatchListView(coin: coin)
                 }
             }
         }

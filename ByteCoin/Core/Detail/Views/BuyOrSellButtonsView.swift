@@ -20,25 +20,25 @@ struct BuyOrSellButtonsView: View {
     var body: some View {
         HStack {
             
-            BuyOrSellButtonItem(coin: homeViewModel.updatedCoin ?? coin, buttonType: .sell) {
+            BuyOrSellButtonItem(isButtonDisabled : buyOrSellButtonDisabled(), buttonType: .sell) {
                 
                 openSellScreen.toggle()
                 
             }.sheet(isPresented: $openSellScreen,onDismiss: {
                 
-                homeViewModel.getSingleCoinFromFirebase(userId : launchViewModel.userId, coin: coin)
+                homeViewModel.getSinglePortfolioCoin(userId : launchViewModel.userId, coin: coin)
                 
             }) {
                 CoinExchangeView(exchangeType: ButtonsModel.sell, coin: homeViewModel.updatedCoin ?? coin)
             }
             
-            BuyOrSellButtonItem(coin: homeViewModel.updatedCoin ?? coin, buttonType: .buy) {
+            BuyOrSellButtonItem(buttonType: .buy) {
                 
                 openBuyScreen.toggle()
                 
             }.sheet(isPresented: $openBuyScreen,onDismiss: {
                 
-                homeViewModel.getSingleCoinFromFirebase(userId : launchViewModel.userId, coin: coin)
+                homeViewModel.getSinglePortfolioCoin(userId : launchViewModel.userId, coin: coin)
                 
             }) {
                 CoinExchangeView(exchangeType: ButtonsModel.buy, coin: homeViewModel.updatedCoin ?? coin)
@@ -47,8 +47,16 @@ struct BuyOrSellButtonsView: View {
             
         }.padding()
             .onAppear{
-                homeViewModel.getSingleCoinFromFirebase(userId : launchViewModel.userId, coin: coin)
+                homeViewModel.getSinglePortfolioCoin(userId : launchViewModel.userId, coin: coin)
             }
+    }
+    
+}
+
+extension BuyOrSellButtonsView {
+    
+    func buyOrSellButtonDisabled () -> Bool {
+        return homeViewModel.updatedCoin?.currentCoinAmount == 0
     }
     
 }

@@ -40,6 +40,4 @@ enum ButtonsModel : String {
         }
     }
     
-    
-    
 }

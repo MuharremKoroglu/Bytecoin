@@ -16,7 +16,7 @@ struct HomeView: View {
                     WelcomeView()
                     TopGainersView()
                     TopLoserView()
-                    RecentTransactionsView()
+                    WatchListView()
                 }
             }
         }

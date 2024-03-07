@@ -22,7 +22,7 @@ struct PortfolioViewBuyOrSellButtons: View {
     var body: some View {
         HStack {
             
-            BuyOrSellButtonItem(coin: coin, buttonType: .sell) {
+            BuyOrSellButtonItem(buttonType: .sell) {
                 
                 openSellScreen.toggle()
                 
@@ -30,7 +30,7 @@ struct PortfolioViewBuyOrSellButtons: View {
                 CoinExchangeView(exchangeType: ButtonsModel.sell, coin: coin)
             })
             
-            BuyOrSellButtonItem(coin: coin,buttonType: .buy) {
+            BuyOrSellButtonItem(buttonType: .buy) {
                 
                 openBuyScreen.toggle()
                 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FirebaseDataModel : Codable {
+struct FirebasePortfolioDataModel : Codable {
     
     let coinId : String
     let coinAmount : Double?
