@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PortfolioViewBuyOrSellButtons: View {
+struct PortfolioDetailBuyOrSellButtons: View {
     
     @Environment(\.presentationMode)  var presentationMode
     

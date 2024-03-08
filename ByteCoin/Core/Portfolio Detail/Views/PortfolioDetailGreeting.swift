@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PortfolioCoinGreeting: View {
+struct PortfolioDetailGreeting: View {
     
     let coin : AllCoinsDataResponseModel
     
@@ -47,7 +47,7 @@ struct PortfolioCoinGreeting: View {
     }
 }
 
-extension PortfolioCoinGreeting {
+extension PortfolioDetailGreeting {
     
     private func calculateTheProfit () -> Double {
         let totalPrice = coin.totalPrice

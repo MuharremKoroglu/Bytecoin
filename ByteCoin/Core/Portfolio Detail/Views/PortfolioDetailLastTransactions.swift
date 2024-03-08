@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PortfolioViewLastTransactions: View {
+struct PortfolioDetailLastTransactions: View {
     
     @EnvironmentObject private var homeViewModel : HomeViewViewModel
     

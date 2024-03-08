@@ -36,13 +36,11 @@ struct WatchListView: View {
                 if !isFirstLaunch {
                     homeViewModel.getWatchListCoins(userId: launchViewModel.userId)
                     isFirstLaunch = true
-                    print("ANA EKRANDAKİ WATCH LİST ALINDA ONAPPEAR")
                 }
             }
             .onReceive(homeViewModel.$reloadWatchList) { isUpdated in
                 if isUpdated {
                     homeViewModel.getWatchListCoins(userId: launchViewModel.userId)
-                    print("ANA EKRANDAKİ WATCH LİST GÜNCELLENDİ ONRECEİVE")
                 }
             }
     }

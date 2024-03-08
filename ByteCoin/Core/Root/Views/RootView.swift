@@ -30,7 +30,7 @@ struct RootView: View {
                         HomeView().tag(1)
                         MarketView().tag(2)
                         PortfolioView().tag(3)
-                        Text("Tab Content 4").tag(4)
+                        SettingsView().tag(4)
                         
                     }
                     CustomTabBar(selectedTab: $selectedTab)

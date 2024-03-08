@@ -30,7 +30,7 @@ struct CoinDetailView: View {
                     BackButton()
                 }
                 ToolbarItem(placement: .topBarTrailing){
-                    CoinDetailAddWatchListView(coin: coin)
+                    AddWatchListSharedView(coin: coin)
                 }
             }
         }

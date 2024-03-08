@@ -14,16 +14,19 @@ struct PortfolioDetailView: View {
     var body: some View {
         ScrollView(.vertical,showsIndicators: false) {
             VStack(alignment: .leading) {
-                PortfolioCoinGreeting(coin: coin)
-                PortfolioViewBuyOrSellButtons(coin: coin)
+                PortfolioDetailGreeting(coin: coin)
+                PortfolioDetailBuyOrSellButtons(coin: coin)
                 PortfolioCoinDetails(coin: coin)
-                PortfolioViewLastTransactions()
+                PortfolioDetailLastTransactions()
             }
         }.navigationBarBackButtonHidden()
             .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading){
                 BackButton()
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                AddWatchListSharedView(coin: coin)
             }
         }
         

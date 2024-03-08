@@ -24,7 +24,7 @@ struct AddWatchListButtonItem: View {
             } label: {
                 Image(systemName: isInWatchList ? "star.fill" : "star")
                     .font(.system(size: 20))
-                    .foregroundStyle(.yellow)
+                    .foregroundStyle(.appMain)
                     .scaledToFit()
             }
 

@@ -14,7 +14,7 @@ struct EmptyView: View {
             VStack(spacing: 15) {
                 LottieView(animationName: "portfolio")
                     .frame(width: size.width, height: size.height * 0.4)
-                Text("Your portfolio looks empty :(")
+                Text("Your portfolio looks empty")
                     .font(.title2)
                     .fontWeight(.bold)
                 Text("Check out the coin market to add a new coin to your portfolio.")
