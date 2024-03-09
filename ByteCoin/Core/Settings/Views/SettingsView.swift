@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    
+    @StateObject private var settingsViewModel = SettingsViewViewModel()
+    
     var body: some View {
         
         NavigationStack {
@@ -17,17 +22,12 @@ struct SettingsView: View {
                     SectionItem(sectionType: .project, imageWidth: size.width * 0.25, imageHeight: size.height * 0.15)
                     SectionItem(sectionType: .firebase, imageHeight: size.height * 0.15)
                     SectionItem(sectionType: .coinApi, imageHeight: size.height * 0.15)
+                    SectionItem(sectionType: .userApi, imageWidth: size.width * 0.25, imageHeight: size.height * 0.15)
                     SectionItem(sectionType: .kafein, imageHeight: size.height * 0.15)
-                    
-
+                    AccountSectionView(settingsViewModel: settingsViewModel)
                 }.navigationTitle("Settings")
             }
 
-            
         }
     }
-}
-
-#Preview {
-    SettingsView()
 }

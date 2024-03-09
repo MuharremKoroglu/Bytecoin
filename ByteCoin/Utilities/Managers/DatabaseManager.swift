@@ -14,6 +14,10 @@ class DatabaseManager {
     
     private let collection = Firestore.firestore().collection("users")
     
+    private func getUsersDocumentReference(documentId : String) -> DocumentReference {
+        return collection.document(documentId)
+    }
+    
     private func getCollectionReference (documentId : String, collectionName : FirebaseCollectionName) -> CollectionReference {
         return collection.document(documentId).collection(collectionName.rawValue)
     }
@@ -55,6 +59,18 @@ class DatabaseManager {
     
     func deleteData (userId : String, collectionName : FirebaseCollectionName,  coinId : String) async throws{
         try await getDocumentReference(documentId: userId, collectionName: collectionName, collectionId: coinId).delete()
+    }
+    
+    func deleteUserData (userId : String) async throws{
+        
+        for collectionName in FirebaseCollectionName.allCases {
+            let subcollectionRef = getCollectionReference(documentId: userId, collectionName: collectionName)
+            let documents = try await subcollectionRef.getDocuments().documents
+            for document in documents {
+                try await document.reference.delete()
+            }
+        }
+    
     }
     
 

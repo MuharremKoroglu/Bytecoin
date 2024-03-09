@@ -1,28 +1,31 @@
 //
-//  LaunchView.swift
+//  GoodByeView.swift
 //  ByteCoin
 //
-//  Created by Muharrem Köroğlu on 5.03.2024.
+//  Created by Muharrem Köroğlu on 9.03.2024.
 //
 
 import SwiftUI
 
-struct LaunchView: View {
-    
+struct GoodByeView: View {
     var body: some View {
         GeometryReader { geometry in
             let size = geometry.size
             VStack {
-                LottieView(animationName: "crypto")
+                LottieView(animationName: "bye")
                     .frame(width: size.width , height: size.height * 0.3)
-                Text("Welcome to ByteCoin")
-                    .font(.title.italic())
+                Text("Goodbye for Now, ByteCoiner")
+                    .font(.title2.italic())
                     .fontWeight(.bold)
-                Text("Loading Your Profile")
+                Text("Thanks for joining us!")
                     .font(.headline)
                     .padding(.top,5)
 
             }.frame(width: size.width, height: size.height)
         }
     }
+}
+
+#Preview {
+    GoodByeView()
 }

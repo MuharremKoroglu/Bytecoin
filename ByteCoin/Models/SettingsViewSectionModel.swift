@@ -70,7 +70,7 @@ enum SettingsViewSectionModel {
         case .coinApi:
             "Check out the CoinGecko 🤑"
         case .userApi:
-            "Check out the Random User Generator 🏃"
+            "Visit Random User Generator 🏃"
         case .kafein:
             "Visit Kafein Technology Solutions 🏢"
         }

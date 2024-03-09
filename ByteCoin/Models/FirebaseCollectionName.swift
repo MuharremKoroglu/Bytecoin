@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FirebaseCollectionName : String{
+enum FirebaseCollectionName : String, CaseIterable{
     case portfolio
     case watchlist
 }

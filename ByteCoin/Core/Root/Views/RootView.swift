@@ -14,7 +14,7 @@ struct RootView: View {
     
     @State private var selectedTab : Int = 1
     @State private var isLaunching : Bool = true
-
+    
     init() {
         UITabBar.appearance().isHidden = true
     }
@@ -35,7 +35,6 @@ struct RootView: View {
                     }
                     CustomTabBar(selectedTab: $selectedTab)
                 }.ignoresSafeArea(.keyboard)
-                    
             }
         }.environmentObject(homeViewModel)
             .environmentObject(launchViewModel)
@@ -51,6 +50,7 @@ struct RootView: View {
                     }
                 }
             }
+        
     }
 }
 
