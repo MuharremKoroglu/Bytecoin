@@ -36,13 +36,7 @@ struct PortfolioCoinListView: View {
                     }
                 }
             }
-        }.onAppear {
-            if !isFirstLaunch {
-                homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)
-                isFirstLaunch = true
-            }
-        }
-        .onReceive(homeViewModel.$reloadPortfolio) { isUpdated in
+        }.onReceive(homeViewModel.$reloadPortfolio) { isUpdated in
             if isUpdated {
                 homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)
             }

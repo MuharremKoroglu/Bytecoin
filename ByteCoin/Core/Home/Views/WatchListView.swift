@@ -32,11 +32,12 @@ struct WatchListView: View {
                 }
             }
         }.padding(.horizontal, 15)
-            .onAppear {
-                if !isFirstLaunch {
+            .onReceive(launchViewModel.$isAuthenticated) { isAuthenticated in
+                if isAuthenticated {
                     homeViewModel.getWatchListCoins(userId: launchViewModel.userId)
-                    isFirstLaunch = true
+                    print("WATCH LİST ALINDI")
                 }
+                
             }
             .onReceive(homeViewModel.$reloadWatchList) { isUpdated in
                 if isUpdated {

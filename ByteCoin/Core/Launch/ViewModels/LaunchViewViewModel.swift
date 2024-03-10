@@ -34,8 +34,5 @@ class LaunchViewViewModel : ObservableObject {
                 print("FIREBASE KULLANICI GİRİŞİNDE HATA : \(error)")
             }
         }
-    }
-    
-    
-    
+    } 
 }

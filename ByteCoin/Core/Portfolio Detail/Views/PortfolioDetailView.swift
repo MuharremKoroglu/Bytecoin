@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct PortfolioDetailView: View {
-        
+    
+    @StateObject private var viewModel = PortfolioDetailViewViewModel()
+    
     let coin : AllCoinsDataResponseModel
     
     var body: some View {
@@ -17,7 +19,7 @@ struct PortfolioDetailView: View {
                 PortfolioDetailGreeting(coin: coin)
                 PortfolioDetailBuyOrSellButtons(coin: coin)
                 PortfolioCoinDetails(coin: coin)
-                PortfolioDetailLastTransactions()
+                PortfolioDetailLastTransactions(viewModel: viewModel)
             }
         }.navigationBarBackButtonHidden()
             .navigationBarTitleDisplayMode(.inline)

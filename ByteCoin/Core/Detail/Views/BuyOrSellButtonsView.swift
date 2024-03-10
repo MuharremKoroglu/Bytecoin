@@ -48,6 +48,7 @@ struct BuyOrSellButtonsView: View {
         }.padding()
             .onAppear{
                 homeViewModel.getSinglePortfolioCoin(userId : launchViewModel.userId, coin: coin)
+                print("UPDATE OLMUŞ COİN AL SAT BUTONLARI ONAPPEAR'DA : \(homeViewModel.updatedCoin)")
             }
     }
     

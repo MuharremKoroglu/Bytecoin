@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LaunchView: View {
     
+    @EnvironmentObject private var launchViewModel : LaunchViewViewModel
+    
     var body: some View {
         GeometryReader { geometry in
             let size = geometry.size
@@ -23,6 +25,9 @@ struct LaunchView: View {
                     .padding(.top,5)
 
             }.frame(width: size.width, height: size.height)
+                .onAppear{
+                    launchViewModel.signIn()
+                }
         }
     }
 }

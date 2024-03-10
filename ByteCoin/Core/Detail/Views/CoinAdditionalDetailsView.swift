@@ -11,16 +11,12 @@ struct CoinAdditionalDetailsView: View {
     
     let coin : AllCoinsDataResponseModel
     
-    private var columns : [GridItem] = [
+    private let columns : [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible()),
     ]
     
-    private var spacing : CGFloat = 30
-    
-    init(coin: AllCoinsDataResponseModel) {
-        self.coin = coin
-    }
+    private let spacing : CGFloat = 30
     
     var body: some View {
         VStack (alignment : .leading) {

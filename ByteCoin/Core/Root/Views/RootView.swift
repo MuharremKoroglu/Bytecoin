@@ -38,12 +38,9 @@ struct RootView: View {
             }
         }.environmentObject(homeViewModel)
             .environmentObject(launchViewModel)
-            .onAppear{
-                launchViewModel.signIn()
-            }
             .onReceive(launchViewModel.$isAuthenticated) { isAuthenticated in
                 if isAuthenticated {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                         withAnimation(.spring) {
                             isLaunching = false
                         }

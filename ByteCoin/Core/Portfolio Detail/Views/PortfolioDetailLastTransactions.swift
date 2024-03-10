@@ -9,11 +9,11 @@ import SwiftUI
 
 struct PortfolioDetailLastTransactions: View {
     
-    @EnvironmentObject private var homeViewModel : HomeViewViewModel
+    @StateObject var viewModel : PortfolioDetailViewViewModel
     
-    private var spacing : CGFloat = 30
+    private let spacing : CGFloat = 30
      
-    private var columns : [GridItem] = [
+    private let columns : [GridItem] = [
          GridItem(.flexible()),
          GridItem(.flexible()),
      ]
@@ -28,13 +28,13 @@ struct PortfolioDetailLastTransactions: View {
                       alignment: .leading,
                       spacing: spacing,
                       content: {
-                ForEach(homeViewModel.allUsers, id: \.id) { user in
+                ForEach(viewModel.allUsers, id: \.id) { user in
                     RecentTransaction(user: user)
                 }
             })
         }.padding()
             .onAppear{
-                homeViewModel.getAllUser()
+                viewModel.getAllUser()
             }
     }
 }

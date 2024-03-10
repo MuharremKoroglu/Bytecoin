@@ -17,12 +17,8 @@ struct AddWatchListSharedView: View {
     var body: some View {
         VStack {
             
-            AddWatchListButtonItem(isInWatchList: homeViewModel.isInWatchList) {
-                if homeViewModel.isInWatchList {
-                    homeViewModel.deleteCoinFromWatchList(userId: launchViewModel.userId, coin: coin)
-                }else {
-                    homeViewModel.setNewWatchListCoin(userId: launchViewModel.userId, coin: coin)
-                }
+            AddWatchListButtonItem(isInWatchList: homeViewModel.updatedCoin?.isInWatchList ?? false) {
+                homeViewModel.setNewWatchListCoin(userId: launchViewModel.userId, coin: homeViewModel.updatedCoin ?? coin)
             }
             
         }.onAppear {

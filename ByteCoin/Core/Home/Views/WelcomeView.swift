@@ -21,10 +21,11 @@ struct WelcomeView: View {
             AccountBalance(accountBalance: homeViewModel.balance, accountProfit: homeViewModel.profit)
             
         }.padding(.horizontal, 15)
-            .onAppear {
-                if !isFirstLaunch {
+            .onReceive(launchViewModel.$isAuthenticated) { isAuthenticated in
+                print("AUTHENTİCATİON DEĞERİ : \(isAuthenticated)")
+                if isAuthenticated {
                     homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)
-                    isFirstLaunch = true
+                    print("PORTFOLYO ALINDI")
                 }
             }
             .onReceive(homeViewModel.$reloadPortfolio) { isUpdated in

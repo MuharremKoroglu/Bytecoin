@@ -22,7 +22,7 @@ enum SettingsViewSectionModel {
         case .firebase:
             "Firebase"
         case .coinApi:
-            "Coin"
+            "CoinGecko"
         case .userApi:
             "Random User Generator"
         case .kafein:

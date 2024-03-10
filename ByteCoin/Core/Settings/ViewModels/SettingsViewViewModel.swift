@@ -36,16 +36,17 @@ class SettingsViewViewModel : ObservableObject {
             do {
                 if let currentUser = try authenticationManager.currentUser() {
                     do {
-                        try authenticationManager.deleteAccount()
+                        try await databaseManager.deleteUserData(userId: currentUser.uid)
                         do {
-                            try await databaseManager.deleteUserData(userId: currentUser.uid)
+                            try authenticationManager.deleteAccount()
                             print("KULLANICI SİLME BAŞARILI")
                             isCompleted = true
                         }catch {
-                            print("KULLANICI VERİLERİ SİLİNEMEDİ : \(error)")
+                            print("KULLANICI SİLİNEMEDİ : \(error)")
+
                         }
                     }catch {
-                        print("KULLANICI SİLİNEMEDİ : \(error)")
+                        print("KULLANICI VERİLERİ SİLİNEMEDİ : \(error)")
                     }
                 }
             }catch {
