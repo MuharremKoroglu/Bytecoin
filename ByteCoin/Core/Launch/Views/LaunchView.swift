@@ -10,6 +10,9 @@ import SwiftUI
 struct LaunchView: View {
     
     @EnvironmentObject private var launchViewModel : LaunchViewViewModel
+    @EnvironmentObject private var homeViewModel : HomeViewViewModel
+    
+    @Binding var dataLoadingFinished : Bool
     
     var body: some View {
         GeometryReader { geometry in
@@ -25,8 +28,14 @@ struct LaunchView: View {
                     .padding(.top,5)
 
             }.frame(width: size.width, height: size.height)
-                .onAppear{
-                    launchViewModel.signIn()
+                .task{
+                    await homeViewModel.getAllCoins()
+                    await launchViewModel.signIn()
+                    await homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)
+                    await homeViewModel.getWatchListCoins(userId: launchViewModel.userId)
+                    withAnimation(.spring) {
+                        dataLoadingFinished = false
+                    }
                 }
         }
     }

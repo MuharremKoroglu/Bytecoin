@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CoinExchangeView: View {
     
+    @EnvironmentObject private var homeViewModel : HomeViewViewModel
+    
     @State private var coinAmount : String = ""
     
     let exchangeType : ButtonsModel
@@ -32,7 +34,12 @@ struct CoinExchangeView: View {
                         coinAmount: $coinAmount
                     )
                     
-                }
+                }.overlay(alignment: .center, content: {
+                    if homeViewModel.startProgressIndicator {
+                        CustomProgressView()
+                    }
+                    
+                })
             }.navigationTitle(exchangeType.buttonTitle)
             
         }

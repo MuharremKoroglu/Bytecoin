@@ -69,6 +69,7 @@
 		3B91B58E2B92051B00126E1F /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B58D2B92051B00126E1F /* FirebaseStorageCombine-Community */; };
 		3B91B5902B920D0700126E1F /* FirebasePortfolioDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B91B58F2B920D0700126E1F /* FirebasePortfolioDataModel.swift */; };
 		3B94D70E2B9DCF670049A75A /* PortfolioDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B94D70D2B9DCF670049A75A /* PortfolioDetailViewViewModel.swift */; };
+		3B9F9A1A2BA384F900861C96 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9F9A192BA384F900861C96 /* CustomProgressView.swift */; };
 		3BA5D0762B8C67F1006AD8A0 /* CoinDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D0752B8C67F1006AD8A0 /* CoinDetailItem.swift */; };
 		3BA5D07C2B8CB341006AD8A0 /* DownloadImageAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D07B2B8CB341006AD8A0 /* DownloadImageAsync.swift */; };
 		3BA6FC932B8DE4D8002E675F /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA6FC922B8DE4D8002E675F /* LineChart.swift */; };
@@ -151,6 +152,7 @@
 		3B91B5362B92037200126E1F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B91B58F2B920D0700126E1F /* FirebasePortfolioDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePortfolioDataModel.swift; sourceTree = "<group>"; };
 		3B94D70D2B9DCF670049A75A /* PortfolioDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDetailViewViewModel.swift; sourceTree = "<group>"; };
+		3B9F9A192BA384F900861C96 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		3BA5D0752B8C67F1006AD8A0 /* CoinDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailItem.swift; sourceTree = "<group>"; };
 		3BA5D07B2B8CB341006AD8A0 /* DownloadImageAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageAsync.swift; sourceTree = "<group>"; };
 		3BA6FC922B8DE4D8002E675F /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 				3BE95C902B984FCB0097EB04 /* BackButton.swift */,
 				3BD57B8B2B99D6D6004DFD11 /* AddWatchListButtonItem.swift */,
 				3B2DDBA22B9B972C003E2110 /* SectionItem.swift */,
+				3B9F9A192BA384F900861C96 /* CustomProgressView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -772,6 +775,7 @@
 				3BE2DADF2B88CF1B003E3D18 /* AllCoinView.swift in Sources */,
 				3BBEE2F92B87512100E0F19F /* UserWelcome.swift in Sources */,
 				3BD563562B9CE13500DB9217 /* AccountSectionView.swift in Sources */,
+				3B9F9A1A2BA384F900861C96 /* CustomProgressView.swift in Sources */,
 				3BF90A0B2B87AC95007B1BED /* TopGainersView.swift in Sources */,
 				3B1C10FA2B86255500C0100F /* HomeView.swift in Sources */,
 				3B6984982B8F69C800FA233B /* ButtonsModel.swift in Sources */,

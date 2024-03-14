@@ -38,7 +38,11 @@ struct PortfolioCoinListView: View {
             }
         }.onReceive(homeViewModel.$reloadPortfolio) { isUpdated in
             if isUpdated {
-                homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)
+                Task {
+                   await homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)
+                    print("PORTOLYO PORTOLYO EKRANINDA RELOAD EDİLDİ")
+                }
+                
             }
         }
     }

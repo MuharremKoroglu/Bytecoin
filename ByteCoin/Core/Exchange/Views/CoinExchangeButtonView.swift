@@ -16,6 +16,7 @@ struct CoinExchangeButtonView: View {
     
     let buttonType : ButtonsModel
     let coin : AllCoinsDataResponseModel
+    
     @Binding var coinAmount : String
     
     var body: some View {

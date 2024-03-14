@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CoinExchangePriceCalculatorView: View {
     
-    @EnvironmentObject var homeViewModel : HomeViewViewModel
+    @EnvironmentObject private var homeViewModel : HomeViewViewModel
     
     @Binding var transactionCoinAmount : String
     

@@ -25,6 +25,8 @@ class HomeViewViewModel : ObservableObject {
     
     @Published var reloadWatchList : Bool = false
     
+    @Published var startProgressIndicator : Bool = false
+    
     @Published var balance : Double = 0
     @Published var profit : Double = 0
     
@@ -41,103 +43,91 @@ class HomeViewViewModel : ObservableObject {
     private let databaseManager = DatabaseManager()
     private let networkService = NetworkService()
     
-    init() {
-        getAllCoins()
-    }
-    
-    func getAllCoins () {
-                
-        Task {
-            let response = try await networkService.networkService(
-                request: APIRequestService.allCoinCurrencies,
-                data: [AllCoinsDataResponseModel].self
-            )
-            
-            switch response {
-            case .success(let allCryptos):
-                marketCoins = allCryptos
-                setUpTopGainersAndLosersCoinList()
-            case .failure(let error):
-                print("COİN VERİLERİ GETİRİLEMEDİ : \(error)")
-            }
+    func getAllCoins () async {
+        
+        let response =  await networkService.networkService(
+            request: APIRequestService.allCoinCurrencies,
+            data: [AllCoinsDataResponseModel].self
+        )
+        
+        switch response {
+        case .success(let allCryptos):
+            marketCoins = allCryptos
+            setUpTopGainersAndLosersCoinList()
+        case .failure(let error):
+            print("COİN VERİLERİ GETİRİLEMEDİ : \(error)")
         }
         
     }
     
-    func getPortfolioCoins (userId : String) {
+    func getPortfolioCoins (userId : String) async {
         
-        Task {
-            do {
-                let fetchedCoinsFromFirebase = try await databaseManager.getMultipleData(userId: userId, collectionName: .portfolio, objectType: FirebasePortfolioDataModel.self)
-                let updatedList = fetchedCoinsFromFirebase.compactMap { coinFromFirebase in
-                    let coin = marketCoins.first(where: {$0.id == coinFromFirebase.coinId})
-                    let watchCoin = watchListCoins.first(where: {$0.id == coinFromFirebase.coinId})
-                    let isInWatchList = coin?.id == watchCoin?.id
-                    return coin?.updateHoldingsAndWatchList(amount:coinFromFirebase.coinAmount ?? 0, isInWatchList: isInWatchList)
-                }
-                let sortedPortfolioList = updatedList.sorted(by: {$0.totalPrice > $1.totalPrice})
-                portfolioCoins = sortedPortfolioList
-                calculateWalletValues()
-                reloadPortfolio = false
-            }catch {
-                print("PORTFOLYO ALINAMADI :\(error)")
+        do {
+            let fetchedCoinsFromFirebase = try await databaseManager.getMultipleData(userId: userId, collectionName: .portfolio, objectType: FirebasePortfolioDataModel.self)
+            let updatedList = fetchedCoinsFromFirebase.compactMap { coinFromFirebase in
+                let coin = marketCoins.first(where: {$0.id == coinFromFirebase.coinId})
+                let watchCoin = watchListCoins.first(where: {$0.id == coinFromFirebase.coinId})
+                let isInWatchList = coin?.id == watchCoin?.id
+                return coin?.updateHoldingsAndWatchList(amount:coinFromFirebase.coinAmount ?? 0, isInWatchList: isInWatchList)
             }
-            
-        }
-    }
-    
-    func getWatchListCoins (userId : String) {
-        Task {
-            do {
-                let fetchedWatchListCoinsFromFirebase = try await databaseManager.getMultipleData(userId: userId, collectionName: .watchlist, objectType: FirebaseWatchListDataModel.self)
-                let updatedWatchList = fetchedWatchListCoinsFromFirebase.compactMap { coinFromFirebase in
-                    let coin = marketCoins.first(where: {$0.id == coinFromFirebase.coinId})
-                    let portfolioCoin = portfolioCoins.first(where: {$0.id == coinFromFirebase.coinId})
-                    return coin?.updateHoldingsAndWatchList(amount: portfolioCoin?.currentCoinAmount ?? 0, isInWatchList: true)
-                }
-                let sortedWatchList = updatedWatchList.sorted(by: {$0.marketCapRank ?? 0 < $1.marketCapRank ?? 1})
-                watchListCoins = sortedWatchList
-                reloadWatchList = false
-            }catch {
-                print("WATCH LİST ALINAMADI :\(error)")
-            }
-        }
-    }
-    
-    func getSinglePortfolioCoin (userId : String, coin : AllCoinsDataResponseModel){
-        
-        Task {
-            do {
-                let firebaseCoin = try await databaseManager.getSingleData(userId: userId, collectionName: .portfolio, collectionId: coin.id ?? "", objectType: FirebasePortfolioDataModel.self)
-                let watchCoin = watchListCoins.first(where: {$0.id == firebaseCoin.coinId})
-                let isInWatchList = watchCoin?.id == firebaseCoin.coinId
-                updatedCoin = coin.updateHoldingsAndWatchList(amount: firebaseCoin.coinAmount ?? 0, isInWatchList: isInWatchList)
-                reloadPortfolio = false
-            }catch {
-                let watchCoin = watchListCoins.first(where: {$0.id == coin.id})
-                let isInWatchList = watchCoin?.id == coin.id
-                updatedCoin = coin.updateHoldingsAndWatchList(amount: 0, isInWatchList: isInWatchList)
-                reloadPortfolio = false
-                print("TEKİL PORTFOLYO ALINAMADI :\(error)")
-            }
+            let sortedPortfolioList = updatedList.sorted(by: {$0.totalPrice > $1.totalPrice})
+            portfolioCoins = sortedPortfolioList
+            calculateWalletValues()
+            reloadPortfolio = false
+        }catch {
+            print("PORTFOLYO ALINAMADI :\(error)")
         }
         
     }
     
-    func getSingleWatchListCoin (userId : String, coin : AllCoinsDataResponseModel) {
+    func getWatchListCoins (userId : String) async {
         
-        Task {
-            do {
-                let firebaseCoin = try await databaseManager.getSingleData(userId: userId, collectionName: .watchlist, collectionId: coin.id ?? "", objectType: FirebaseWatchListDataModel.self)
-                let portfolioCoin = portfolioCoins.first(where: {$0.id == firebaseCoin.coinId})
-                updatedCoin = coin.updateHoldingsAndWatchList(amount: portfolioCoin?.currentCoinAmount ?? 0, isInWatchList: true)
-                reloadWatchList = false
-            }catch {
-                let portfolioCoin = portfolioCoins.first(where: {$0.id == coin.id})
-                updatedCoin = coin.updateHoldingsAndWatchList(amount: portfolioCoin?.currentCoinAmount ?? 0, isInWatchList: false)
-                reloadWatchList = false
-                print("TEKİL WATCH LİST COİN ALINAMADI :\(error)")
+        do {
+            let fetchedWatchListCoinsFromFirebase = try await databaseManager.getMultipleData(userId: userId, collectionName: .watchlist, objectType: FirebaseWatchListDataModel.self)
+            let updatedWatchList = fetchedWatchListCoinsFromFirebase.compactMap { coinFromFirebase in
+                let coin = marketCoins.first(where: {$0.id == coinFromFirebase.coinId})
+                let portfolioCoin = portfolioCoins.first(where: {$0.id == coinFromFirebase.coinId})
+                return coin?.updateHoldingsAndWatchList(amount: portfolioCoin?.currentCoinAmount ?? 0, isInWatchList: true)
             }
+            let sortedWatchList = updatedWatchList.sorted(by: {$0.marketCapRank ?? 0 < $1.marketCapRank ?? 1})
+            watchListCoins = sortedWatchList
+            reloadWatchList = false
+        }catch {
+            print("WATCH LİST ALINAMADI :\(error)")
+        }
+        
+    }
+    
+    func getSinglePortfolioCoin (userId : String, coin : AllCoinsDataResponseModel) async {
+        
+        do {
+            let firebaseCoin = try await databaseManager.getSingleData(userId: userId, collectionName: .portfolio, collectionId: coin.id ?? "", objectType: FirebasePortfolioDataModel.self)
+            let watchCoin = watchListCoins.first(where: {$0.id == firebaseCoin.coinId})
+            let isInWatchList = watchCoin?.id == firebaseCoin.coinId
+            updatedCoin = coin.updateHoldingsAndWatchList(amount: firebaseCoin.coinAmount ?? 0, isInWatchList: isInWatchList)
+            reloadPortfolio = false
+        }catch {
+            let watchCoin = watchListCoins.first(where: {$0.id == coin.id})
+            let isInWatchList = watchCoin?.id == coin.id
+            updatedCoin = coin.updateHoldingsAndWatchList(amount: 0, isInWatchList: isInWatchList)
+            reloadPortfolio = false
+            print("TEKİL PORTFOLYO ALINAMADI :\(error)")
+        }
+        
+    }
+    
+    func getSingleWatchListCoin (userId : String, coin : AllCoinsDataResponseModel) async {
+        
+        do {
+            let firebaseCoin = try await databaseManager.getSingleData(userId: userId, collectionName: .watchlist, collectionId: coin.id ?? "", objectType: FirebaseWatchListDataModel.self)
+            let portfolioCoin = portfolioCoins.first(where: {$0.id == firebaseCoin.coinId})
+            updatedCoin = coin.updateHoldingsAndWatchList(amount: portfolioCoin?.currentCoinAmount ?? 0, isInWatchList: true)
+            reloadWatchList = false
+        }catch {
+            let portfolioCoin = portfolioCoins.first(where: {$0.id == coin.id})
+            updatedCoin = coin.updateHoldingsAndWatchList(amount: portfolioCoin?.currentCoinAmount ?? 0, isInWatchList: false)
+            reloadWatchList = false
+            print("TEKİL WATCH LİST COİN ALINAMADI :\(error)")
         }
         
     }
@@ -171,20 +161,25 @@ class HomeViewViewModel : ObservableObject {
     func buyCoin (userId : String, coin : AllCoinsDataResponseModel, newCoinAmount : Double) {
 
         Task {
+            startProgressIndicator = true
             if var currentAmount = coin.currentCoinAmount {
                 if currentAmount != 0 {
                     currentAmount += newCoinAmount
                     do {
                         try await databaseManager.updateData(userId: userId, collectionName: .portfolio, collectionId: coin.id ?? "", newValue: currentAmount)
-                        isCompletedSuccessfully = true
                         reloadPortfolio = true
+                        isCompletedSuccessfully = true
+                        startProgressIndicator = false
+
                     }catch {
                         print("HomeViewViewModel' de BUY COIN FONKİSYONUNDA COIN UPDATE EDİLMEDİ : \(error)")
                     }
                 }else {
                     let data = FirebasePortfolioDataModel(coinId: coin.id ?? "", coinAmount: newCoinAmount)
-                    isCompletedSuccessfully = true
                     reloadPortfolio = true
+                    isCompletedSuccessfully = true
+                    startProgressIndicator = false
+
                     do {
                         try await databaseManager.createData(userId: userId, collectionName: .portfolio, collectionId: coin.id ?? "", data: data)
                     }catch {
@@ -199,6 +194,7 @@ class HomeViewViewModel : ObservableObject {
     func sellCoin (userId : String, coin : AllCoinsDataResponseModel, newCoinAmount : Double) {
 
         Task {
+            startProgressIndicator = true
             if var currentAmount = coin.currentCoinAmount {
                 currentAmount -= newCoinAmount
                 if currentAmount <= 0 {
@@ -207,14 +203,16 @@ class HomeViewViewModel : ObservableObject {
                         isCompletedSuccessfully = true
                         reloadPortfolio = true
                         isCoinDeletedFromPortfolio = true
+                        startProgressIndicator = false
                     }catch {
                         print("SELL COIN FONKİSYONUNDA COIN DELETE EDİLMEDİ : \(error)")
                     }
                 }else {
                     do {
                         try await databaseManager.updateData(userId: userId, collectionName: .portfolio, collectionId: coin.id ?? "", newValue: currentAmount)
-                        isCompletedSuccessfully = true
                         reloadPortfolio = true
+                        isCompletedSuccessfully = true
+                        startProgressIndicator = false
                     }catch {
                         print("SELL COIN FONKİSYONUNDA COIN UPDATE EDİLMEDİ : \(error)")
                     }

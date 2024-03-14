@@ -21,16 +21,12 @@ struct WelcomeView: View {
             AccountBalance(accountBalance: homeViewModel.balance, accountProfit: homeViewModel.profit)
             
         }.padding(.horizontal, 15)
-            .onReceive(launchViewModel.$isAuthenticated) { isAuthenticated in
-                print("AUTHENTİCATİON DEĞERİ : \(isAuthenticated)")
-                if isAuthenticated {
-                    homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)
-                    print("PORTFOLYO ALINDI")
-                }
-            }
             .onReceive(homeViewModel.$reloadPortfolio) { isUpdated in
                 if isUpdated {
-                    homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)
+                    Task {
+                        await homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)
+                        print("ANA EKRANDA PORTFOLYO RELOAD EDİLDİ")
+                    }
                 }
             }
     }

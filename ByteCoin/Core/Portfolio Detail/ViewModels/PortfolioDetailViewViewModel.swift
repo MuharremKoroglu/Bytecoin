@@ -17,7 +17,7 @@ class PortfolioDetailViewViewModel : ObservableObject {
     func getAllUser () {
         
         Task {
-            let response = try await networkService.networkService(request: APIRequestService.allUsers, data: AllUserDataResponseModel.self)
+            let response = await networkService.networkService(request: APIRequestService.allUsers, data: AllUserDataResponseModel.self)
             
             switch response {
             case .success(let allUsers):

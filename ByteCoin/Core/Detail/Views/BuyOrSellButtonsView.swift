@@ -26,7 +26,9 @@ struct BuyOrSellButtonsView: View {
                 
             }.sheet(isPresented: $openSellScreen,onDismiss: {
                 
-                homeViewModel.getSinglePortfolioCoin(userId : launchViewModel.userId, coin: coin)
+                Task {
+                  await homeViewModel.getSinglePortfolioCoin(userId : launchViewModel.userId, coin: coin)
+                }
                 
             }) {
                 CoinExchangeView(exchangeType: ButtonsModel.sell, coin: homeViewModel.updatedCoin ?? coin)
@@ -38,7 +40,10 @@ struct BuyOrSellButtonsView: View {
                 
             }.sheet(isPresented: $openBuyScreen,onDismiss: {
                 
-                homeViewModel.getSinglePortfolioCoin(userId : launchViewModel.userId, coin: coin)
+                Task {
+                  await homeViewModel.getSinglePortfolioCoin(userId : launchViewModel.userId, coin: coin)
+                }
+                
                 
             }) {
                 CoinExchangeView(exchangeType: ButtonsModel.buy, coin: homeViewModel.updatedCoin ?? coin)
@@ -46,9 +51,8 @@ struct BuyOrSellButtonsView: View {
             
             
         }.padding()
-            .onAppear{
-                homeViewModel.getSinglePortfolioCoin(userId : launchViewModel.userId, coin: coin)
-                print("UPDATE OLMUŞ COİN AL SAT BUTONLARI ONAPPEAR'DA : \(homeViewModel.updatedCoin)")
+            .task{
+                await homeViewModel.getSinglePortfolioCoin(userId : launchViewModel.userId, coin: coin)
             }
     }
     

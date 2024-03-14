@@ -10,7 +10,7 @@ import Alamofire
 
 class NetworkService {
     
-    func networkService <T : Codable> (request : APIRequestService, data : T.Type) async throws -> Result<T, Error>{
+    func networkService <T : Codable> (request : APIRequestService, data : T.Type) async -> Result<T, Error>{
         
         do {
             let response = try await AF.request(

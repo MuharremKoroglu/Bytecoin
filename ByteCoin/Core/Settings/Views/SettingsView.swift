@@ -26,6 +26,11 @@ struct SettingsView: View {
                     SectionItem(sectionType: .kafein, imageHeight: size.height * 0.15)
                     AccountSectionView(settingsViewModel: settingsViewModel)
                 }.navigationTitle("Settings")
+                    .overlay(alignment: .center) {
+                        if settingsViewModel.isProgressing {
+                            CustomProgressView()
+                        }
+                    }
             }
 
         }

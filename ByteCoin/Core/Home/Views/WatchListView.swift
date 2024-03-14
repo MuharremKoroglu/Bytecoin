@@ -32,16 +32,12 @@ struct WatchListView: View {
                 }
             }
         }.padding(.horizontal, 15)
-            .onReceive(launchViewModel.$isAuthenticated) { isAuthenticated in
-                if isAuthenticated {
-                    homeViewModel.getWatchListCoins(userId: launchViewModel.userId)
-                    print("WATCH LİST ALINDI")
-                }
-                
-            }
             .onReceive(homeViewModel.$reloadWatchList) { isUpdated in
                 if isUpdated {
-                    homeViewModel.getWatchListCoins(userId: launchViewModel.userId)
+                    Task {
+                       await homeViewModel.getWatchListCoins(userId: launchViewModel.userId)
+                        print("ANA EKRANDA WATCH LİST RELOAD EDİLDİ")
+                    }
                 }
             }
     }

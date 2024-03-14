@@ -15,24 +15,24 @@ class LaunchViewViewModel : ObservableObject {
     
     private let authenticationManager = AuthenticationManager()
     
-    func signIn () {
-        Task {
-            do {
-                let user = try authenticationManager.currentUser()
-                if user != nil {
-                    userId = user?.uid ?? ""
-                    isAuthenticated = true
-                    print("CURRENT USER GİRİŞ YAPTI : \(userId)")
-                }else {
-                    let user = try await authenticationManager.signInAnonymously()
-                    userId = user?.uid ?? ""
-                    isAuthenticated = true
-                    print("ANON USER GİRİŞ YAPTI : \(userId)")
-                }
-            }catch {
-                isAuthenticated = false
-                print("FIREBASE KULLANICI GİRİŞİNDE HATA : \(error)")
+    func signIn () async {
+        
+        do {
+            let user = try authenticationManager.currentUser()
+            if user != nil {
+                userId = user?.uid ?? ""
+                isAuthenticated = true
+                print("CURRENT USER GİRİŞ YAPTI : \(userId)")
+            }else {
+                let user = try await authenticationManager.signInAnonymously()
+                userId = user?.uid ?? ""
+                isAuthenticated = true
+                print("ANON USER GİRİŞ YAPTI : \(userId)")
             }
+        }catch {
+            isAuthenticated = false
+            print("FIREBASE KULLANICI GİRİŞİNDE HATA : \(error)")
         }
-    } 
+        
+    }
 }

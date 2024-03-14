@@ -22,7 +22,7 @@ struct RootView: View {
     var body: some View {
         ZStack {
             if isLaunching {
-                LaunchView()
+                LaunchView(dataLoadingFinished: $isLaunching)
                     .transition(.opacity)
             }else {
                 VStack {
@@ -38,15 +38,6 @@ struct RootView: View {
             }
         }.environmentObject(homeViewModel)
             .environmentObject(launchViewModel)
-            .onReceive(launchViewModel.$isAuthenticated) { isAuthenticated in
-                if isAuthenticated {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                        withAnimation(.spring) {
-                            isLaunching = false
-                        }
-                    }
-                }
-            }
         
     }
 }
