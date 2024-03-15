@@ -22,15 +22,23 @@ struct AllCoinView: View {
                 .padding(.horizontal,15)
             ScrollView(.vertical, showsIndicators : false) {
                 LazyVStack {
-                    ForEach(viewModel.filteredMarketCoins, id: \.id) { coin in
+                    ForEach(viewModel.allCoins.indices, id: \.self) { index in
                         NavigationLink {
-                            CoinDetailView(coin: coin)
+                            CoinDetailView(coin: viewModel.allCoins[index])
                         } label: {
-                            CoinRow(coin: coin)
-                        }.buttonStyle(PlainButtonStyle()) 
-                        
+                            CoinRow(coin: viewModel.allCoins[index])
+                                .task {
+                                    await viewModel.loadMoreCoinDataIfNeeded(currentIndex: index)
+                                }
+                        }.buttonStyle(PlainButtonStyle())
+                            
                     }
                 }
+            }
+            if viewModel.startProgressIndicator {
+                ProgressView()
+                    .scaleEffect(1.5)
+                    .padding(.bottom,10)
             }
         }
     }

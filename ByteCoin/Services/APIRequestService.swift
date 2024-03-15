@@ -10,11 +10,12 @@ import Alamofire
 
 enum APIRequestService {
     case allCoinCurrencies
+    case coinsForPagination(page : Int)
     case allUsers
     
     private var baseURL: URL {
         switch self {
-        case .allCoinCurrencies:
+        case .allCoinCurrencies,.coinsForPagination(page: _):
             return URL(string: Constants.coinRootApiURL)!
         case .allUsers:
             return URL(string: Constants.userRootApiURL)!
@@ -25,7 +26,7 @@ enum APIRequestService {
     
     private var path : String {
         switch self {
-        case .allCoinCurrencies:
+        case .allCoinCurrencies,.coinsForPagination(page: _):
             return "coins/markets"
         case .allUsers:
             return ""
@@ -34,7 +35,7 @@ enum APIRequestService {
     
     var header: HTTPHeaders? {
         switch self {
-        case .allCoinCurrencies:
+        case .allCoinCurrencies,.coinsForPagination(page: _):
             return HTTPHeaders(["x-cg-demo-api-key" : Constants.coinApiKey])
         case .allUsers:
             return HTTPHeaders()
@@ -43,7 +44,7 @@ enum APIRequestService {
     
     var url : String {
         switch self {
-        case .allCoinCurrencies:
+        case .allCoinCurrencies,.coinsForPagination(page: _):
             let url = baseURL.appendingPathComponent(path)
             return url.absoluteString
         case .allUsers:
@@ -61,7 +62,7 @@ enum APIRequestService {
                 id: nil,
                 category: nil,
                 order: "market_cap_desc",
-                totalPageNumber: 100,
+                totalResultsPerPage: 250,
                 page: 1,
                 sparkLine: "true",
                 priceChangePercentage: "24h",
@@ -75,12 +76,25 @@ enum APIRequestService {
                 nationality: "us",
                 noinfo: "noinfo"
             )
+        case .coinsForPagination(page: let page):
+            return AllCoinsDataRequestModel(
+                vsCurrency: "usd",
+                id: nil,
+                category: nil,
+                order: "market_cap_desc",
+                totalResultsPerPage: 25,
+                page: page,
+                sparkLine: "true",
+                priceChangePercentage: "24h",
+                localization: "en",
+                precision: nil
+            )
         }
     }
     
     var requestMethod : HTTPMethod {
         switch self {
-        case .allCoinCurrencies:
+        case .allCoinCurrencies,.coinsForPagination(page: _):
             return .get
         case .allUsers:
             return .get

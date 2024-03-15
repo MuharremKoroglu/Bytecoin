@@ -11,6 +11,7 @@ import Foundation
 class HomeViewViewModel : ObservableObject {
     
     @Published var marketCoins : [AllCoinsDataResponseModel] = []
+    @Published var allCoins : [AllCoinsDataResponseModel] = []
     @Published var portfolioCoins : [AllCoinsDataResponseModel] = []
     @Published var topGainerCoins : [AllCoinsDataResponseModel] = []
     @Published var topLoserCoins : [AllCoinsDataResponseModel] = []
@@ -40,6 +41,7 @@ class HomeViewViewModel : ObservableObject {
         return self.filterCoins(searchedText: portfolioCoinSearchedText, coins: portfolioCoins)
     }
     
+    private var page = 1
     private let databaseManager = DatabaseManager()
     private let networkService = NetworkService()
     
@@ -57,6 +59,33 @@ class HomeViewViewModel : ObservableObject {
         case .failure(let error):
             print("COİN VERİLERİ GETİRİLEMEDİ : \(error)")
         }
+        
+    }
+    
+    func loadMoreCoinDataIfNeeded (currentIndex : Int) async{
+        let endIndex = (allCoins.endIndex) - 1
+        if currentIndex == endIndex {
+            startProgressIndicator = true
+            page += 1
+            await getCoinsWithPagination()
+            startProgressIndicator = false
+        }
+    }
+    
+    func getCoinsWithPagination () async {
+        
+        let response = await networkService.networkService(
+            request: .coinsForPagination(page: page),
+            data: [AllCoinsDataResponseModel].self
+        )
+        
+        switch response {
+        case .success(let coins):
+            allCoins.append(contentsOf: coins)
+        case .failure(let error):
+            print("PAGİNATİON İLE COİN VERİLERİ GETİRİLEMEDİ : \(error)")
+        }
+        
         
     }
     

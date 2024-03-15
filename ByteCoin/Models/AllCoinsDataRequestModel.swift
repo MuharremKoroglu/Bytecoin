@@ -13,7 +13,7 @@ struct AllCoinsDataRequestModel : Encodable{
     let id : String?
     let category : String?
     let order : String
-    let totalPageNumber : Int
+    let totalResultsPerPage : Int
     let page : Int
     let sparkLine : String
     let priceChangePercentage : String
@@ -25,7 +25,7 @@ struct AllCoinsDataRequestModel : Encodable{
         case id = "ids"
         case category
         case order
-        case totalPageNumber = "per_page"
+        case totalResultsPerPage = "per_page"
         case page
         case sparkLine = "sparkline"
         case priceChangePercentage = "price_change_percentage"
