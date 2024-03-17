@@ -29,7 +29,7 @@ struct LaunchView: View {
 
             }.frame(width: size.width, height: size.height)
                 .task{
-                    await homeViewModel.getAllCoins()
+                    await homeViewModel.getCoinsForTopGainerAndLoserList()
                     await homeViewModel.getCoinsWithPagination()
                     await launchViewModel.signIn()
                     await homeViewModel.getPortfolioCoins(userId: launchViewModel.userId)

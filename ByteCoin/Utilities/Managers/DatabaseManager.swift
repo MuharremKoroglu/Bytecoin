@@ -18,24 +18,34 @@ class DatabaseManager {
         return collection.document(documentId)
     }
     
-    private func getCollectionReference (documentId : String, collectionName : FirebaseCollectionName) -> CollectionReference {
-        return collection.document(documentId).collection(collectionName.rawValue)
+    private func getUserProfileCollectionReference (documentId : String) -> CollectionReference {
+        return getUsersDocumentReference(documentId: documentId).collection("user_profile")
     }
     
-    private func getDocumentReference (documentId : String, collectionName : FirebaseCollectionName, collectionId : String) -> DocumentReference {
-        return collection.document(documentId).collection(collectionName.rawValue).document(collectionId)
+    private func getUserProfileDocumentReference (documentId : String, collectionId : String) -> DocumentReference {
+        return getUserProfileCollectionReference(documentId: documentId).document(collectionId)
     }
     
-    func createData <T: Encodable> (userId : String, collectionName : FirebaseCollectionName, collectionId : String ,data : T) async throws{
-        try getDocumentReference(documentId: userId,collectionName: collectionName ,collectionId: collectionId).setData(from: data, merge: false)
+    func createData <T: Encodable> (userId : String, collectionId : String ,data : T) async throws{
+        try getUserProfileDocumentReference(documentId: userId, collectionId: collectionId).setData(from: data, merge: false)
     }
     
-    func getSingleData <T: Decodable> (userId : String,collectionName: FirebaseCollectionName, collectionId : String, objectType: T.Type) async throws -> T{
-        try await getDocumentReference(documentId: userId,collectionName: collectionName ,collectionId: collectionId).getDocument(as: objectType.self)
+    func getSingleData <T: Decodable> (userId : String, collectionId : String, objectType: T.Type) async throws -> T{
+        try await getUserProfileDocumentReference(documentId: userId, collectionId: collectionId).getDocument(as: objectType.self)
     }
     
-    func getMultipleData <T : Decodable> (userId: String,collectionName : FirebaseCollectionName, objectType: T.Type) async throws -> [T] {
-        let userCollectionRef = getCollectionReference(documentId: userId, collectionName: collectionName)
+    func getMultipleData <T : Decodable> (userId: String, query: FirebaseQueryConditions? = nil ,objectType: T.Type) async throws -> [T] {
+        var userCollectionRef: Query = getUserProfileCollectionReference(documentId: userId)
+        
+        if let query = query {
+            switch query {
+            case .portfolio:
+                userCollectionRef = userCollectionRef.whereField(query.field, isNotEqualTo: query.value)
+            case .watchList:
+                userCollectionRef = userCollectionRef.whereField(query.field, isEqualTo: query.value)
+            }
+        }
+        
         let querySnapshot = try await userCollectionRef.getDocuments()
         var dataModels: [T] = []
         for document in querySnapshot.documents {
@@ -47,31 +57,28 @@ class DatabaseManager {
     }
 
     
-    func updateData (userId : String, collectionName : FirebaseCollectionName, collectionId : String, newValue : Double) async throws{
+    func updateData (userId : String,collectionId : String, field: String, newValue : Any) async throws{
         
-        let coinAmountData : [String : Any] = [
-            FirebasePortfolioDataModel.CodingKeys.coinAmount.rawValue : newValue
+        let updatedData : [String : Any] = [
+            field : newValue
         ]
         
-        try await getDocumentReference(documentId: userId, collectionName: collectionName, collectionId: collectionId).updateData(coinAmountData)
-        
+        try await getUserProfileDocumentReference(documentId: userId, collectionId: collectionId).updateData(updatedData)
+
     }
     
-    func deleteData (userId : String, collectionName : FirebaseCollectionName,  coinId : String) async throws{
-        try await getDocumentReference(documentId: userId, collectionName: collectionName, collectionId: coinId).delete()
+    func deleteData (userId : String, collectionId : String) async throws{
+        try await getUserProfileDocumentReference(documentId: userId,collectionId: collectionId).delete()
     }
     
     func deleteUserData (userId : String) async throws{
         
-        for collectionName in FirebaseCollectionName.allCases {
-            let subcollectionRef = getCollectionReference(documentId: userId, collectionName: collectionName)
-            let documents = try await subcollectionRef.getDocuments().documents
-            for document in documents {
-                try await document.reference.delete()
-            }
+        let subcollectionRef = getUserProfileCollectionReference(documentId: userId)
+        let documents = try await subcollectionRef.getDocuments().documents
+        for document in documents {
+            try await document.reference.delete()
         }
-    
+
     }
     
-
 }

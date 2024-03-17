@@ -26,7 +26,13 @@ struct PortfolioDetailBuyOrSellButtons: View {
                 
                 openSellScreen.toggle()
                 
-            }.sheet(isPresented: $openSellScreen, content: {
+            }.sheet(isPresented: $openSellScreen,onDismiss: {
+                
+                Task {
+                    await homeViewModel.getAndUpdateCoin(userId:launchViewModel.userId, coin: coin)
+                }
+                
+            } ,content: {
                 CoinExchangeView(exchangeType: ButtonsModel.sell, coin: coin)
             })
             
@@ -34,7 +40,13 @@ struct PortfolioDetailBuyOrSellButtons: View {
                 
                 openBuyScreen.toggle()
                 
-            }.sheet(isPresented: $openBuyScreen, content: {
+            }.sheet(isPresented: $openBuyScreen,onDismiss: {
+                
+                Task {
+                    await homeViewModel.getAndUpdateCoin(userId:launchViewModel.userId, coin: coin)
+                }
+                
+            } ,content: {
                 CoinExchangeView(exchangeType: ButtonsModel.buy, coin: coin)
             })
             

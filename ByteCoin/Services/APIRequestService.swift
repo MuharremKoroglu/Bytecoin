@@ -11,11 +11,12 @@ import Alamofire
 enum APIRequestService {
     case allCoinCurrencies
     case coinsForPagination(page : Int)
+    case coinsForPortfolioAndWatchList(ids : [String])
     case allUsers
     
     private var baseURL: URL {
         switch self {
-        case .allCoinCurrencies,.coinsForPagination(page: _):
+        case .allCoinCurrencies,.coinsForPagination(page: _),.coinsForPortfolioAndWatchList(ids: _):
             return URL(string: Constants.coinRootApiURL)!
         case .allUsers:
             return URL(string: Constants.userRootApiURL)!
@@ -26,7 +27,7 @@ enum APIRequestService {
     
     private var path : String {
         switch self {
-        case .allCoinCurrencies,.coinsForPagination(page: _):
+        case .allCoinCurrencies,.coinsForPagination(page: _),.coinsForPortfolioAndWatchList(ids: _):
             return "coins/markets"
         case .allUsers:
             return ""
@@ -35,7 +36,7 @@ enum APIRequestService {
     
     var header: HTTPHeaders? {
         switch self {
-        case .allCoinCurrencies,.coinsForPagination(page: _):
+        case .allCoinCurrencies,.coinsForPagination(page: _),.coinsForPortfolioAndWatchList(ids: _):
             return HTTPHeaders(["x-cg-demo-api-key" : Constants.coinApiKey])
         case .allUsers:
             return HTTPHeaders()
@@ -44,7 +45,7 @@ enum APIRequestService {
     
     var url : String {
         switch self {
-        case .allCoinCurrencies,.coinsForPagination(page: _):
+        case .allCoinCurrencies,.coinsForPagination(page: _),.coinsForPortfolioAndWatchList(ids: _):
             let url = baseURL.appendingPathComponent(path)
             return url.absoluteString
         case .allUsers:
@@ -69,13 +70,6 @@ enum APIRequestService {
                 localization: "en",
                 precision: nil
             )
-        case .allUsers:
-            return AllUserDataRequestModel(
-                results: 4,
-                include: "name,picture",
-                nationality: "us",
-                noinfo: "noinfo"
-            )
         case .coinsForPagination(page: let page):
             return AllCoinsDataRequestModel(
                 vsCurrency: "usd",
@@ -89,12 +83,32 @@ enum APIRequestService {
                 localization: "en",
                 precision: nil
             )
+        case .coinsForPortfolioAndWatchList(ids: let ids):
+            return AllCoinsDataRequestModel(
+                vsCurrency: "usd",
+                id: ids.joined(separator: ","),
+                category: nil,
+                order: "market_cap_desc",
+                totalResultsPerPage: nil,
+                page: 1,
+                sparkLine: "true",
+                priceChangePercentage: "24h",
+                localization: "en",
+                precision: nil
+            )
+        case .allUsers:
+            return AllUserDataRequestModel(
+                results: 4,
+                include: "name,picture",
+                nationality: "us",
+                noinfo: "noinfo"
+            )
         }
     }
     
     var requestMethod : HTTPMethod {
         switch self {
-        case .allCoinCurrencies,.coinsForPagination(page: _):
+        case .allCoinCurrencies,.coinsForPagination(page: _),.coinsForPortfolioAndWatchList(ids: _):
             return .get
         case .allUsers:
             return .get

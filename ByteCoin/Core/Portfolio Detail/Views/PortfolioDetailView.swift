@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PortfolioDetailView: View {
     
+    @EnvironmentObject private var homeViewModel : HomeViewViewModel
     @StateObject private var viewModel = PortfolioDetailViewViewModel()
     
     let coin : AllCoinsDataResponseModel
@@ -20,7 +21,12 @@ struct PortfolioDetailView: View {
                 PortfolioDetailBuyOrSellButtons(coin: coin)
                 PortfolioCoinDetails(coin: coin)
                 PortfolioDetailLastTransactions(viewModel: viewModel)
-            }
+            }.overlay(alignment: .center, content: {
+                if homeViewModel.startProgressIndicator {
+                    CustomProgressView()
+                }
+                
+            })
         }.navigationBarBackButtonHidden()
             .navigationBarTitleDisplayMode(.inline)
         .toolbar {

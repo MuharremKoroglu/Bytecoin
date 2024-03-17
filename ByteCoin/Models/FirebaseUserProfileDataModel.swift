@@ -7,14 +7,16 @@
 
 import Foundation
 
-struct FirebasePortfolioDataModel : Codable {
+struct FirebaseUserProfileDataModel : Codable {
     
     let coinId : String
     let coinAmount : Double?
+    let isInWatchList : Bool?
     
     enum CodingKeys : String, CodingKey {
         case coinId = "coin_id"
         case coinAmount = "coin_amount"
+        case isInWatchList = "is_in_watch_list"
     }
     
 }

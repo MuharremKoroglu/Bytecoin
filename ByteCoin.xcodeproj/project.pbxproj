@@ -28,6 +28,7 @@
 		3B2DDBA12B9B7930003E2110 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2DDBA02B9B7930003E2110 /* SettingsView.swift */; };
 		3B2DDBA32B9B972C003E2110 /* SectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2DDBA22B9B972C003E2110 /* SectionItem.swift */; };
 		3B2DDBA52B9BAA96003E2110 /* SettingsViewSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2DDBA42B9BAA95003E2110 /* SettingsViewSectionModel.swift */; };
+		3B4D51092BA62103000F28A1 /* FirebaseQueryConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D51082BA62103000F28A1 /* FirebaseQueryConditions.swift */; };
 		3B6984902B8F512F00FA233B /* BuyOrSellButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69848F2B8F512F00FA233B /* BuyOrSellButtonsView.swift */; };
 		3B6984922B8F514D00FA233B /* BuyOrSellButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6984912B8F514D00FA233B /* BuyOrSellButtonItem.swift */; };
 		3B6984962B8F61DD00FA233B /* CoinExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6984952B8F61DD00FA233B /* CoinExchangeView.swift */; };
@@ -67,7 +68,7 @@
 		3B91B58A2B92051B00126E1F /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5892B92051B00126E1F /* FirebaseRemoteConfigSwift */; };
 		3B91B58C2B92051B00126E1F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B58B2B92051B00126E1F /* FirebaseStorage */; };
 		3B91B58E2B92051B00126E1F /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B58D2B92051B00126E1F /* FirebaseStorageCombine-Community */; };
-		3B91B5902B920D0700126E1F /* FirebasePortfolioDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B91B58F2B920D0700126E1F /* FirebasePortfolioDataModel.swift */; };
+		3B91B5902B920D0700126E1F /* FirebaseUserProfileDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B91B58F2B920D0700126E1F /* FirebaseUserProfileDataModel.swift */; };
 		3B94D70E2B9DCF670049A75A /* PortfolioDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B94D70D2B9DCF670049A75A /* PortfolioDetailViewViewModel.swift */; };
 		3B9F9A1A2BA384F900861C96 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9F9A192BA384F900861C96 /* CustomProgressView.swift */; };
 		3BA5D0762B8C67F1006AD8A0 /* CoinDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D0752B8C67F1006AD8A0 /* CoinDetailItem.swift */; };
@@ -92,8 +93,6 @@
 		3BD57B862B999AA7004DFD11 /* portfolio.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BD57B852B999AA7004DFD11 /* portfolio.json */; };
 		3BD57B8A2B999AE2004DFD11 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD57B892B999AE2004DFD11 /* EmptyView.swift */; };
 		3BD57B8C2B99D6D6004DFD11 /* AddWatchListButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD57B8B2B99D6D6004DFD11 /* AddWatchListButtonItem.swift */; };
-		3BD57B902B99E422004DFD11 /* FirebaseCollectionName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD57B8F2B99E421004DFD11 /* FirebaseCollectionName.swift */; };
-		3BD57B922B99F1CE004DFD11 /* FirebaseWatchListDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD57B912B99F1CE004DFD11 /* FirebaseWatchListDataModel.swift */; };
 		3BD943432B977F02008B3AE4 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3BD943422B977F02008B3AE4 /* Lottie */; };
 		3BD943452B977F32008B3AE4 /* LottieAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD943442B977F32008B3AE4 /* LottieAnimation.swift */; };
 		3BD9434C2B977FCF008B3AE4 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD9434B2B977FCF008B3AE4 /* LaunchView.swift */; };
@@ -138,6 +137,7 @@
 		3B2DDBA02B9B7930003E2110 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3B2DDBA22B9B972C003E2110 /* SectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionItem.swift; sourceTree = "<group>"; };
 		3B2DDBA42B9BAA95003E2110 /* SettingsViewSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewSectionModel.swift; sourceTree = "<group>"; };
+		3B4D51082BA62103000F28A1 /* FirebaseQueryConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseQueryConditions.swift; sourceTree = "<group>"; };
 		3B69848F2B8F512F00FA233B /* BuyOrSellButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyOrSellButtonsView.swift; sourceTree = "<group>"; };
 		3B6984912B8F514D00FA233B /* BuyOrSellButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyOrSellButtonItem.swift; sourceTree = "<group>"; };
 		3B6984952B8F61DD00FA233B /* CoinExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinExchangeView.swift; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 		3B7F4E822B987B540013A8B3 /* PortfolioDetailBuyOrSellButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDetailBuyOrSellButtons.swift; sourceTree = "<group>"; };
 		3B7F4E842B987D560013A8B3 /* PortfolioDetailLastTransactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDetailLastTransactions.swift; sourceTree = "<group>"; };
 		3B91B5362B92037200126E1F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3B91B58F2B920D0700126E1F /* FirebasePortfolioDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePortfolioDataModel.swift; sourceTree = "<group>"; };
+		3B91B58F2B920D0700126E1F /* FirebaseUserProfileDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserProfileDataModel.swift; sourceTree = "<group>"; };
 		3B94D70D2B9DCF670049A75A /* PortfolioDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDetailViewViewModel.swift; sourceTree = "<group>"; };
 		3B9F9A192BA384F900861C96 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		3BA5D0752B8C67F1006AD8A0 /* CoinDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailItem.swift; sourceTree = "<group>"; };
@@ -175,8 +175,6 @@
 		3BD57B852B999AA7004DFD11 /* portfolio.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = portfolio.json; sourceTree = "<group>"; };
 		3BD57B892B999AE2004DFD11 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		3BD57B8B2B99D6D6004DFD11 /* AddWatchListButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWatchListButtonItem.swift; sourceTree = "<group>"; };
-		3BD57B8F2B99E421004DFD11 /* FirebaseCollectionName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCollectionName.swift; sourceTree = "<group>"; };
-		3BD57B912B99F1CE004DFD11 /* FirebaseWatchListDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseWatchListDataModel.swift; sourceTree = "<group>"; };
 		3BD943442B977F32008B3AE4 /* LottieAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimation.swift; sourceTree = "<group>"; };
 		3BD9434B2B977FCF008B3AE4 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		3BD943512B978478008B3AE4 /* crypto.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crypto.json; sourceTree = "<group>"; };
@@ -285,9 +283,8 @@
 			children = (
 				3B1C11062B86257C00C0100F /* AllCoinsDataResponseModel.swift */,
 				3B1C11082B86259D00C0100F /* AllCoinsDataRequestModel.swift */,
-				3B91B58F2B920D0700126E1F /* FirebasePortfolioDataModel.swift */,
-				3BD57B912B99F1CE004DFD11 /* FirebaseWatchListDataModel.swift */,
-				3BD57B8F2B99E421004DFD11 /* FirebaseCollectionName.swift */,
+				3B91B58F2B920D0700126E1F /* FirebaseUserProfileDataModel.swift */,
+				3B4D51082BA62103000F28A1 /* FirebaseQueryConditions.swift */,
 				3BBEE2FE2B876BEF00E0F19F /* AllUserDataResponseModel.swift */,
 				3BBEE3002B876C2100E0F19F /* AllUserDataRequestModel.swift */,
 				3BE2DACE2B889DED003E3D18 /* CustomTabBarModel.swift */,
@@ -753,8 +750,8 @@
 				3B2DDBA52B9BAA96003E2110 /* SettingsViewSectionModel.swift in Sources */,
 				3BF90A142B87C864007B1BED /* CustomTabBar.swift in Sources */,
 				3BE95C932B98524A0097EB04 /* PortfolioDetailGreeting.swift in Sources */,
+				3B4D51092BA62103000F28A1 /* FirebaseQueryConditions.swift in Sources */,
 				3BE2DADB2B88CB82003E3D18 /* SearchBar.swift in Sources */,
-				3BD57B902B99E422004DFD11 /* FirebaseCollectionName.swift in Sources */,
 				3BD943542B979DF1008B3AE4 /* LaunchViewViewModel.swift in Sources */,
 				3B1C11122B86262800C0100F /* HomeViewViewModel.swift in Sources */,
 				3B6984A22B8F7E3400FA233B /* CoinExchangeButtonView.swift in Sources */,
@@ -795,7 +792,6 @@
 				3B6984A02B8F7DC400FA233B /* CoinExchangeQuantitySection.swift in Sources */,
 				3BE2DAD12B88C199003E3D18 /* Extensions.swift in Sources */,
 				3BBEE3012B876C2100E0F19F /* AllUserDataRequestModel.swift in Sources */,
-				3BD57B922B99F1CE004DFD11 /* FirebaseWatchListDataModel.swift in Sources */,
 				3BE2DAE12B891B70003E3D18 /* SearchBarView.swift in Sources */,
 				3BE2DADD2B88CCB9003E3D18 /* CoinRow.swift in Sources */,
 				3BBEE2FD2B87643E00E0F19F /* TopGainerAndLoserItem.swift in Sources */,
@@ -806,7 +802,7 @@
 				3BBDDD242B89CADE00B202ED /* TopLoserView.swift in Sources */,
 				3BBEE2FF2B876BEF00E0F19F /* AllUserDataResponseModel.swift in Sources */,
 				3B1C111A2B8626EA00C0100F /* Constants.swift in Sources */,
-				3B91B5902B920D0700126E1F /* FirebasePortfolioDataModel.swift in Sources */,
+				3B91B5902B920D0700126E1F /* FirebaseUserProfileDataModel.swift in Sources */,
 				3BD563542B9C3DDA00DB9217 /* SettingsViewViewModel.swift in Sources */,
 				3BBEE3052B87A88900E0F19F /* WatchListView.swift in Sources */,
 			);

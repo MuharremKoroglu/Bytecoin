@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AllCoinView: View {
     
-    @EnvironmentObject private var viewModel : HomeViewViewModel
+    @EnvironmentObject private var homeViewModel : HomeViewViewModel
     
     var body: some View {
         VStack {
@@ -22,20 +22,23 @@ struct AllCoinView: View {
                 .padding(.horizontal,15)
             ScrollView(.vertical, showsIndicators : false) {
                 LazyVStack {
-                    ForEach(viewModel.allCoins.indices, id: \.self) { index in
+                    ForEach(homeViewModel.filteredMarketCoins, id: \.id) { coin in
                         NavigationLink {
-                            CoinDetailView(coin: viewModel.allCoins[index])
+                            CoinDetailView(coin: coin)
                         } label: {
-                            CoinRow(coin: viewModel.allCoins[index])
-                                .task {
-                                    await viewModel.loadMoreCoinDataIfNeeded(currentIndex: index)
-                                }
+                            CoinRow(coin: coin)
                         }.buttonStyle(PlainButtonStyle())
-                            
+                            .onAppear {
+                                if !homeViewModel.startProgressIndicator {
+                                    Task {
+                                        await homeViewModel.loadMoreCoinDataIfNeeded(coin: coin)
+                                    }
+                                }
+                            }
                     }
                 }
             }
-            if viewModel.startProgressIndicator {
+            if homeViewModel.startProgressIndicator {
                 ProgressView()
                     .scaleEffect(1.5)
                     .padding(.bottom,10)

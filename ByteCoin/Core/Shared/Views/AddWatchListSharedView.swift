@@ -22,12 +22,12 @@ struct AddWatchListSharedView: View {
             }
             
         }.task {
-            await homeViewModel.getSingleWatchListCoin(userId: launchViewModel.userId, coin: coin)
+            await homeViewModel.getAndUpdateCoin(userId: launchViewModel.userId, coin: coin)
         }
         .onReceive(homeViewModel.$reloadWatchList) { isUpdated in
             if isUpdated {
                 Task {
-                    await homeViewModel.getSingleWatchListCoin(userId: launchViewModel.userId, coin: coin)
+                    await homeViewModel.getAndUpdateCoin(userId:launchViewModel.userId, coin: coin)
                 }
             }
         }

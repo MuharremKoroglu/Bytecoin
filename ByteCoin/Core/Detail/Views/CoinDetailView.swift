@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CoinDetailView: View {
     
+    @EnvironmentObject private var homeViewModel : HomeViewViewModel
+    
     let coin : AllCoinsDataResponseModel
     
     var body: some View {
@@ -22,7 +24,13 @@ struct CoinDetailView: View {
                     CoinOverViewView(coin: coin)
                     CoinAdditionalDetailsView(coin: coin)
                 }
-            }.navigationTitle(coin.name?.capitalized ?? "Bitcoin")
+            }.overlay(alignment: .center, content: {
+                if homeViewModel.startProgressIndicator {
+                    CustomProgressView()
+                }
+                
+            })
+            .navigationTitle(coin.name?.capitalized ?? "Bitcoin")
             .navigationBarBackButtonHidden()
             .navigationBarTitleDisplayMode(.large)
             .toolbar {

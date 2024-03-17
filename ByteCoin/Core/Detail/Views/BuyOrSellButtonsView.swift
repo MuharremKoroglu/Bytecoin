@@ -27,7 +27,7 @@ struct BuyOrSellButtonsView: View {
             }.sheet(isPresented: $openSellScreen,onDismiss: {
                 
                 Task {
-                  await homeViewModel.getSinglePortfolioCoin(userId : launchViewModel.userId, coin: coin)
+                    await homeViewModel.getAndUpdateCoin(userId: launchViewModel.userId, coin: coin)
                 }
                 
             }) {
@@ -41,9 +41,8 @@ struct BuyOrSellButtonsView: View {
             }.sheet(isPresented: $openBuyScreen,onDismiss: {
                 
                 Task {
-                  await homeViewModel.getSinglePortfolioCoin(userId : launchViewModel.userId, coin: coin)
+                    await homeViewModel.getAndUpdateCoin(userId: launchViewModel.userId, coin: coin)
                 }
-                
                 
             }) {
                 CoinExchangeView(exchangeType: ButtonsModel.buy, coin: homeViewModel.updatedCoin ?? coin)
@@ -51,9 +50,7 @@ struct BuyOrSellButtonsView: View {
             
             
         }.padding()
-            .task{
-                await homeViewModel.getSinglePortfolioCoin(userId : launchViewModel.userId, coin: coin)
-            }
+        
     }
     
 }

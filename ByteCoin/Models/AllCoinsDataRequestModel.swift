@@ -13,7 +13,7 @@ struct AllCoinsDataRequestModel : Encodable{
     let id : String?
     let category : String?
     let order : String
-    let totalResultsPerPage : Int
+    let totalResultsPerPage : Int?
     let page : Int
     let sparkLine : String
     let priceChangePercentage : String

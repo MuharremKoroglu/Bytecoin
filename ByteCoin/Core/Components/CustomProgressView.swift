@@ -11,11 +11,11 @@ struct CustomProgressView: View {
     var body: some View {
         ProgressView()
             .scaleEffect(1.8)
-            .tint(.white)
+            .tint(.primary)
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: 100, height: 100)
-                    .foregroundStyle(Color.black.opacity(0.8))
+                    .foregroundStyle(.regularMaterial)
             )
     }
 }
