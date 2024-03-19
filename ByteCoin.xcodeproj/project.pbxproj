@@ -1,0 +1,1174 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3B1C10F82B86255500C0100F /* ByteCoinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C10F72B86255500C0100F /* ByteCoinApp.swift */; };
+		3B1C10FA2B86255500C0100F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C10F92B86255500C0100F /* HomeView.swift */; };
+		3B1C10FC2B86255700C0100F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1C10FB2B86255700C0100F /* Assets.xcassets */; };
+		3B1C10FF2B86255700C0100F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1C10FE2B86255700C0100F /* Preview Assets.xcassets */; };
+		3B1C11072B86257C00C0100F /* AllCoinsDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C11062B86257C00C0100F /* AllCoinsDataResponseModel.swift */; };
+		3B1C11092B86259D00C0100F /* AllCoinsDataRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C11082B86259D00C0100F /* AllCoinsDataRequestModel.swift */; };
+		3B1C110D2B8625E900C0100F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C110C2B8625E900C0100F /* NetworkService.swift */; };
+		3B1C110F2B86260400C0100F /* APIRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C110E2B86260400C0100F /* APIRequestService.swift */; };
+		3B1C11122B86262800C0100F /* HomeViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C11112B86262800C0100F /* HomeViewViewModel.swift */; };
+		3B1C11162B86267300C0100F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1C11152B86267300C0100F /* Alamofire */; };
+		3B1C111A2B8626EA00C0100F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C11192B8626EA00C0100F /* Constants.swift */; };
+		3B22ACA12B90784B00019E5D /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B22ACA02B90784B00019E5D /* AuthenticationManager.swift */; };
+		3B22ACA52B9084A600019E5D /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B22ACA42B9084A600019E5D /* DatabaseManager.swift */; };
+		3B22ACAA2B90A3B500019E5D /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B22ACA92B90A3B500019E5D /* PortfolioView.swift */; };
+		3B22ACAE2B90E5B100019E5D /* SearchBarInPortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B22ACAD2B90E5B100019E5D /* SearchBarInPortfolioView.swift */; };
+		3B22ACB02B90E69800019E5D /* PortfolioCoinListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B22ACAF2B90E69800019E5D /* PortfolioCoinListView.swift */; };
+		3B22ACB22B90E8E200019E5D /* PortfolioCoinRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B22ACB12B90E8E200019E5D /* PortfolioCoinRow.swift */; };
+		3B2DDB9C2B9B3C9F003E2110 /* AddWatchListSharedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2DDB9B2B9B3C9F003E2110 /* AddWatchListSharedView.swift */; };
+		3B2DDBA12B9B7930003E2110 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2DDBA02B9B7930003E2110 /* SettingsView.swift */; };
+		3B2DDBA32B9B972C003E2110 /* SectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2DDBA22B9B972C003E2110 /* SectionItem.swift */; };
+		3B2DDBA52B9BAA96003E2110 /* SettingsViewSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2DDBA42B9BAA95003E2110 /* SettingsViewSectionModel.swift */; };
+		3B4D51092BA62103000F28A1 /* FirebaseQueryConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D51082BA62103000F28A1 /* FirebaseQueryConditions.swift */; };
+		3B6984902B8F512F00FA233B /* BuyOrSellButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69848F2B8F512F00FA233B /* BuyOrSellButtonsView.swift */; };
+		3B6984922B8F514D00FA233B /* BuyOrSellButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6984912B8F514D00FA233B /* BuyOrSellButtonItem.swift */; };
+		3B6984962B8F61DD00FA233B /* CoinExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6984952B8F61DD00FA233B /* CoinExchangeView.swift */; };
+		3B6984982B8F69C800FA233B /* ButtonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6984972B8F69C800FA233B /* ButtonsModel.swift */; };
+		3B69849A2B8F6F3B00FA233B /* CoinExchangeGreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6984992B8F6F3B00FA233B /* CoinExchangeGreetingView.swift */; };
+		3B69849C2B8F700B00FA233B /* CoinExchangePriceCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69849B2B8F700B00FA233B /* CoinExchangePriceCalculatorView.swift */; };
+		3B69849E2B8F7D6400FA233B /* CoinExchangePriceSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69849D2B8F7D6400FA233B /* CoinExchangePriceSection.swift */; };
+		3B6984A02B8F7DC400FA233B /* CoinExchangeQuantitySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69849F2B8F7DC400FA233B /* CoinExchangeQuantitySection.swift */; };
+		3B6984A22B8F7E3400FA233B /* CoinExchangeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6984A12B8F7E3400FA233B /* CoinExchangeButtonView.swift */; };
+		3B7F4E832B987B540013A8B3 /* PortfolioDetailBuyOrSellButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7F4E822B987B540013A8B3 /* PortfolioDetailBuyOrSellButtons.swift */; };
+		3B7F4E852B987D560013A8B3 /* PortfolioDetailLastTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7F4E842B987D560013A8B3 /* PortfolioDetailLastTransactions.swift */; };
+		3B91B5372B92037200126E1F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B91B5362B92037200126E1F /* GoogleService-Info.plist */; };
+		3B91B55A2B92051B00126E1F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5592B92051B00126E1F /* FirebaseAnalytics */; };
+		3B91B55C2B92051B00126E1F /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B55B2B92051B00126E1F /* FirebaseAnalyticsOnDeviceConversion */; };
+		3B91B55E2B92051B00126E1F /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B55D2B92051B00126E1F /* FirebaseAnalyticsSwift */; };
+		3B91B5602B92051B00126E1F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B55F2B92051B00126E1F /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		3B91B5622B92051B00126E1F /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5612B92051B00126E1F /* FirebaseAppCheck */; };
+		3B91B5642B92051B00126E1F /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5632B92051B00126E1F /* FirebaseAppDistribution-Beta */; };
+		3B91B5662B92051B00126E1F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5652B92051B00126E1F /* FirebaseAuth */; };
+		3B91B5682B92051B00126E1F /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5672B92051B00126E1F /* FirebaseAuthCombine-Community */; };
+		3B91B56A2B92051B00126E1F /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5692B92051B00126E1F /* FirebaseCrashlytics */; };
+		3B91B56C2B92051B00126E1F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B56B2B92051B00126E1F /* FirebaseDatabase */; };
+		3B91B56E2B92051B00126E1F /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B56D2B92051B00126E1F /* FirebaseDatabaseSwift */; };
+		3B91B5702B92051B00126E1F /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B56F2B92051B00126E1F /* FirebaseDynamicLinks */; };
+		3B91B5722B92051B00126E1F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5712B92051B00126E1F /* FirebaseFirestore */; };
+		3B91B5742B92051B00126E1F /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5732B92051B00126E1F /* FirebaseFirestoreCombine-Community */; };
+		3B91B5762B92051B00126E1F /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5752B92051B00126E1F /* FirebaseFirestoreSwift */; };
+		3B91B5782B92051B00126E1F /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5772B92051B00126E1F /* FirebaseFunctions */; };
+		3B91B57A2B92051B00126E1F /* FirebaseFunctionsCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5792B92051B00126E1F /* FirebaseFunctionsCombine-Community */; };
+		3B91B57C2B92051B00126E1F /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B57B2B92051B00126E1F /* FirebaseInAppMessaging-Beta */; };
+		3B91B57E2B92051B00126E1F /* FirebaseInAppMessagingSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B57D2B92051B00126E1F /* FirebaseInAppMessagingSwift-Beta */; };
+		3B91B5802B92051B00126E1F /* FirebaseInstallations in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B57F2B92051B00126E1F /* FirebaseInstallations */; };
+		3B91B5822B92051B00126E1F /* FirebaseMLModelDownloader in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5812B92051B00126E1F /* FirebaseMLModelDownloader */; };
+		3B91B5842B92051B00126E1F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5832B92051B00126E1F /* FirebaseMessaging */; };
+		3B91B5862B92051B00126E1F /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5852B92051B00126E1F /* FirebasePerformance */; };
+		3B91B5882B92051B00126E1F /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5872B92051B00126E1F /* FirebaseRemoteConfig */; };
+		3B91B58A2B92051B00126E1F /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B5892B92051B00126E1F /* FirebaseRemoteConfigSwift */; };
+		3B91B58C2B92051B00126E1F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B58B2B92051B00126E1F /* FirebaseStorage */; };
+		3B91B58E2B92051B00126E1F /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3B91B58D2B92051B00126E1F /* FirebaseStorageCombine-Community */; };
+		3B91B5902B920D0700126E1F /* FirebaseUserProfileDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B91B58F2B920D0700126E1F /* FirebaseUserProfileDataModel.swift */; };
+		3B94D70E2B9DCF670049A75A /* PortfolioDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B94D70D2B9DCF670049A75A /* PortfolioDetailViewViewModel.swift */; };
+		3B9F9A1A2BA384F900861C96 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9F9A192BA384F900861C96 /* CustomProgressView.swift */; };
+		3BA5D0762B8C67F1006AD8A0 /* CoinDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D0752B8C67F1006AD8A0 /* CoinDetailItem.swift */; };
+		3BA5D07C2B8CB341006AD8A0 /* DownloadImageAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5D07B2B8CB341006AD8A0 /* DownloadImageAsync.swift */; };
+		3BA6FC932B8DE4D8002E675F /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA6FC922B8DE4D8002E675F /* LineChart.swift */; };
+		3BBEE2F92B87512100E0F19F /* UserWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE2F82B87512100E0F19F /* UserWelcome.swift */; };
+		3BBEE2FB2B8755C800E0F19F /* AccountBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE2FA2B8755C800E0F19F /* AccountBalance.swift */; };
+		3BBEE2FD2B87643E00E0F19F /* TopGainerAndLoserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE2FC2B87643E00E0F19F /* TopGainerAndLoserItem.swift */; };
+		3BBEE2FF2B876BEF00E0F19F /* AllUserDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE2FE2B876BEF00E0F19F /* AllUserDataResponseModel.swift */; };
+		3BBEE3012B876C2100E0F19F /* AllUserDataRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE3002B876C2100E0F19F /* AllUserDataRequestModel.swift */; };
+		3BBEE3032B8778E900E0F19F /* RecentTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE3022B8778E900E0F19F /* RecentTransaction.swift */; };
+		3BBEE3052B87A88900E0F19F /* WatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBEE3042B87A88900E0F19F /* WatchListView.swift */; };
+		3BC4C4152B8B19C6001D2BFE /* CoinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC4C4142B8B19C6001D2BFE /* CoinDetailView.swift */; };
+		3BC4C41D2B8B6F9A001D2BFE /* CoinPriceLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC4C41C2B8B6F9A001D2BFE /* CoinPriceLineChartView.swift */; };
+		3BC4C41F2B8B7018001D2BFE /* CoinOverViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC4C41E2B8B7018001D2BFE /* CoinOverViewView.swift */; };
+		3BC4C4212B8B702B001D2BFE /* CoinAdditionalDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC4C4202B8B702B001D2BFE /* CoinAdditionalDetailsView.swift */; };
+		3BD563542B9C3DDA00DB9217 /* SettingsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD563532B9C3DDA00DB9217 /* SettingsViewViewModel.swift */; };
+		3BD563562B9CE13500DB9217 /* AccountSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD563552B9CE13500DB9217 /* AccountSectionView.swift */; };
+		3BD5635C2B9CFB6F00DB9217 /* GoodByeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD5635B2B9CFB6F00DB9217 /* GoodByeView.swift */; };
+		3BD5635E2B9CFD2800DB9217 /* bye.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BD5635D2B9CFD2800DB9217 /* bye.json */; };
+		3BD57B862B999AA7004DFD11 /* portfolio.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BD57B852B999AA7004DFD11 /* portfolio.json */; };
+		3BD57B8A2B999AE2004DFD11 /* PortfolioEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD57B892B999AE2004DFD11 /* PortfolioEmptyView.swift */; };
+		3BD57B8C2B99D6D6004DFD11 /* AddWatchListButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD57B8B2B99D6D6004DFD11 /* AddWatchListButtonItem.swift */; };
+		3BD943432B977F02008B3AE4 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3BD943422B977F02008B3AE4 /* Lottie */; };
+		3BD943452B977F32008B3AE4 /* LottieAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD943442B977F32008B3AE4 /* LottieAnimation.swift */; };
+		3BD9434C2B977FCF008B3AE4 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD9434B2B977FCF008B3AE4 /* LaunchView.swift */; };
+		3BD943522B978479008B3AE4 /* crypto.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BD943512B978478008B3AE4 /* crypto.json */; };
+		3BD943542B979DF1008B3AE4 /* LaunchViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD943532B979DF1008B3AE4 /* LaunchViewViewModel.swift */; };
+		3BE2DACF2B889DED003E3D18 /* CustomTabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2DACE2B889DED003E3D18 /* CustomTabBarModel.swift */; };
+		3BE2DAD12B88C199003E3D18 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2DAD02B88C199003E3D18 /* Extensions.swift */; };
+		3BE2DAD72B88C775003E3D18 /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2DAD62B88C775003E3D18 /* MarketView.swift */; };
+		3BE2DADB2B88CB82003E3D18 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2DADA2B88CB82003E3D18 /* SearchBar.swift */; };
+		3BE2DADD2B88CCB9003E3D18 /* CoinRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2DADC2B88CCB9003E3D18 /* CoinRow.swift */; };
+		3BE2DADF2B88CF1B003E3D18 /* AllCoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2DADE2B88CF1B003E3D18 /* AllCoinView.swift */; };
+		3BE2DAE12B891B70003E3D18 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE2DAE02B891B70003E3D18 /* SearchBarView.swift */; };
+		3BE7A34C2BA81FD1007ED2CC /* TopGainerAndLosersSharedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE7A34B2BA81FD1007ED2CC /* TopGainerAndLosersSharedView.swift */; };
+		3BE7A34E2BA842B5007ED2CC /* CoinDetailGridSharedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE7A34D2BA842B5007ED2CC /* CoinDetailGridSharedView.swift */; };
+		3BE95C8F2B984DD20097EB04 /* PortfolioDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE95C8E2B984DD20097EB04 /* PortfolioDetailView.swift */; };
+		3BE95C912B984FCB0097EB04 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE95C902B984FCB0097EB04 /* BackButton.swift */; };
+		3BE95C932B98524A0097EB04 /* PortfolioDetailGreeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE95C922B98524A0097EB04 /* PortfolioDetailGreeting.swift */; };
+		3BE95C952B9859AB0097EB04 /* PortfolioCoinDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE95C942B9859AB0097EB04 /* PortfolioCoinDetails.swift */; };
+		3BF90A0D2B87AE7D007B1BED /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF90A0C2B87AE7D007B1BED /* WelcomeView.swift */; };
+		3BF90A112B87C841007B1BED /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF90A102B87C841007B1BED /* RootView.swift */; };
+		3BF90A142B87C864007B1BED /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF90A132B87C864007B1BED /* CustomTabBar.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3B1C10F42B86255500C0100F /* ByteCoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ByteCoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B1C10F72B86255500C0100F /* ByteCoinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByteCoinApp.swift; sourceTree = "<group>"; };
+		3B1C10F92B86255500C0100F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		3B1C10FB2B86255700C0100F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3B1C10FE2B86255700C0100F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3B1C11062B86257C00C0100F /* AllCoinsDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCoinsDataResponseModel.swift; sourceTree = "<group>"; };
+		3B1C11082B86259D00C0100F /* AllCoinsDataRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCoinsDataRequestModel.swift; sourceTree = "<group>"; };
+		3B1C110C2B8625E900C0100F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		3B1C110E2B86260400C0100F /* APIRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestService.swift; sourceTree = "<group>"; };
+		3B1C11112B86262800C0100F /* HomeViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewViewModel.swift; sourceTree = "<group>"; };
+		3B1C11192B8626EA00C0100F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3B22ACA02B90784B00019E5D /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		3B22ACA42B9084A600019E5D /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		3B22ACA92B90A3B500019E5D /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
+		3B22ACAD2B90E5B100019E5D /* SearchBarInPortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarInPortfolioView.swift; sourceTree = "<group>"; };
+		3B22ACAF2B90E69800019E5D /* PortfolioCoinListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCoinListView.swift; sourceTree = "<group>"; };
+		3B22ACB12B90E8E200019E5D /* PortfolioCoinRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCoinRow.swift; sourceTree = "<group>"; };
+		3B2DDB9B2B9B3C9F003E2110 /* AddWatchListSharedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWatchListSharedView.swift; sourceTree = "<group>"; };
+		3B2DDBA02B9B7930003E2110 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3B2DDBA22B9B972C003E2110 /* SectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionItem.swift; sourceTree = "<group>"; };
+		3B2DDBA42B9BAA95003E2110 /* SettingsViewSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewSectionModel.swift; sourceTree = "<group>"; };
+		3B4D51082BA62103000F28A1 /* FirebaseQueryConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseQueryConditions.swift; sourceTree = "<group>"; };
+		3B69848F2B8F512F00FA233B /* BuyOrSellButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyOrSellButtonsView.swift; sourceTree = "<group>"; };
+		3B6984912B8F514D00FA233B /* BuyOrSellButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyOrSellButtonItem.swift; sourceTree = "<group>"; };
+		3B6984952B8F61DD00FA233B /* CoinExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinExchangeView.swift; sourceTree = "<group>"; };
+		3B6984972B8F69C800FA233B /* ButtonsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsModel.swift; sourceTree = "<group>"; };
+		3B6984992B8F6F3B00FA233B /* CoinExchangeGreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinExchangeGreetingView.swift; sourceTree = "<group>"; };
+		3B69849B2B8F700B00FA233B /* CoinExchangePriceCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinExchangePriceCalculatorView.swift; sourceTree = "<group>"; };
+		3B69849D2B8F7D6400FA233B /* CoinExchangePriceSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinExchangePriceSection.swift; sourceTree = "<group>"; };
+		3B69849F2B8F7DC400FA233B /* CoinExchangeQuantitySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinExchangeQuantitySection.swift; sourceTree = "<group>"; };
+		3B6984A12B8F7E3400FA233B /* CoinExchangeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinExchangeButtonView.swift; sourceTree = "<group>"; };
+		3B7F4E822B987B540013A8B3 /* PortfolioDetailBuyOrSellButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDetailBuyOrSellButtons.swift; sourceTree = "<group>"; };
+		3B7F4E842B987D560013A8B3 /* PortfolioDetailLastTransactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDetailLastTransactions.swift; sourceTree = "<group>"; };
+		3B91B5362B92037200126E1F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3B91B58F2B920D0700126E1F /* FirebaseUserProfileDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserProfileDataModel.swift; sourceTree = "<group>"; };
+		3B94D70D2B9DCF670049A75A /* PortfolioDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDetailViewViewModel.swift; sourceTree = "<group>"; };
+		3B9F9A192BA384F900861C96 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
+		3BA5D0752B8C67F1006AD8A0 /* CoinDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailItem.swift; sourceTree = "<group>"; };
+		3BA5D07B2B8CB341006AD8A0 /* DownloadImageAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageAsync.swift; sourceTree = "<group>"; };
+		3BA6FC922B8DE4D8002E675F /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		3BBEE2F82B87512100E0F19F /* UserWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWelcome.swift; sourceTree = "<group>"; };
+		3BBEE2FA2B8755C800E0F19F /* AccountBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountBalance.swift; sourceTree = "<group>"; };
+		3BBEE2FC2B87643E00E0F19F /* TopGainerAndLoserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGainerAndLoserItem.swift; sourceTree = "<group>"; };
+		3BBEE2FE2B876BEF00E0F19F /* AllUserDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserDataResponseModel.swift; sourceTree = "<group>"; };
+		3BBEE3002B876C2100E0F19F /* AllUserDataRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserDataRequestModel.swift; sourceTree = "<group>"; };
+		3BBEE3022B8778E900E0F19F /* RecentTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTransaction.swift; sourceTree = "<group>"; };
+		3BBEE3042B87A88900E0F19F /* WatchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListView.swift; sourceTree = "<group>"; };
+		3BC4C4142B8B19C6001D2BFE /* CoinDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailView.swift; sourceTree = "<group>"; };
+		3BC4C41C2B8B6F9A001D2BFE /* CoinPriceLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPriceLineChartView.swift; sourceTree = "<group>"; };
+		3BC4C41E2B8B7018001D2BFE /* CoinOverViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinOverViewView.swift; sourceTree = "<group>"; };
+		3BC4C4202B8B702B001D2BFE /* CoinAdditionalDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinAdditionalDetailsView.swift; sourceTree = "<group>"; };
+		3BD563532B9C3DDA00DB9217 /* SettingsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewViewModel.swift; sourceTree = "<group>"; };
+		3BD563552B9CE13500DB9217 /* AccountSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSectionView.swift; sourceTree = "<group>"; };
+		3BD5635B2B9CFB6F00DB9217 /* GoodByeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodByeView.swift; sourceTree = "<group>"; };
+		3BD5635D2B9CFD2800DB9217 /* bye.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bye.json; sourceTree = "<group>"; };
+		3BD57B852B999AA7004DFD11 /* portfolio.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = portfolio.json; sourceTree = "<group>"; };
+		3BD57B892B999AE2004DFD11 /* PortfolioEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioEmptyView.swift; sourceTree = "<group>"; };
+		3BD57B8B2B99D6D6004DFD11 /* AddWatchListButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWatchListButtonItem.swift; sourceTree = "<group>"; };
+		3BD943442B977F32008B3AE4 /* LottieAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimation.swift; sourceTree = "<group>"; };
+		3BD9434B2B977FCF008B3AE4 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		3BD943512B978478008B3AE4 /* crypto.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crypto.json; sourceTree = "<group>"; };
+		3BD943532B979DF1008B3AE4 /* LaunchViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewViewModel.swift; sourceTree = "<group>"; };
+		3BE2DACE2B889DED003E3D18 /* CustomTabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarModel.swift; sourceTree = "<group>"; };
+		3BE2DAD02B88C199003E3D18 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3BE2DAD62B88C775003E3D18 /* MarketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
+		3BE2DADA2B88CB82003E3D18 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		3BE2DADC2B88CCB9003E3D18 /* CoinRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRow.swift; sourceTree = "<group>"; };
+		3BE2DADE2B88CF1B003E3D18 /* AllCoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCoinView.swift; sourceTree = "<group>"; };
+		3BE2DAE02B891B70003E3D18 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		3BE7A34B2BA81FD1007ED2CC /* TopGainerAndLosersSharedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGainerAndLosersSharedView.swift; sourceTree = "<group>"; };
+		3BE7A34D2BA842B5007ED2CC /* CoinDetailGridSharedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailGridSharedView.swift; sourceTree = "<group>"; };
+		3BE95C8E2B984DD20097EB04 /* PortfolioDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDetailView.swift; sourceTree = "<group>"; };
+		3BE95C902B984FCB0097EB04 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		3BE95C922B98524A0097EB04 /* PortfolioDetailGreeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDetailGreeting.swift; sourceTree = "<group>"; };
+		3BE95C942B9859AB0097EB04 /* PortfolioCoinDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCoinDetails.swift; sourceTree = "<group>"; };
+		3BF90A0C2B87AE7D007B1BED /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		3BF90A102B87C841007B1BED /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		3BF90A132B87C864007B1BED /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3B1C10F12B86255500C0100F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B91B5782B92051B00126E1F /* FirebaseFunctions in Frameworks */,
+				3B91B56E2B92051B00126E1F /* FirebaseDatabaseSwift in Frameworks */,
+				3B91B57E2B92051B00126E1F /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
+				3B91B5842B92051B00126E1F /* FirebaseMessaging in Frameworks */,
+				3B91B5642B92051B00126E1F /* FirebaseAppDistribution-Beta in Frameworks */,
+				3B91B5682B92051B00126E1F /* FirebaseAuthCombine-Community in Frameworks */,
+				3B91B5742B92051B00126E1F /* FirebaseFirestoreCombine-Community in Frameworks */,
+				3B91B55E2B92051B00126E1F /* FirebaseAnalyticsSwift in Frameworks */,
+				3B91B5822B92051B00126E1F /* FirebaseMLModelDownloader in Frameworks */,
+				3BD943432B977F02008B3AE4 /* Lottie in Frameworks */,
+				3B91B5602B92051B00126E1F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				3B91B55A2B92051B00126E1F /* FirebaseAnalytics in Frameworks */,
+				3B91B5762B92051B00126E1F /* FirebaseFirestoreSwift in Frameworks */,
+				3B91B55C2B92051B00126E1F /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				3B91B5622B92051B00126E1F /* FirebaseAppCheck in Frameworks */,
+				3B91B5862B92051B00126E1F /* FirebasePerformance in Frameworks */,
+				3B91B57C2B92051B00126E1F /* FirebaseInAppMessaging-Beta in Frameworks */,
+				3B91B57A2B92051B00126E1F /* FirebaseFunctionsCombine-Community in Frameworks */,
+				3B91B56A2B92051B00126E1F /* FirebaseCrashlytics in Frameworks */,
+				3B91B5802B92051B00126E1F /* FirebaseInstallations in Frameworks */,
+				3B91B5882B92051B00126E1F /* FirebaseRemoteConfig in Frameworks */,
+				3B91B58C2B92051B00126E1F /* FirebaseStorage in Frameworks */,
+				3B91B56C2B92051B00126E1F /* FirebaseDatabase in Frameworks */,
+				3B91B58E2B92051B00126E1F /* FirebaseStorageCombine-Community in Frameworks */,
+				3B1C11162B86267300C0100F /* Alamofire in Frameworks */,
+				3B91B5662B92051B00126E1F /* FirebaseAuth in Frameworks */,
+				3B91B5702B92051B00126E1F /* FirebaseDynamicLinks in Frameworks */,
+				3B91B5722B92051B00126E1F /* FirebaseFirestore in Frameworks */,
+				3B91B58A2B92051B00126E1F /* FirebaseRemoteConfigSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B1C10EB2B86255500C0100F = {
+			isa = PBXGroup;
+			children = (
+				3B1C10F62B86255500C0100F /* ByteCoin */,
+				3B1C10F52B86255500C0100F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3B1C10F52B86255500C0100F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B1C10F42B86255500C0100F /* ByteCoin.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3B1C10F62B86255500C0100F /* ByteCoin */ = {
+			isa = PBXGroup;
+			children = (
+				3B91B5362B92037200126E1F /* GoogleService-Info.plist */,
+				3B1C10F72B86255500C0100F /* ByteCoinApp.swift */,
+				3BD943512B978478008B3AE4 /* crypto.json */,
+				3BD57B852B999AA7004DFD11 /* portfolio.json */,
+				3BD5635D2B9CFD2800DB9217 /* bye.json */,
+				3B1C10FB2B86255700C0100F /* Assets.xcassets */,
+				3B1C10FD2B86255700C0100F /* Preview Content */,
+				3B1C11172B8626D200C0100F /* Utilities */,
+				3BBEE2F52B8727A700E0F19F /* Core */,
+				3B1C110B2B8625D800C0100F /* Services */,
+				3B1C11052B86256A00C0100F /* Models */,
+			);
+			path = ByteCoin;
+			sourceTree = "<group>";
+		};
+		3B1C10FD2B86255700C0100F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3B1C10FE2B86255700C0100F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3B1C11052B86256A00C0100F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3B1C11062B86257C00C0100F /* AllCoinsDataResponseModel.swift */,
+				3B1C11082B86259D00C0100F /* AllCoinsDataRequestModel.swift */,
+				3B91B58F2B920D0700126E1F /* FirebaseUserProfileDataModel.swift */,
+				3B4D51082BA62103000F28A1 /* FirebaseQueryConditions.swift */,
+				3BBEE2FE2B876BEF00E0F19F /* AllUserDataResponseModel.swift */,
+				3BBEE3002B876C2100E0F19F /* AllUserDataRequestModel.swift */,
+				3BE2DACE2B889DED003E3D18 /* CustomTabBarModel.swift */,
+				3B6984972B8F69C800FA233B /* ButtonsModel.swift */,
+				3B2DDBA42B9BAA95003E2110 /* SettingsViewSectionModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3B1C110A2B8625AE00C0100F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3B1C10F92B86255500C0100F /* HomeView.swift */,
+				3BF90A0C2B87AE7D007B1BED /* WelcomeView.swift */,
+				3BBEE3042B87A88900E0F19F /* WatchListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3B1C110B2B8625D800C0100F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3B1C110C2B8625E900C0100F /* NetworkService.swift */,
+				3B1C110E2B86260400C0100F /* APIRequestService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3B1C11102B86261900C0100F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3B1C11112B86262800C0100F /* HomeViewViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3B1C11172B8626D200C0100F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3B1C11182B8626DB00C0100F /* Helpers */,
+				3B22AC9F2B90783A00019E5D /* Managers */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		3B1C11182B8626DB00C0100F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3B1C11192B8626EA00C0100F /* Constants.swift */,
+				3BE2DAD02B88C199003E3D18 /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3B22AC9F2B90783A00019E5D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				3B22ACA02B90784B00019E5D /* AuthenticationManager.swift */,
+				3B22ACA42B9084A600019E5D /* DatabaseManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		3B22ACA62B90A37A00019E5D /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				3B22ACA72B90A39200019E5D /* Views */,
+			);
+			path = Portfolio;
+			sourceTree = "<group>";
+		};
+		3B22ACA72B90A39200019E5D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3B22ACA92B90A3B500019E5D /* PortfolioView.swift */,
+				3B22ACAD2B90E5B100019E5D /* SearchBarInPortfolioView.swift */,
+				3B22ACAF2B90E69800019E5D /* PortfolioCoinListView.swift */,
+				3BD57B892B999AE2004DFD11 /* PortfolioEmptyView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3B2DDB992B9B3C79003E2110 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				3B2DDB9A2B9B3C85003E2110 /* Views */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		3B2DDB9A2B9B3C85003E2110 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3B2DDB9B2B9B3C9F003E2110 /* AddWatchListSharedView.swift */,
+				3BE7A34B2BA81FD1007ED2CC /* TopGainerAndLosersSharedView.swift */,
+				3BE7A34D2BA842B5007ED2CC /* CoinDetailGridSharedView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3B2DDB9E2B9B7919003E2110 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3B2DDB9F2B9B7922003E2110 /* Views */,
+				3BD563522B9C3DC600DB9217 /* ViewModels */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		3B2DDB9F2B9B7922003E2110 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3B2DDBA02B9B7930003E2110 /* SettingsView.swift */,
+				3BD563552B9CE13500DB9217 /* AccountSectionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3B6984932B8F601800FA233B /* Exchange */ = {
+			isa = PBXGroup;
+			children = (
+				3B6984942B8F61C000FA233B /* Views */,
+			);
+			path = Exchange;
+			sourceTree = "<group>";
+		};
+		3B6984942B8F61C000FA233B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3B6984952B8F61DD00FA233B /* CoinExchangeView.swift */,
+				3B6984992B8F6F3B00FA233B /* CoinExchangeGreetingView.swift */,
+				3B69849B2B8F700B00FA233B /* CoinExchangePriceCalculatorView.swift */,
+				3B6984A12B8F7E3400FA233B /* CoinExchangeButtonView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3B94D70C2B9DCF4C0049A75A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3B94D70D2B9DCF670049A75A /* PortfolioDetailViewViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3BBEE2F52B8727A700E0F19F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3BF90A0E2B87C80E007B1BED /* Root */,
+				3BD943462B977F68008B3AE4 /* Launch */,
+				3B2DDB992B9B3C79003E2110 /* Shared */,
+				3BBEE2F62B8727B000E0F19F /* Home */,
+				3BE2DAD22B88C6E7003E3D18 /* Market */,
+				3BC4C4102B8B1904001D2BFE /* Detail */,
+				3B6984932B8F601800FA233B /* Exchange */,
+				3B22ACA62B90A37A00019E5D /* Portfolio */,
+				3BE95C8C2B984DA70097EB04 /* Portfolio Detail */,
+				3B2DDB9E2B9B7919003E2110 /* Settings */,
+				3BD563592B9CFADF00DB9217 /* GoodBye */,
+				3BC4C4132B8B194E001D2BFE /* Components */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		3BBEE2F62B8727B000E0F19F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3B1C110A2B8625AE00C0100F /* Views */,
+				3B1C11102B86261900C0100F /* ViewModels */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3BC4C4102B8B1904001D2BFE /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				3BC4C4112B8B1925001D2BFE /* Views */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		3BC4C4112B8B1925001D2BFE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3BC4C4142B8B19C6001D2BFE /* CoinDetailView.swift */,
+				3BC4C41C2B8B6F9A001D2BFE /* CoinPriceLineChartView.swift */,
+				3B69848F2B8F512F00FA233B /* BuyOrSellButtonsView.swift */,
+				3BC4C41E2B8B7018001D2BFE /* CoinOverViewView.swift */,
+				3BC4C4202B8B702B001D2BFE /* CoinAdditionalDetailsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3BC4C4132B8B194E001D2BFE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3BF90A132B87C864007B1BED /* CustomTabBar.swift */,
+				3BBEE2F82B87512100E0F19F /* UserWelcome.swift */,
+				3BBEE2FA2B8755C800E0F19F /* AccountBalance.swift */,
+				3BBEE2FC2B87643E00E0F19F /* TopGainerAndLoserItem.swift */,
+				3BBEE3022B8778E900E0F19F /* RecentTransaction.swift */,
+				3BE2DADA2B88CB82003E3D18 /* SearchBar.swift */,
+				3BE2DADC2B88CCB9003E3D18 /* CoinRow.swift */,
+				3B22ACB12B90E8E200019E5D /* PortfolioCoinRow.swift */,
+				3BA5D0752B8C67F1006AD8A0 /* CoinDetailItem.swift */,
+				3BA5D07B2B8CB341006AD8A0 /* DownloadImageAsync.swift */,
+				3BA6FC922B8DE4D8002E675F /* LineChart.swift */,
+				3B6984912B8F514D00FA233B /* BuyOrSellButtonItem.swift */,
+				3B69849D2B8F7D6400FA233B /* CoinExchangePriceSection.swift */,
+				3B69849F2B8F7DC400FA233B /* CoinExchangeQuantitySection.swift */,
+				3BD943442B977F32008B3AE4 /* LottieAnimation.swift */,
+				3BE95C902B984FCB0097EB04 /* BackButton.swift */,
+				3BD57B8B2B99D6D6004DFD11 /* AddWatchListButtonItem.swift */,
+				3B2DDBA22B9B972C003E2110 /* SectionItem.swift */,
+				3B9F9A192BA384F900861C96 /* CustomProgressView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		3BD563522B9C3DC600DB9217 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3BD563532B9C3DDA00DB9217 /* SettingsViewViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3BD563592B9CFADF00DB9217 /* GoodBye */ = {
+			isa = PBXGroup;
+			children = (
+				3BD5635A2B9CFB6200DB9217 /* Views */,
+			);
+			path = GoodBye;
+			sourceTree = "<group>";
+		};
+		3BD5635A2B9CFB6200DB9217 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3BD5635B2B9CFB6F00DB9217 /* GoodByeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3BD943462B977F68008B3AE4 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				3BD943472B977F76008B3AE4 /* Views */,
+				3BD943482B977F80008B3AE4 /* ViewModels */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		3BD943472B977F76008B3AE4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3BD9434B2B977FCF008B3AE4 /* LaunchView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3BD943482B977F80008B3AE4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3BD943532B979DF1008B3AE4 /* LaunchViewViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3BE2DAD22B88C6E7003E3D18 /* Market */ = {
+			isa = PBXGroup;
+			children = (
+				3BE2DAD32B88C74E003E3D18 /* Views */,
+			);
+			path = Market;
+			sourceTree = "<group>";
+		};
+		3BE2DAD32B88C74E003E3D18 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3BE2DAD62B88C775003E3D18 /* MarketView.swift */,
+				3BE2DADE2B88CF1B003E3D18 /* AllCoinView.swift */,
+				3BE2DAE02B891B70003E3D18 /* SearchBarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3BE95C8C2B984DA70097EB04 /* Portfolio Detail */ = {
+			isa = PBXGroup;
+			children = (
+				3BE95C8D2B984DC00097EB04 /* Views */,
+				3B94D70C2B9DCF4C0049A75A /* ViewModels */,
+			);
+			path = "Portfolio Detail";
+			sourceTree = "<group>";
+		};
+		3BE95C8D2B984DC00097EB04 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3BE95C8E2B984DD20097EB04 /* PortfolioDetailView.swift */,
+				3BE95C922B98524A0097EB04 /* PortfolioDetailGreeting.swift */,
+				3B7F4E822B987B540013A8B3 /* PortfolioDetailBuyOrSellButtons.swift */,
+				3BE95C942B9859AB0097EB04 /* PortfolioCoinDetails.swift */,
+				3B7F4E842B987D560013A8B3 /* PortfolioDetailLastTransactions.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3BF90A0E2B87C80E007B1BED /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				3BF90A0F2B87C81E007B1BED /* Views */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		3BF90A0F2B87C81E007B1BED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3BF90A102B87C841007B1BED /* RootView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3B1C10F32B86255500C0100F /* ByteCoin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B1C11022B86255700C0100F /* Build configuration list for PBXNativeTarget "ByteCoin" */;
+			buildPhases = (
+				3B1C10F02B86255500C0100F /* Sources */,
+				3B1C10F12B86255500C0100F /* Frameworks */,
+				3B1C10F22B86255500C0100F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ByteCoin;
+			packageProductDependencies = (
+				3B1C11152B86267300C0100F /* Alamofire */,
+				3B91B5592B92051B00126E1F /* FirebaseAnalytics */,
+				3B91B55B2B92051B00126E1F /* FirebaseAnalyticsOnDeviceConversion */,
+				3B91B55D2B92051B00126E1F /* FirebaseAnalyticsSwift */,
+				3B91B55F2B92051B00126E1F /* FirebaseAnalyticsWithoutAdIdSupport */,
+				3B91B5612B92051B00126E1F /* FirebaseAppCheck */,
+				3B91B5632B92051B00126E1F /* FirebaseAppDistribution-Beta */,
+				3B91B5652B92051B00126E1F /* FirebaseAuth */,
+				3B91B5672B92051B00126E1F /* FirebaseAuthCombine-Community */,
+				3B91B5692B92051B00126E1F /* FirebaseCrashlytics */,
+				3B91B56B2B92051B00126E1F /* FirebaseDatabase */,
+				3B91B56D2B92051B00126E1F /* FirebaseDatabaseSwift */,
+				3B91B56F2B92051B00126E1F /* FirebaseDynamicLinks */,
+				3B91B5712B92051B00126E1F /* FirebaseFirestore */,
+				3B91B5732B92051B00126E1F /* FirebaseFirestoreCombine-Community */,
+				3B91B5752B92051B00126E1F /* FirebaseFirestoreSwift */,
+				3B91B5772B92051B00126E1F /* FirebaseFunctions */,
+				3B91B5792B92051B00126E1F /* FirebaseFunctionsCombine-Community */,
+				3B91B57B2B92051B00126E1F /* FirebaseInAppMessaging-Beta */,
+				3B91B57D2B92051B00126E1F /* FirebaseInAppMessagingSwift-Beta */,
+				3B91B57F2B92051B00126E1F /* FirebaseInstallations */,
+				3B91B5812B92051B00126E1F /* FirebaseMLModelDownloader */,
+				3B91B5832B92051B00126E1F /* FirebaseMessaging */,
+				3B91B5852B92051B00126E1F /* FirebasePerformance */,
+				3B91B5872B92051B00126E1F /* FirebaseRemoteConfig */,
+				3B91B5892B92051B00126E1F /* FirebaseRemoteConfigSwift */,
+				3B91B58B2B92051B00126E1F /* FirebaseStorage */,
+				3B91B58D2B92051B00126E1F /* FirebaseStorageCombine-Community */,
+				3BD943422B977F02008B3AE4 /* Lottie */,
+			);
+			productName = ByteCoin;
+			productReference = 3B1C10F42B86255500C0100F /* ByteCoin.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3B1C10EC2B86255500C0100F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					3B1C10F32B86255500C0100F = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 3B1C10EF2B86255500C0100F /* Build configuration list for PBXProject "ByteCoin" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3B1C10EB2B86255500C0100F;
+			packageReferences = (
+				3B1C11142B86267300C0100F /* XCRemoteSwiftPackageReference "Alamofire" */,
+				3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3BD943412B977F02008B3AE4 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
+			productRefGroup = 3B1C10F52B86255500C0100F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3B1C10F32B86255500C0100F /* ByteCoin */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3B1C10F22B86255500C0100F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BD57B862B999AA7004DFD11 /* portfolio.json in Resources */,
+				3BD943522B978479008B3AE4 /* crypto.json in Resources */,
+				3BD5635E2B9CFD2800DB9217 /* bye.json in Resources */,
+				3B1C10FF2B86255700C0100F /* Preview Assets.xcassets in Resources */,
+				3B1C10FC2B86255700C0100F /* Assets.xcassets in Resources */,
+				3B91B5372B92037200126E1F /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3B1C10F02B86255500C0100F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B2DDBA32B9B972C003E2110 /* SectionItem.swift in Sources */,
+				3BE2DAD72B88C775003E3D18 /* MarketView.swift in Sources */,
+				3B1C110D2B8625E900C0100F /* NetworkService.swift in Sources */,
+				3B6984902B8F512F00FA233B /* BuyOrSellButtonsView.swift in Sources */,
+				3B7F4E832B987B540013A8B3 /* PortfolioDetailBuyOrSellButtons.swift in Sources */,
+				3B1C11072B86257C00C0100F /* AllCoinsDataResponseModel.swift in Sources */,
+				3B22ACB02B90E69800019E5D /* PortfolioCoinListView.swift in Sources */,
+				3BC4C4152B8B19C6001D2BFE /* CoinDetailView.swift in Sources */,
+				3BA5D0762B8C67F1006AD8A0 /* CoinDetailItem.swift in Sources */,
+				3B69849C2B8F700B00FA233B /* CoinExchangePriceCalculatorView.swift in Sources */,
+				3BD57B8C2B99D6D6004DFD11 /* AddWatchListButtonItem.swift in Sources */,
+				3B22ACAE2B90E5B100019E5D /* SearchBarInPortfolioView.swift in Sources */,
+				3BC4C4212B8B702B001D2BFE /* CoinAdditionalDetailsView.swift in Sources */,
+				3BE7A34E2BA842B5007ED2CC /* CoinDetailGridSharedView.swift in Sources */,
+				3B2DDBA52B9BAA96003E2110 /* SettingsViewSectionModel.swift in Sources */,
+				3BF90A142B87C864007B1BED /* CustomTabBar.swift in Sources */,
+				3BE95C932B98524A0097EB04 /* PortfolioDetailGreeting.swift in Sources */,
+				3B4D51092BA62103000F28A1 /* FirebaseQueryConditions.swift in Sources */,
+				3BE2DADB2B88CB82003E3D18 /* SearchBar.swift in Sources */,
+				3BD943542B979DF1008B3AE4 /* LaunchViewViewModel.swift in Sources */,
+				3B1C11122B86262800C0100F /* HomeViewViewModel.swift in Sources */,
+				3B6984A22B8F7E3400FA233B /* CoinExchangeButtonView.swift in Sources */,
+				3B6984962B8F61DD00FA233B /* CoinExchangeView.swift in Sources */,
+				3BD5635C2B9CFB6F00DB9217 /* GoodByeView.swift in Sources */,
+				3BC4C41D2B8B6F9A001D2BFE /* CoinPriceLineChartView.swift in Sources */,
+				3B22ACB22B90E8E200019E5D /* PortfolioCoinRow.swift in Sources */,
+				3B69849E2B8F7D6400FA233B /* CoinExchangePriceSection.swift in Sources */,
+				3B1C110F2B86260400C0100F /* APIRequestService.swift in Sources */,
+				3B6984922B8F514D00FA233B /* BuyOrSellButtonItem.swift in Sources */,
+				3B2DDBA12B9B7930003E2110 /* SettingsView.swift in Sources */,
+				3BBEE2FB2B8755C800E0F19F /* AccountBalance.swift in Sources */,
+				3BE2DACF2B889DED003E3D18 /* CustomTabBarModel.swift in Sources */,
+				3BF90A0D2B87AE7D007B1BED /* WelcomeView.swift in Sources */,
+				3BD57B8A2B999AE2004DFD11 /* PortfolioEmptyView.swift in Sources */,
+				3B2DDB9C2B9B3C9F003E2110 /* AddWatchListSharedView.swift in Sources */,
+				3BD9434C2B977FCF008B3AE4 /* LaunchView.swift in Sources */,
+				3BE2DADF2B88CF1B003E3D18 /* AllCoinView.swift in Sources */,
+				3BBEE2F92B87512100E0F19F /* UserWelcome.swift in Sources */,
+				3BD563562B9CE13500DB9217 /* AccountSectionView.swift in Sources */,
+				3BE7A34C2BA81FD1007ED2CC /* TopGainerAndLosersSharedView.swift in Sources */,
+				3B9F9A1A2BA384F900861C96 /* CustomProgressView.swift in Sources */,
+				3B1C10FA2B86255500C0100F /* HomeView.swift in Sources */,
+				3B6984982B8F69C800FA233B /* ButtonsModel.swift in Sources */,
+				3BE95C8F2B984DD20097EB04 /* PortfolioDetailView.swift in Sources */,
+				3BBEE3032B8778E900E0F19F /* RecentTransaction.swift in Sources */,
+				3B1C11092B86259D00C0100F /* AllCoinsDataRequestModel.swift in Sources */,
+				3B22ACA52B9084A600019E5D /* DatabaseManager.swift in Sources */,
+				3BC4C41F2B8B7018001D2BFE /* CoinOverViewView.swift in Sources */,
+				3B22ACAA2B90A3B500019E5D /* PortfolioView.swift in Sources */,
+				3B7F4E852B987D560013A8B3 /* PortfolioDetailLastTransactions.swift in Sources */,
+				3BE95C952B9859AB0097EB04 /* PortfolioCoinDetails.swift in Sources */,
+				3BE95C912B984FCB0097EB04 /* BackButton.swift in Sources */,
+				3B69849A2B8F6F3B00FA233B /* CoinExchangeGreetingView.swift in Sources */,
+				3B22ACA12B90784B00019E5D /* AuthenticationManager.swift in Sources */,
+				3BA5D07C2B8CB341006AD8A0 /* DownloadImageAsync.swift in Sources */,
+				3BA6FC932B8DE4D8002E675F /* LineChart.swift in Sources */,
+				3B6984A02B8F7DC400FA233B /* CoinExchangeQuantitySection.swift in Sources */,
+				3BE2DAD12B88C199003E3D18 /* Extensions.swift in Sources */,
+				3BBEE3012B876C2100E0F19F /* AllUserDataRequestModel.swift in Sources */,
+				3BE2DAE12B891B70003E3D18 /* SearchBarView.swift in Sources */,
+				3BE2DADD2B88CCB9003E3D18 /* CoinRow.swift in Sources */,
+				3BBEE2FD2B87643E00E0F19F /* TopGainerAndLoserItem.swift in Sources */,
+				3B94D70E2B9DCF670049A75A /* PortfolioDetailViewViewModel.swift in Sources */,
+				3B1C10F82B86255500C0100F /* ByteCoinApp.swift in Sources */,
+				3BF90A112B87C841007B1BED /* RootView.swift in Sources */,
+				3BD943452B977F32008B3AE4 /* LottieAnimation.swift in Sources */,
+				3BBEE2FF2B876BEF00E0F19F /* AllUserDataResponseModel.swift in Sources */,
+				3B1C111A2B8626EA00C0100F /* Constants.swift in Sources */,
+				3B91B5902B920D0700126E1F /* FirebaseUserProfileDataModel.swift in Sources */,
+				3BD563542B9C3DDA00DB9217 /* SettingsViewViewModel.swift in Sources */,
+				3BBEE3052B87A88900E0F19F /* WatchListView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3B1C11002B86255700C0100F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3B1C11012B86255700C0100F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3B1C11032B86255700C0100F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "ByteCoin/Preview\\ Content";
+				DEVELOPMENT_TEAM = GC4L7S8Y7X;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.muharremkoroglu.ByteCoin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3B1C11042B86255700C0100F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "ByteCoin/Preview\\ Content";
+				DEVELOPMENT_TEAM = GC4L7S8Y7X;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.muharremkoroglu.ByteCoin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3B1C10EF2B86255500C0100F /* Build configuration list for PBXProject "ByteCoin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B1C11002B86255700C0100F /* Debug */,
+				3B1C11012B86255700C0100F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B1C11022B86255700C0100F /* Build configuration list for PBXNativeTarget "ByteCoin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B1C11032B86255700C0100F /* Debug */,
+				3B1C11042B86255700C0100F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3B1C11142B86267300C0100F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+		3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.21.0;
+			};
+		};
+		3BD943412B977F02008B3AE4 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3B1C11152B86267300C0100F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B1C11142B86267300C0100F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		3B91B5592B92051B00126E1F /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		3B91B55B2B92051B00126E1F /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		3B91B55D2B92051B00126E1F /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		3B91B55F2B92051B00126E1F /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		3B91B5612B92051B00126E1F /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		3B91B5632B92051B00126E1F /* FirebaseAppDistribution-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAppDistribution-Beta";
+		};
+		3B91B5652B92051B00126E1F /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		3B91B5672B92051B00126E1F /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+		3B91B5692B92051B00126E1F /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		3B91B56B2B92051B00126E1F /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		3B91B56D2B92051B00126E1F /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		3B91B56F2B92051B00126E1F /* FirebaseDynamicLinks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDynamicLinks;
+		};
+		3B91B5712B92051B00126E1F /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		3B91B5732B92051B00126E1F /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		3B91B5752B92051B00126E1F /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		3B91B5772B92051B00126E1F /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		3B91B5792B92051B00126E1F /* FirebaseFunctionsCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFunctionsCombine-Community";
+		};
+		3B91B57B2B92051B00126E1F /* FirebaseInAppMessaging-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessaging-Beta";
+		};
+		3B91B57D2B92051B00126E1F /* FirebaseInAppMessagingSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessagingSwift-Beta";
+		};
+		3B91B57F2B92051B00126E1F /* FirebaseInstallations */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseInstallations;
+		};
+		3B91B5812B92051B00126E1F /* FirebaseMLModelDownloader */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMLModelDownloader;
+		};
+		3B91B5832B92051B00126E1F /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		3B91B5852B92051B00126E1F /* FirebasePerformance */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebasePerformance;
+		};
+		3B91B5872B92051B00126E1F /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		3B91B5892B92051B00126E1F /* FirebaseRemoteConfigSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfigSwift;
+		};
+		3B91B58B2B92051B00126E1F /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		3B91B58D2B92051B00126E1F /* FirebaseStorageCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B91B5582B92051B00126E1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageCombine-Community";
+		};
+		3BD943422B977F02008B3AE4 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3BD943412B977F02008B3AE4 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 3B1C10EC2B86255500C0100F /* Project object */;
+}
